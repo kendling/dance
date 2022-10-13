@@ -21,7 +21,7 @@ declare module "./selections";
 /**
  * Copy selections text.
  *
- * @keys `y` (kakoune: normal)
+ * @keys `y` (helix: normal), `y` (helix: visual)
  */
 export function saveText(
   document: vscode.TextDocument,
@@ -34,7 +34,7 @@ export function saveText(
 /**
  * Save selections.
  *
- * @keys `s-z` (kakoune: normal)
+ * @keys `s-a-z` (helix: normal)
  */
 export function save(
   _: Context,
@@ -93,9 +93,9 @@ export function save(
 }
 
 /**
- * Restore selections.
+ * Restore selections. TODO: Needed?
  *
- * @keys `z` (kakoune: normal)
+ * @keys `a-z` (helix: normal)
  */
 export async function restore(
   _: Context,
@@ -291,16 +291,16 @@ const filterHistory: string[] = [];
 /**
  * Filter selections.
  *
- * @keys `$` (kakoune: normal)
+ * @keys `$` (helix: normal), `$` (helix: visual)
  *
  * #### Variants
  *
- * | Title                      | Identifier              | Keybinding                | Commands                                                                 |
- * | -------------------------- | ----------------------- | --------------------------| ------------------------------------------------------------------------ |
- * | Keep matching selections   | `filter.regexp`         | `a-k` (kakoune: normal)   | `[".selections.filter", { defaultExpression: "/"               , ... }]` |
- * | Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (kakoune: normal) | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
- * | Clear secondary selections | `clear.secondary`       | `,` (kakoune: normal)     | `[".selections.filter", { expression: "i === count"            , ... }]` |
- * | Clear main selections      | `clear.main`            | `a-,` (kakoune: normal)   | `[".selections.filter", { expression: "i !== count"            , ... }]` |
+ * | Title                      | Identifier              | Keybinding                                       | Commands                                                                 |
+ * | -------------------------- | ----------------------- | ------------------------------------------------ | ------------------------------------------------------------------------ |
+ * | Keep matching selections   | `filter.regexp`         | `s-k` (helix: normal), `s-k` (helix: visual)     | `[".selections.filter", { defaultExpression: "/"               , ... }]` |
+ * | Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (helix: normal), `s-a-k` (helix: visual) | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
+ * | Clear secondary selections | `clear.secondary`       | `;` (helix: normal), `;` (helix: visual)         | `[".selections.filter", { expression: "i === count"            , ... }]` |
+ * | Clear main selections      | `clear.main`            | `a-;` (helix: normal), `a-;` (helix: visual)     | `[".selections.filter", { expression: "i !== count"            , ... }]` |
  */
 export function filter(
   _: Context,
@@ -348,9 +348,9 @@ export function filter(
  *
  * #### Variants
  *
- * | Title          | Identifier      | Keybinding            | Command                                                                                           |
- * | -------------- | --------------- | --------------------- | ------------------------------------------------------------------------------------------------- |
- * | Leap or select | `select.orLeap` | `s` (kakoune: normal) | `[".ifEmpty", { then: [[".seek.leap", { ... }]], otherwise: [[".selections.select", { ... }]] }]` |
+ * | Title          | Identifier      | Keybinding                               | Command                                                                                           |
+ * | -------------- | --------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------- |
+ * | Leap or select | `select.orLeap` | `s` (helix: normal), `s` (helix: visual) | `[".ifEmpty", { then: [[".seek.leap", { ... }]], otherwise: [[".selections.select", { ... }]] }]` |
  */
 export function select(
   _: Context,
@@ -379,7 +379,7 @@ export function select(
 /**
  * Split selections.
  *
- * @keys `s-s` (kakoune: normal)
+ * @keys `s-s` (helix: normal), `s-s` (helix: visual)
  */
 export function split(
   _: Context,
@@ -417,9 +417,9 @@ export function split(
  *
  * #### Variants
  *
- * | Title                   | Identifier                   | Keybinding              | Command                                                                                                              |
- * | ----------------------- | ---------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------- |
- * | Leap or select backward | `splitLines.orLeap.backward` | `a-s` (kakoune: normal) | `[".ifEmpty", { then: [[".seek.leap", { direction: -1, ... }]], otherwise: [[".selections.splitLines", { ... }]] }]` |
+ * | Title                   | Identifier                   | Keybinding                                   | Command                                                                                                              |
+ * | ----------------------- | ---------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+ * | Leap or select backward | `splitLines.orLeap.backward` | `a-s` (helix: normal), `a-s` (helix: visual) | `[".ifEmpty", { then: [[".seek.leap", { direction: -1, ... }]], otherwise: [[".selections.splitLines", { ... }]] }]` |
  */
 export function splitLines(
   _: Context,
@@ -476,7 +476,7 @@ export function splitLines(
  *
  * Expand selections to contain full lines (including end-of-line characters).
  *
- * @keys `x` (kakoune: normal)
+ * @keys `s-x` (helix: normal), `s-x` (helix: visual)
  */
 export function expandToLines(_: Context) {
   return Selections.updateByIndex((_i, selection, document) => {
@@ -542,7 +542,7 @@ export function trimLines(_: Context) {
  *
  * Trim whitespace at beginning and end of selections.
  *
- * @keys `_` (kakoune: normal)
+ * @keys `_` (helix: normal), `_` (helix: visual)
  */
 export function trimWhitespace(_: Context) {
   const blank = getCharacters(CharSet.Blank, _.document),
@@ -569,7 +569,7 @@ export function trimWhitespace(_: Context) {
  * @param where Which edge each selection should be reduced to; defaults to
  *   "active".
  *
- * @keys `;` (kakoune: normal)
+ * @keys `,` (helix: normal), `,` (helix: visual)
  *
  * #### Variant
  *
@@ -799,13 +799,13 @@ export async function sort(
 /**
  * Copy selections below.
  *
- * @keys `s-c` (kakoune: normal)
+ * @keys `s-c` (normal), `s-c` (visual)
  *
  * #### Variant
  *
- * | Title                 | Identifier   | Keybinding                | Command                                   |
- * | --------------------- | ------------ | ------------------------- | ----------------------------------------- |
- * | Copy selections above | `copy.above` | `s-a-c` (kakoune: normal) | `[".selections.copy", { direction: -1 }]` |
+ * | Title                 | Identifier   | Keybinding                                       | Command                                   |
+ * | --------------------- | ------------ | ------------------------------------------------ | ----------------------------------------- |
+ * | Copy selections above | `copy.above` | `s-a-c` (helix: normal), `s-a-c` (helix: visual) | `[".selections.copy", { direction: -1 }]` |
  */
 export function copy(
   _: Context,
@@ -876,7 +876,7 @@ const indicesToken = PerEditorState.registerState<AutoDisposable>(/* isDisposabl
 /**
  * Toggle selection indices.
  *
- * @keys `enter` (dance: normal)
+ * @keys `enter` (dance: normal), `enter` (dance: visual)
  *
  * #### Variants
  *

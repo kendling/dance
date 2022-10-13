@@ -34,14 +34,16 @@ const preferredColumnsToken =
  * @param avoidEol If `true`, selections will not select the line break
  *   character but will instead move to the last character.
  *
+ *  TODO: Keep s-down and s-up?
+ *
  * #### Variants
  *
- * | Title       | Identifier    | Keybinding                                                                                   | Command                                                           |
- * | ----------- | ------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
- * | Jump down   | `down.jump`   | `j` (helix: normal)  , `down` (helix: normal)                                                | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
- * | Extend down | `down.extend` | `s-j` (helix: normal), `s-down` (helix: normal), `j` (helix: visual), `down` (helix: visual) | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
- * | Jump up     | `up.jump`     | `k` (helix: normal)  , `up` (helix: normal)                                                  | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
- * | Extend up   | `up.extend`   | `s-k` (helix: normal), `s-up` (helix: normal)  , `k` (helix: visual), `up` (helix: visual)   | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
+ * | Title       | Identifier    | Keybinding                                                                                         | Command                                                           |
+ * | ----------- | ------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+ * | Jump down   | `down.jump`   | `j` (helix: normal)         , `down` (helix: normal)                                               | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
+ * | Extend down | `down.extend` | `s-j` (helix: helix: normal),`s-down` (helix: normal), `j` (helix: visual), `down` (helix: visual) | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
+ * | Jump up     | `up.jump`     | `k` (helix: normal)         , `up` (helix: normal)                                                 | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
+ * | Extend up   | `up.extend`   | `s-k` (helix: helix: normal),`s-up` (helix: normal)  , `k` (helix: visual), `up` (helix: visual)   | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
  *
  * The following keybindings are also defined:
  *
@@ -224,14 +226,16 @@ export function vertically(
  * @param avoidEol If `true`, selections will automatically skip to the next
  *   line instead of going after the last character. Does not skip empty lines.
  *
+ * TODO: keep s-left and s-right?
+ *
  * #### Variants
  *
- * | Title        | Identifier     | Keybinding                                                                                     | Command                                                             |
- * | ------------ | -------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
- * | Jump right   | `right.jump`   | `l` (helix: normal)  , `right` (helix: normal)                                                 | `[".select.horizontally", { direction:  1, shift: "jump"  , ... }]` |
- * | Extend right | `right.extend` | `s-l` (helix: normal), `s-right` (helix: normal), `l` (helix: visual), `right` (helix: visual) | `[".select.horizontally", { direction:  1, shift: "extend", ... }]` |
- * | Jump left    | `left.jump`    | `h` (helix: normal)  , `left` (helix: normal)                                                  | `[".select.horizontally", { direction: -1, shift: "jump"  , ... }]` |
- * | Extend left  | `left.extend`  | `s-h` (helix: normal), `s-left` (helix: normal) , `h` (helix: visual), `left` (helix: visual)  | `[".select.horizontally", { direction: -1, shift: "extend", ... }]` |
+ * | Title        | Identifier     | Keybinding                                                              | Command                                                             |
+ * | ------------ | -------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------- |
+ * | Jump right   | `right.jump`   | `l` (helix: normal), `right` (helix: normal)                            | `[".select.horizontally", { direction:  1, shift: "jump"  , ... }]` |
+ * | Extend right | `right.extend` | `s-right` (helix: normal), `l` (helix: visual), `right` (helix: visual) | `[".select.horizontally", { direction:  1, shift: "extend", ... }]` |
+ * | Jump left    | `left.jump`    | `h` (helix: normal), `left` (helix: normal)                             | `[".select.horizontally", { direction: -1, shift: "jump"  , ... }]` |
+ * | Extend left  | `left.extend`  | `s-left` (helix: normal), `h` (helix: visual), `left` (helix: visual)   | `[".select.horizontally", { direction: -1, shift: "extend", ... }]` |
  */
 export function horizontally(
   _: Context,
