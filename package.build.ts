@@ -506,7 +506,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 },
                 "d": {
                   text: "Sorround delete",
-                  command: "dance.seek.enclosing",
+                  command: "dance.match.sorrounddelete",
                   // args: [{ input: "\\((?#inner)\\)" }],
                 },
                 "a": {

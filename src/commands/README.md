@@ -18,6 +18,7 @@ depending on the keyboard layout. The following layouts _will be_\* supported:
 <details>
 <summary><b>Quick reference</b></summary>
 <table>
+<<<<<<< HEAD
 <thead>
 <tr>
 <th>Category</th><th>Identifier</th><th>Title</th><th>Default keybindings</th>
@@ -222,6 +223,209 @@ selections are empty</td><td></td></tr>
 <tr><td><a href="./selections.rotate.ts#L54"><code>selections.rotate.selections.reverse</code></a></td><td>Rotate selections counter-clockwise (selections only)</td><td><code>Shift+0</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
 <tr><td rowspan=1><a href="#view"><code>view</code></a></td><td><a href="#view.line"><code>view.line</code></a></td><td>Reveals a position based on the main cursor</td><td></td></tr>
 </tbody>
+=======
+  <thead>
+    <tr>
+      <th>Category</th><th>Identifier</th><th>Title</th><th>Default keybindings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td rowspan=2><a href="#dev"><code>dev</code></a></td><td><a href="#dev.copyLastErrorMessage"><code>dev.copyLastErrorMessage</code></a></td><td>Copies the last encountered error message</td><td></td></tr>
+    <tr><td><a href="#dev.setSelectionBehavior"><code>dev.setSelectionBehavior</code></a></td><td>Set the selection behavior of the specified mode</td><td></td></tr>
+    <tr><td rowspan=27><a href="#edit"><code>edit</code></a></td><td><a href="#edit.align"><code>edit.align</code></a></td><td>Align selections</td><td><code>Shift+7</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+7</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#edit.case.swap"><code>edit.case.swap</code></a></td><td>Swap case</td><td><code>Shift+`</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+`</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#edit.case.toLower"><code>edit.case.toLower</code></a></td><td>Transform to lower case</td><td><code>`</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>`</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#edit.case.toUpper"><code>edit.case.toUpper</code></a></td><td>Transform to upper case</td><td><code>Alt+`</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+`</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#edit.copyIndentation"><code>edit.copyIndentation</code></a></td><td>Copy indentation</td><td><code>Shift+Alt+7</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+Alt+7</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#edit.deindent"><code>edit.deindent</code></a></td><td>Deindent selected lines</td><td><code>Shift+Alt+,</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+Alt+,</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#edit.deindent.withIncomplete"><code>edit.deindent.withIncomplete</code></a></td><td>Deindent selected lines (including incomplete indent)</td><td><code>Shift+,</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+,</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./edit.ts#L39"><code>edit.delete</code></a></td><td>Delete</td><td><code>Alt+D</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+D</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./edit.ts#L40"><code>edit.delete-insert</code></a></td><td>Delete and switch to Insert</td><td><code>Alt+C</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+C</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./edit.ts#L347"><code>edit.newLine.above.insert</code></a></td><td>Insert new line above and switch to insert</td><td><code>Shift+O</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+O</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./edit.ts#L388"><code>edit.newLine.below.insert</code></a></td><td>Insert new line below and switch to insert</td><td><code>O</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>O</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./edit.ts#L36"><code>edit.paste.after</code></a></td><td>Paste after</td><td><code>P</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>P</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./edit.ts#L38"><code>edit.paste.after.select</code></a></td><td>Paste after and select</td><td><code>Alt+P</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+P</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./edit.ts#L35"><code>edit.paste.before</code></a></td><td>Paste before</td><td><code>Shift+P</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+P</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./edit.ts#L37"><code>edit.paste.before.select</code></a></td><td>Paste before and select</td><td><code>Shift+Alt+P</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+Alt+P</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./edit.ts#L34"><code>edit.selectRegister-insert</code></a></td><td>Pick register and replace</td><td><code>Ctrl+R</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Ctrl+R</code> (<code>editorTextFocus && dance.mode == 'insert'</code>)<code>Ctrl+R</code> (<code>editorTextFocus && dance.mode == 'insert'</code>)</td></tr>
+    <tr><td><a href="./edit.ts#L41"><code>edit.yank-delete</code></a></td><td>Copy and delete</td><td><code>D</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>D</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./edit.ts#L42"><code>edit.yank-delete-insert</code></a></td><td>Copy, delete and switch to Insert</td><td><code>C</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>C</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./edit.ts#L43"><code>edit.yank-replace</code></a></td><td>Copy and replace</td><td><code>Shift+R</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+R</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#edit.indent"><code>edit.indent</code></a></td><td>Indent selected lines</td><td><code>Shift+.</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+.</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#edit.indent.withEmpty"><code>edit.indent.withEmpty</code></a></td><td>Indent selected lines (including empty lines)</td><td><code>Shift+Alt+.</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+Alt+.</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#edit.insert"><code>edit.insert</code></a></td><td>Insert contents of register</td><td><code>Shift+Alt+R</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#edit.join"><code>edit.join</code></a></td><td>Join lines</td><td><code>Shift+J</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+J</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#edit.join.select"><code>edit.join.select</code></a></td><td>Join lines and select inserted separators</td><td><code>Shift+Alt+J</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#edit.newLine.above"><code>edit.newLine.above</code></a></td><td>Insert new line above each selection</td><td><code>Shift+Alt+O</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+Alt+O</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#edit.newLine.below"><code>edit.newLine.below</code></a></td><td>Insert new line below each selection</td><td><code>Alt+O</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+O</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#edit.replaceCharacters"><code>edit.replaceCharacters</code></a></td><td>Replace characters</td><td><code>R</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>R</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td rowspan=11><a href="#history"><code>history</code></a></td><td><a href="./history.ts#L58"><code>history.repeat.seek</code></a></td><td>Repeat last seek</td><td><code>Alt+.</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./history.ts#L57"><code>history.repeat.selection</code></a></td><td>Repeat last selection change</td><td></td></tr>
+    <tr><td><a href="#history.recording.play"><code>history.recording.play</code></a></td><td>Replay recording</td><td><code>Q</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Q</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#history.recording.start"><code>history.recording.start</code></a></td><td>Start recording</td><td><code>Shift+Q</code> (<code>editorTextFocus && dance.mode == 'normal' && !dance.isRecording</code>)<code>Shift+Q</code> (<code>editorTextFocus && dance.mode == 'visual' && !dance.isRecording</code>)</td></tr>
+    <tr><td><a href="#history.recording.stop"><code>history.recording.stop</code></a></td><td>Stop recording</td><td><code>Escape</code> (<code>editorTextFocus && dance.mode == 'normal' && dance.isRecording</code>)<code>Shift+Q</code> (<code>editorTextFocus && dance.mode == 'normal' && dance.isRecording</code>)<code>Escape</code> (<code>editorTextFocus && dance.mode == 'visual' && dance.isRecording</code>)<code>Shift+Q</code> (<code>editorTextFocus && dance.mode == 'visual' && dance.isRecording</code>)</td></tr>
+    <tr><td><a href="#history.redo"><code>history.redo</code></a></td><td>Redo</td><td><code>Shift+U</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+U</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#history.redo.selections"><code>history.redo.selections</code></a></td><td>Redo a change of selections</td><td><code>Shift+Alt+U</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#history.repeat"><code>history.repeat</code></a></td><td>Repeat last change</td><td></td></tr>
+    <tr><td><a href="#history.repeat.edit"><code>history.repeat.edit</code></a></td><td>Repeat last edit without a command</td><td><code>.</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>NumPad_Decimal</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>.</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)<code>NumPad_Decimal</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#history.undo"><code>history.undo</code></a></td><td>Undo</td><td><code>U</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>U</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#history.undo.selections"><code>history.undo.selections</code></a></td><td>Undo a change of selections</td><td><code>Alt+U</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td rowspan=1><a href="#keybindings"><code>keybindings</code></a></td><td><a href="#keybindings.setup"><code>keybindings.setup</code></a></td><td>Set up Dance keybindings</td><td></td></tr>
+    <tr><td rowspan=3><a href="#match"><code>match</code></a></td><td><a href="#match.sorround"><code>match.sorround</code></a></td><td>Add stuff sorround</td><td></td></tr>
+    <tr><td><a href="#match.sorrounddelete"><code>match.sorrounddelete</code></a></td><td>Delete stuff sorround</td><td></td></tr>
+    <tr><td><a href="#match.sorroundreplace"><code>match.sorroundreplace</code></a></td><td>Replace stuff sorround</td><td></td></tr>
+    <tr><td rowspan=8><a href="#misc"><code>misc</code></a></td><td><a href="#cancel"><code>cancel</code></a></td><td>Cancel Dance operation</td><td><code>Escape</code> (<code>editorTextFocus && dance.mode == 'normal' && !dance.isRecording && !markersNavigationVisible</code>)<code>Escape</code> (<code>editorTextFocus && dance.mode == 'input'</code>)</td></tr>
+    <tr><td><a href="#changeInput"><code>changeInput</code></a></td><td>Change current input</td><td></td></tr>
+    <tr><td><a href="#ignore"><code>ignore</code></a></td><td>Ignore key</td><td></td></tr>
+    <tr><td><a href="#openMenu"><code>openMenu</code></a></td><td>Open menu</td><td></td></tr>
+    <tr><td><a href="#run"><code>run</code></a></td><td>Run code</td><td></td></tr>
+    <tr><td><a href="#selectRegister"><code>selectRegister</code></a></td><td>Select register for next command</td><td><code>Shift+'</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+'</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#updateCount"><code>updateCount</code></a></td><td>Update Dance count</td><td></td></tr>
+    <tr><td><a href="#updateRegister"><code>updateRegister</code></a></td><td>Update the contents of a register</td><td></td></tr>
+    <tr><td rowspan=14><a href="#modes"><code>modes</code></a></td><td><a href="./modes.ts#L28"><code>modes.insert.after</code></a></td><td>Insert after</td><td><code>A</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L27"><code>modes.insert.before</code></a></td><td>Insert before</td><td><code>I</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L30"><code>modes.insert.lineEnd</code></a></td><td>Insert at line end</td><td><code>Shift+A</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L29"><code>modes.insert.lineStart</code></a></td><td>Insert at line start</td><td><code>Shift+I</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L26"><code>modes.normal</code></a></td><td>Normal</td><td><code>V</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L17"><code>modes.set.insert</code></a></td><td>Set mode to Insert</td><td></td></tr>
+    <tr><td><a href="./modes.ts#L16"><code>modes.set.normal</code></a></td><td>Set mode to Normal</td><td><code>Escape</code> (<code>editorTextFocus && dance.mode == 'insert'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L18"><code>modes.set.normal</code></a></td><td>Set mode to Normal</td><td><code>Escape</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L46"><code>modes.set.temporarily.insert</code></a></td><td>Temporary Insert mode</td><td><code>Ctrl+V</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L45"><code>modes.set.temporarily.normal</code></a></td><td>Temporary Normal mode</td><td><code>Ctrl+V</code> (<code>editorTextFocus && dance.mode == 'insert'</code>)</td></tr>
+    <tr><td><a href="./modes.ts#L19"><code>modes.set.visual</code></a></td><td>Set mode to Visual</td><td></td></tr>
+    <tr><td><a href="./modes.ts#L25"><code>modes.visual</code></a></td><td>Visual</td><td><code>V</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#modes.set"><code>modes.set</code></a></td><td>Set Dance mode</td><td></td></tr>
+    <tr><td><a href="#modes.set.temporarily"><code>modes.set.temporarily</code></a></td><td>Set Dance mode temporarily</td><td></td></tr>
+    <tr><td rowspan=10><a href="#search"><code>search</code></a></td><td><a href="#search.next"><code>search.next</code></a></td><td>Select next match</td><td><code>N</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#search.search"><code>search.search</code></a></td><td>Search</td><td><code>/</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>NumPad_Divide</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>/</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)<code>NumPad_Divide</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./search.ts#L22"><code>search.backward</code></a></td><td>Search backward</td><td><code>Shift+/</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./search.ts#L23"><code>search.backward.extend</code></a></td><td>Search backward (extend)</td><td><code>Shift+Alt+/</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./search.ts#L21"><code>search.extend</code></a></td><td>Search (extend)</td><td><code>Alt+/</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./search.ts#L158"><code>search.next.add</code></a></td><td>Add next match</td><td><code>Alt+N</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>N</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./search.ts#L159"><code>search.previous</code></a></td><td>Select previous match</td><td><code>Shift+N</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./search.ts#L160"><code>search.previous.add</code></a></td><td>Add previous match</td><td><code>Shift+Alt+N</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+N</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./search.ts#L90"><code>search.selection.smart</code></a></td><td>Search current selection (smart)</td><td><code>Shift+8</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>NumPad_Multiply</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+8</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)<code>NumPad_Multiply</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#search.selection"><code>search.selection</code></a></td><td>Search current selection</td><td><code>Shift+Alt+8</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td rowspan=35><a href="#seek"><code>seek</code></a></td><td><a href="#seek.enclosing"><code>seek.enclosing</code></a></td><td>Select to next enclosing character</td><td><code>Shift+M</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#seek.object"><code>seek.object</code></a></td><td>Select object</td><td></td></tr>
+    <tr><td><a href="#seek.seek"><code>seek.seek</code></a></td><td>Select to character (excluded)</td><td><code>T</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L269"><code>seek.askObject</code></a></td><td>Select whole object</td><td><code>Alt+A</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+A</code> (<code>editorTextFocus && dance.mode == 'insert'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L275"><code>seek.askObject.end</code></a></td><td>Select to whole object end</td><td><code>]</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L276"><code>seek.askObject.end.extend</code></a></td><td>Extend to whole object end</td><td><code>Shift+]</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L270"><code>seek.askObject.inner</code></a></td><td>Select inner object</td><td><code>Alt+I</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+I</code> (<code>editorTextFocus && dance.mode == 'insert'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L277"><code>seek.askObject.inner.end</code></a></td><td>Select to inner object end</td><td><code>Alt+]</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L278"><code>seek.askObject.inner.end.extend</code></a></td><td>Extend to inner object end</td><td><code>Shift+Alt+]</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L273"><code>seek.askObject.inner.start</code></a></td><td>Select to inner object start</td><td><code>Alt+[</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L274"><code>seek.askObject.inner.start.extend</code></a></td><td>Extend to inner object start</td><td><code>Shift+Alt+[</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L271"><code>seek.askObject.start</code></a></td><td>Select to whole object start</td><td><code>[</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L272"><code>seek.askObject.start.extend</code></a></td><td>Extend to whole object start</td><td><code>Shift+[</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L23"><code>seek.backward</code></a></td><td>Select to character (excluded, backward)</td><td><code>Shift+T</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L89"><code>seek.enclosing.backward</code></a></td><td>Select to previous enclosing character</td><td><code>Alt+M</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L88"><code>seek.enclosing.extend</code></a></td><td>Extend to next enclosing character</td><td><code>Shift+M</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L90"><code>seek.enclosing.extend.backward</code></a></td><td>Extend to previous enclosing character</td><td><code>Alt+M</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L26"><code>seek.extend</code></a></td><td>Extend to character (excluded)</td><td><code>T</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L27"><code>seek.extend.backward</code></a></td><td>Extend to character (excluded, backward)</td><td><code>Shift+T</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L24"><code>seek.included</code></a></td><td>Select to character (included)</td><td><code>F</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L25"><code>seek.included.backward</code></a></td><td>Select to character (included, backward)</td><td><code>Shift+F</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L28"><code>seek.included.extend</code></a></td><td>Extend to character (included)</td><td><code>F</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L29"><code>seek.included.extend.backward</code></a></td><td>Extend to character (included, backward)</td><td><code>Shift+F</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L184"><code>seek.word.backward</code></a></td><td>Select to previous word start</td><td><code>B</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L190"><code>seek.word.backward.extend</code></a></td><td>Extend to previous word start</td><td><code>B</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L188"><code>seek.word.extend</code></a></td><td>Extend to next word start</td><td><code>W</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L183"><code>seek.word.ws</code></a></td><td>Select to next WORD start</td><td><code>Shift+W</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L185"><code>seek.word.ws.backward</code></a></td><td>Select to previous WORD start</td><td><code>Shift+B</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L191"><code>seek.word.ws.backward.extend</code></a></td><td>Extend to previous WORD start</td><td><code>Shift+B</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L189"><code>seek.word.ws.extend</code></a></td><td>Extend to next WORD start</td><td><code>Shift+W</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L186"><code>seek.wordEnd</code></a></td><td>Select to next word end</td><td><code>E</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L192"><code>seek.wordEnd.extend</code></a></td><td>Extend to next word end</td><td><code>E</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L187"><code>seek.wordEnd.ws</code></a></td><td>Select to next WORD end</td><td><code>Shift+E</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./seek.ts#L193"><code>seek.wordEnd.ws.extend</code></a></td><td>Extend to next WORD end</td><td><code>Shift+E</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#seek.word"><code>seek.word</code></a></td><td>Select to next word start</td><td><code>W</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td rowspan=41><a href="#select"><code>select</code></a></td><td><a href="#select.buffer"><code>select.buffer</code></a></td><td>Select whole buffer</td><td><code>Shift+5</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+5</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#select.firstVisibleLine"><code>select.firstVisibleLine</code></a></td><td>Select to first visible line</td><td></td></tr>
+    <tr><td><a href="#select.horizontally"><code>select.horizontally</code></a></td><td>Select horizontally</td><td></td></tr>
+    <tr><td><a href="#select.lastLine"><code>select.lastLine</code></a></td><td>Select to last line</td><td></td></tr>
+    <tr><td><a href="#select.lastVisibleLine"><code>select.lastVisibleLine</code></a></td><td>Select to last visible line</td><td></td></tr>
+    <tr><td><a href="#select.line.above"><code>select.line.above</code></a></td><td>Select line above</td><td></td></tr>
+    <tr><td><a href="#select.line.above.extend"><code>select.line.above.extend</code></a></td><td>Extend to line above</td><td></td></tr>
+    <tr><td><a href="#select.line.below"><code>select.line.below</code></a></td><td>Select line below</td><td><code>X</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#select.line.below.extend"><code>select.line.below.extend</code></a></td><td>Extend to line below</td><td><code>Shift+X</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>X</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#select.lineEnd"><code>select.lineEnd</code></a></td><td>Select to line end. TODO: helix</td><td><code>Alt+L</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>End</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#select.lineStart"><code>select.lineStart</code></a></td><td>Select to line start</td><td><code>Alt+H</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Home</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#select.middleVisibleLine"><code>select.middleVisibleLine</code></a></td><td>Select to middle visible line</td><td></td></tr>
+    <tr><td><a href="./select.ts#L521"><code>select.documentEnd.extend</code></a></td><td>Extend to last character</td><td></td></tr>
+    <tr><td><a href="./select.ts#L520"><code>select.documentEnd.jump</code></a></td><td>Jump to last character</td><td></td></tr>
+    <tr><td><a href="./select.ts#L44"><code>select.down.extend</code></a></td><td>Extend down</td><td><code>Shift+Down</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>J</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)<code>Down</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./select.ts#L43"><code>select.down.jump</code></a></td><td>Jump down</td><td><code>J</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Down</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./select.ts#L474"><code>select.firstLine.extend</code></a></td><td>Extend to first line</td><td></td></tr>
+    <tr><td><a href="./select.ts#L473"><code>select.firstLine.jump</code></a></td><td>Jump to first line</td><td></td></tr>
+    <tr><td><a href="./select.ts#L586"><code>select.firstVisibleLine.extend</code></a></td><td>Extend to first visible line</td><td></td></tr>
+    <tr><td><a href="./select.ts#L585"><code>select.firstVisibleLine.jump</code></a></td><td>Jump to first visible line</td><td></td></tr>
+    <tr><td><a href="./select.ts#L565"><code>select.lastLine.extend</code></a></td><td>Extend to last line</td><td></td></tr>
+    <tr><td><a href="./select.ts#L564"><code>select.lastLine.jump</code></a></td><td>Jump to last line</td><td></td></tr>
+    <tr><td><a href="./select.ts#L620"><code>select.lastVisibleLine.extend</code></a></td><td>Extend to last visible line</td><td></td></tr>
+    <tr><td><a href="./select.ts#L619"><code>select.lastVisibleLine.jump</code></a></td><td>Jump to last visible line</td><td></td></tr>
+    <tr><td><a href="./select.ts#L238"><code>select.left.extend</code></a></td><td>Extend left</td><td><code>Shift+Left</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>H</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)<code>Left</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./select.ts#L237"><code>select.left.jump</code></a></td><td>Jump left</td><td><code>H</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Left</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./select.ts#L519"><code>select.lineEnd.extend</code></a></td><td>Extend to line end</td><td><code>Shift+Alt+L</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+End</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./select.ts#L470"><code>select.lineStart.extend</code></a></td><td>Extend to line start</td><td><code>Shift+Alt+H</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+Home</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./select.ts#L469"><code>select.lineStart.jump</code></a></td><td>Jump to line start</td><td></td></tr>
+    <tr><td><a href="./select.ts#L472"><code>select.lineStart.skipBlank.extend</code></a></td><td>Extend to line start (skip blank)</td><td></td></tr>
+    <tr><td><a href="./select.ts#L471"><code>select.lineStart.skipBlank.jump</code></a></td><td>Jump to line start (skip blank)</td><td></td></tr>
+    <tr><td><a href="./select.ts#L603"><code>select.middleVisibleLine.extend</code></a></td><td>Extend to middle visible line</td><td></td></tr>
+    <tr><td><a href="./select.ts#L602"><code>select.middleVisibleLine.jump</code></a></td><td>Jump to middle visible line</td><td></td></tr>
+    <tr><td><a href="./select.ts#L236"><code>select.right.extend</code></a></td><td>Extend right</td><td><code>Shift+Right</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>L</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)<code>Right</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./select.ts#L235"><code>select.right.jump</code></a></td><td>Jump right</td><td><code>L</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Right</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./select.ts#L305"><code>select.to.extend</code></a></td><td>Extend to</td><td><code>Shift+G</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>G</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./select.ts#L304"><code>select.to.jump</code></a></td><td>Go to</td><td><code>G</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./select.ts#L46"><code>select.up.extend</code></a></td><td>Extend up</td><td><code>Shift+Up</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>K</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)<code>Up</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./select.ts#L45"><code>select.up.jump</code></a></td><td>Jump up</td><td><code>K</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Up</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#select.to"><code>select.to</code></a></td><td>Select to</td><td></td></tr>
+    <tr><td><a href="#select.vertically"><code>select.vertically</code></a></td><td>Select vertically</td><td></td></tr>
+    <tr><td rowspan=35><a href="#selections"><code>selections</code></a></td><td><a href="#selections.changeDirection"><code>selections.changeDirection</code></a></td><td>Change direction of selections</td><td><code>Alt+;</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#selections.changeOrder"><code>selections.changeOrder</code></a></td><td>Reverse selections</td><td></td></tr>
+    <tr><td><a href="#selections.copy"><code>selections.copy</code></a></td><td>Copy selections below</td><td><code>Shift+C</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+C</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#selections.expandToLines"><code>selections.expandToLines</code></a></td><td>Expand to lines</td><td><code>Shift+X</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+X</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#selections.filter"><code>selections.filter</code></a></td><td>Filter selections</td><td><code>Shift+4</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+4</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#selections.merge"><code>selections.merge</code></a></td><td>Merge contiguous selections</td><td><code>Shift+Alt+-</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#selections.open"><code>selections.open</code></a></td><td>Open selected file</td><td></td></tr>
+    <tr><td><a href="#selections.pipe"><code>selections.pipe</code></a></td><td>Pipe selections</td><td><code>Shift+Alt+\</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#selections.reduce"><code>selections.reduce</code></a></td><td>Reduce selections to their cursor</td><td><code>,</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>,</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#selections.restore"><code>selections.restore</code></a></td><td>Restore selections. TODO: Needed?</td><td><code>Alt+Z</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#selections.restore.withCurrent"><code>selections.restore.withCurrent</code></a></td><td>Combine register selections with current ones</td><td><code>Alt+Z</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#selections.save"><code>selections.save</code></a></td><td>Save selections</td><td><code>Shift+Alt+Z</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#selections.saveText"><code>selections.saveText</code></a></td><td>Copy selections text</td><td><code>Y</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Y</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#selections.select"><code>selections.select</code></a></td><td>Select within selections</td><td><code>S</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>S</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./selections.ts#L302"><code>selections.clear.main</code></a></td><td>Clear main selections</td><td><code>Alt+;</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+;</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./selections.ts#L301"><code>selections.clear.secondary</code></a></td><td>Clear secondary selections</td><td><code>;</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>;</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./selections.ts#L798"><code>selections.copy.above</code></a></td><td>Copy selections above</td><td><code>Shift+Alt+C</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+Alt+C</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./selections.ts#L650"><code>selections.faceBackward</code></a></td><td>Backward selections</td><td></td></tr>
+    <tr><td><a href="./selections.ts#L649"><code>selections.faceForward</code></a></td><td>Forward selections</td><td><code>Shift+Alt+;</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./selections.ts#L299"><code>selections.filter.regexp</code></a></td><td>Keep matching selections</td><td><code>Shift+K</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+K</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./selections.ts#L300"><code>selections.filter.regexp.inverse</code></a></td><td>Clear matching selections</td><td><code>Shift+Alt+K</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+Alt+K</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./selections.ts#L876"><code>selections.hideIndices</code></a></td><td>Hide selection indices</td><td></td></tr>
+    <tr><td><a href="./selections.ts#L689"><code>selections.orderAscending</code></a></td><td>Order selections ascending</td><td></td></tr>
+    <tr><td><a href="./selections.ts#L688"><code>selections.orderDescending</code></a></td><td>Order selections descending</td><td></td></tr>
+    <tr><td><a href="./selections.ts#L255"><code>selections.pipe.append</code></a></td><td>Pipe and append</td><td><code>Shift+1</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./selections.ts#L256"><code>selections.pipe.prepend</code></a></td><td>Pipe and prepend</td><td><code>Shift+Alt+1</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./selections.ts#L254"><code>selections.pipe.replace</code></a></td><td>Pipe and replace</td><td><code>Shift+\</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./selections.ts#L568"><code>selections.reduce.edges</code></a></td><td>Reduce selections to their ends</td><td><code>Shift+Alt+S</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./selections.ts#L875"><code>selections.showIndices</code></a></td><td>Show selection indices</td><td></td></tr>
+    <tr><td><a href="#selections.sort"><code>selections.sort</code></a></td><td>Sort selections</td><td></td></tr>
+    <tr><td><a href="#selections.split"><code>selections.split</code></a></td><td>Split selections</td><td><code>Shift+S</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+S</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#selections.splitLines"><code>selections.splitLines</code></a></td><td>Split selections at line boundaries</td><td><code>Alt+S</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Alt+S</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#selections.toggleIndices"><code>selections.toggleIndices</code></a></td><td>Toggle selection indices</td><td><code>Enter</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Enter</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="#selections.trimLines"><code>selections.trimLines</code></a></td><td>Trim lines</td><td><code>Shift+Alt+X</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#selections.trimWhitespace"><code>selections.trimWhitespace</code></a></td><td>Trim whitespace</td><td><code>Shift+-</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+-</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td rowspan=6><a href="#selections.rotate"><code>selections.rotate</code></a></td><td><a href="#selections.rotate.both"><code>selections.rotate.both</code></a></td><td>Rotate selections clockwise</td><td><code>Shift+Alt+9</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="#selections.rotate.contents"><code>selections.rotate.contents</code></a></td><td>Rotate selections clockwise (contents only)</td><td></td></tr>
+    <tr><td><a href="#selections.rotate.selections"><code>selections.rotate.selections</code></a></td><td>Rotate selections clockwise (selections only)</td><td><code>Shift+9</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+9</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td><a href="./selections.rotate.ts#L18"><code>selections.rotate.both.reverse</code></a></td><td>Rotate selections counter-clockwise</td><td><code>Shift+Alt+0</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
+    <tr><td><a href="./selections.rotate.ts#L35"><code>selections.rotate.contents.reverse</code></a></td><td>Rotate selections counter-clockwise (contents only)</td><td></td></tr>
+    <tr><td><a href="./selections.rotate.ts#L56"><code>selections.rotate.selections.reverse</code></a></td><td>Rotate selections counter-clockwise (selections only)</td><td><code>Shift+0</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+0</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+    <tr><td rowspan=1><a href="#view"><code>view</code></a></td><td><a href="#view.line"><code>view.line</code></a></td><td>Reveals a position based on the main cursor</td><td></td></tr>
+  </tbody>
+>>>>>>> 009823c (fixed match replace)
 </table>
 
 </details>
@@ -274,6 +478,7 @@ Specify `all` to paste all contents next to each selection.
 
 #### Additional commands
 
+<<<<<<< HEAD
 | Title                              | Identifier               | Keybinding                                       | Commands                                                                                                                       |
 | ---------------------------------- | ------------------------ | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | Pick register and replace          | `selectRegister-insert`  | `c-r` (kakoune: normal), `c-r` (kakoune: insert) | `[".selectRegister", { +register }], [".edit.insert", { ... }]`                                                                |
@@ -290,6 +495,20 @@ Specify `all` to paste all contents next to each selection.
 | Copy and delete                    | `yank-delete`            | `d` (kakoune: normal)                            | `[".selections.saveText", { +register }],                                            [".edit.insert", { register: "_", ... }]` |
 | Copy, delete and switch to Insert  | `yank-delete-insert`     | `c` (kakoune: normal)                            | `[".selections.saveText", { +register }], [".modes.set", { mode: "insert", +mode }], [".edit.insert", { register: "_", ... }]` |
 | Copy and replace                   | `yank-replace`           | `s-r` (kakoune: normal)                          | `[".selections.saveText", { register: "tmp" }], [".edit.insert"], [".updateRegister", { copyFrom: "tmp", ... }]`               |
+=======
+| Title                              | Identifier              | Keybinding                                     | Commands                                                                                                                       |
+| ---------------------------------- | ----------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Pick register and replace          | `selectRegister-insert` | `c-r` (normal), `c-r` (insert), `c-r` (insert) | `[".selectRegister", { +register }], [".edit.insert", { ... }]`                                                                |
+| Paste before                       | `paste.before`          | `s-p` (normal), `s-p` (visual)                 | `[".edit.insert", { handleNewLine: true, where: "start", ... }]`                                                               |
+| Paste after                        | `paste.after`           | `p` (normal), `p` (visual)                     | `[".edit.insert", { handleNewLine: true, where: "end"  , ... }]`                                                               |
+| Paste before and select            | `paste.before.select`   | `s-a-p` (normal), `s-a-p` (visual)             | `[".edit.insert", { handleNewLine: true, where: "start", shift: "select", ... }]`                                              |
+| Paste after and select             | `paste.after.select`    | `a-p` (normal), `a-p` (visual)                 | `[".edit.insert", { handleNewLine: true, where: "end"  , shift: "select", ... }]`                                              |
+| Delete                             | `delete`                | `a-d` (normal), `a-d` (visual)                 | `[".edit.insert", { register: "_", ... }]`                                                                                     |
+| Delete and switch to Insert        | `delete-insert`         | `a-c` (normal), `a-c` (visual)                 | `[".modes.set", { mode: "insert", +mode }], [".edit.insert", { register: "_", ... }]`                                          |
+| Copy and delete                    | `yank-delete`           | `d` (normal), `d` (visual)                     | `[".selections.saveText", { +register }],                                            [".edit.insert", { register: "_", ... }]` |
+| Copy, delete and switch to Insert  | `yank-delete-insert`    | `c` (normal), `c` (visual)                     | `[".selections.saveText", { +register }], [".modes.set", { mode: "insert", +mode }], [".edit.insert", { register: "_", ... }]` |
+| Copy and replace                   | `yank-replace`          | `s-r` (normal), `s-r` (visual)                 | `[".selections.saveText", { register: "tmp" }], [".edit.insert"], [".updateRegister", { copyFrom: "tmp", ... }]`               |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - accepts a register (by default, it uses `dquote`).
@@ -313,7 +532,11 @@ Join lines.
 This command:
 - takes an argument `separator` of type `string`.
 
+<<<<<<< HEAD
 Default keybinding: `a-j` (kakoune: normal)
+=======
+Default keybinding: `s-j` (normal), `s-j` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="edit.join.select" />
 
@@ -337,7 +560,11 @@ Indent selected lines.
 This command:
 - may be repeated with a given number of repetitions.
 
+<<<<<<< HEAD
 Default keybinding: `>` (kakoune: normal)
+=======
+Default keybinding: `>` (normal), `>` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="edit.indent.withEmpty" />
 
@@ -349,7 +576,11 @@ Indent selected lines (including empty lines).
 This command:
 - may be repeated with a given number of repetitions.
 
+<<<<<<< HEAD
 Default keybinding: `a->` (kakoune: normal)
+=======
+Default keybinding: `a->` (normal), `a->` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="edit.deindent" />
 
@@ -361,7 +592,11 @@ Deindent selected lines.
 This command:
 - may be repeated with a given number of repetitions.
 
+<<<<<<< HEAD
 Default keybinding: `a-<` (kakoune: normal)
+=======
+Default keybinding: `a-<` (normal), `a-<` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="edit.deindent.withIncomplete" />
 
@@ -373,7 +608,11 @@ Deindent selected lines (including incomplete indent).
 This command:
 - may be repeated with a given number of repetitions.
 
+<<<<<<< HEAD
 Default keybinding: `<` (kakoune: normal)
+=======
+Default keybinding: `<` (normal), `<` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="edit.case.toLower" />
 
@@ -383,7 +622,11 @@ Transform to lower case.
 
 
 
+<<<<<<< HEAD
 Default keybinding: `` ` `` (kakoune: normal)
+=======
+Default keybinding: `` ` `` (normal), `` ` `` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="edit.case.toUpper" />
 
@@ -393,7 +636,11 @@ Transform to upper case.
 
 
 
+<<<<<<< HEAD
 Default keybinding: `` s-` `` (kakoune: normal)
+=======
+Default keybinding: `` a-` `` (normal), `` a-` `` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="edit.case.swap" />
 
@@ -403,7 +650,11 @@ Swap case.
 
 
 
+<<<<<<< HEAD
 Default keybinding: `` a-` `` (kakoune: normal)
+=======
+Default keybinding: `~` (normal), `~` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="edit.replaceCharacters" />
 
@@ -416,7 +667,11 @@ This command:
 - may be repeated with a given number of repetitions.
 - takes an input `input` of type `string`.
 
+<<<<<<< HEAD
 Default keybinding: `r` (kakoune: normal)
+=======
+Default keybinding: `r` (normal), `r` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="edit.align" />
 
@@ -431,7 +686,11 @@ before the first character of each selection.
 This command:
 - takes an argument `fill` of type `string`.
 
+<<<<<<< HEAD
 Default keybinding: `&` (kakoune: normal)
+=======
+Default keybinding: `&` (normal), `&` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="edit.copyIndentation" />
 
@@ -446,7 +705,11 @@ given) to all other ones.
 This command:
 - may be repeated with a given number of repetitions.
 
+<<<<<<< HEAD
 Default keybinding: `a-&` (kakoune: normal)
+=======
+Default keybinding: `a-&` (normal), `a-&` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="edit.newLine.above" />
 
@@ -460,15 +723,25 @@ keep the current selections.
 
 #### Additional keybindings
 
+<<<<<<< HEAD
 | Title                                      | Identifier             | Keybinding              | Commands                                                                          |
 | ------------------------------------------ | ---------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Insert new line above and switch to insert | `newLine.above.insert` | `s-o` (kakoune: normal) | `[".edit.newLine.above", { shift: "select" }], [".modes.insert.before", { ... }]` |
+=======
+| Title                                      | Identifier             | Keybinding                     | Commands                                                                          |
+| ------------------------------------------ | ---------------------- | ------------------------------ | --------------------------------------------------------------------------------- |
+| Insert new line above and switch to insert | `newLine.above.insert` | `s-o` (normal), `s-o` (visual) | `[".edit.newLine.above", { shift: "select" }], [".modes.insert.before", { ... }]` |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - may be repeated with a given number of repetitions.
 - takes an argument `shift` of type `Shift`.
 
+<<<<<<< HEAD
 Default keybinding: `s-a-o` (kakoune: normal)
+=======
+Default keybinding: `s-a-o` (normal), `s-a-o` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="edit.newLine.below" />
 
@@ -482,15 +755,25 @@ keep the current selections.
 
 #### Additional keybindings
 
+<<<<<<< HEAD
 | Title                                      | Identifier             | Keybinding            | Commands                                                                          |
 | ------------------------------------------ | ---------------------- | --------------------- | --------------------------------------------------------------------------------- |
 | Insert new line below and switch to insert | `newLine.below.insert` | `o` (kakoune: normal) | `[".edit.newLine.below", { shift: "select" }], [".modes.insert.before", { ... }]` |
+=======
+| Title                                      | Identifier             | Keybinding                 | Commands                                                                          |
+| ------------------------------------------ | ---------------------- | -------------------------- | --------------------------------------------------------------------------------- |
+| Insert new line below and switch to insert | `newLine.below.insert` | `o` (normal), `o` (visual) | `[".edit.newLine.below", { shift: "select" }], [".modes.insert.before", { ... }]` |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - may be repeated with a given number of repetitions.
 - takes an argument `shift` of type `Shift`.
 
+<<<<<<< HEAD
 Default keybinding: `a-o` (kakoune: normal)
+=======
+Default keybinding: `a-o` (normal), `a-o` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 ## [`history`](./history.ts)
 
@@ -506,7 +789,11 @@ Undo.
 This command:
 - does not require an active text editor.
 
+<<<<<<< HEAD
 Default keybinding: `u` (kakoune: normal)
+=======
+Default keybinding: `u` (normal), `u` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="history.redo" />
 
@@ -518,7 +805,11 @@ Redo.
 This command:
 - does not require an active text editor.
 
+<<<<<<< HEAD
 Default keybinding: `s-u` (kakoune: normal)
+=======
+Default keybinding: `s-u` (normal), `s-u` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="history.undo.selections" />
 
@@ -570,8 +861,12 @@ Repeat last edit without a command.
 This command:
 - may be repeated with a given number of repetitions.
 
+<<<<<<< HEAD
 Default keybinding: `.` (kakoune: normal)
 `NumPad_Decimal` (kakoune: normal)
+=======
+Default keybinding: `.` (normal), `NumPad_Decimal` (normal), `.` (visual), `NumPad_Decimal` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="history.recording.play" />
 
@@ -585,7 +880,11 @@ This command:
 - does not require an active text editor.
 - may be repeated with a given number of repetitions.
 
+<<<<<<< HEAD
 Default keybinding: `q` (kakoune: normal)
+=======
+Default keybinding: `q` (normal), `q` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="history.recording.start" />
 
@@ -597,7 +896,11 @@ Start recording.
 This command:
 - accepts a register (by default, it uses `arobase`).
 
+<<<<<<< HEAD
 Default keybinding: `s-q` (kakoune: normal, !recording)
+=======
+Default keybinding: `s-q` (normal, !recording), `s-q` (visual, !recording)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="history.recording.stop" />
 
@@ -624,6 +927,46 @@ Set up Dance keybindings.
 
 This command:
 - accepts a register (by default, it uses `dquote`).
+
+## [`match`](./match.ts)
+
+Match menu.
+
+| Title                   | Keybinding   | Command                                                         |
+| ----------------------- | ------------ | --------------------------------------------------------------- |
+| Show match menu         | `m` (normal) | `[".openMenu", { menu: "match" }]`                              |
+| Show match menu         | `m` (visual) | `[".openMenu", { menu: "match", pass: [{ shift: "extend" }] }]` |
+
+<a name="match.sorroundreplace" />
+
+### [`match.sorroundreplace`](./match.ts#L24-L32)
+
+Replace stuff sorround
+
+
+This command:
+- takes an input `input` of type `string`.
+
+<a name="match.sorrounddelete" />
+
+### [`match.sorrounddelete`](./match.ts#L98-L106)
+
+Delete stuff sorround
+
+
+This command:
+- takes an input `input` of type `string`.
+
+<a name="match.sorround" />
+
+### [`match.sorround`](./match.ts#L162-L171)
+
+Add stuff sorround
+
+
+This command:
+- accepts a register (by default, it uses `dquote`).
+- takes an input `input` of type `string`.
 
 ## [`misc`](./misc.ts)
 
@@ -806,6 +1149,7 @@ Update the current counter used to repeat the next command.
 
 #### Additional keybindings
 
+<<<<<<< HEAD
 | Title                          | Keybinding                                   | Command                              |
 | ------------------------------ | -------------------------------------------- | ------------------------------------ |
 | Add the digit 0 to the counter | `0` (core: normal), `NumPad0` (core: normal) | `[".updateCount", { addDigits: 0 }]` |
@@ -818,6 +1162,20 @@ Update the current counter used to repeat the next command.
 | Add the digit 7 to the counter | `7` (core: normal), `NumPad7` (core: normal) | `[".updateCount", { addDigits: 7 }]` |
 | Add the digit 8 to the counter | `8` (core: normal), `NumPad8` (core: normal) | `[".updateCount", { addDigits: 8 }]` |
 | Add the digit 9 to the counter | `9` (core: normal), `NumPad9` (core: normal) | `[".updateCount", { addDigits: 9 }]` |
+=======
+| Title                          | Keybinding                                                         | Command                              |
+| ------------------------------ | ------------------------------------------------------------------ | ------------------------------------ |
+| Add the digit 0 to the counter | `0` (normal), `NumPad0` (normal), `0` (visual), `NumPad0` (visual) | `[".updateCount", { addDigits: 0 }]` |
+| Add the digit 1 to the counter | `1` (normal), `NumPad1` (normal), `1` (visual), `NumPad1` (visual) | `[".updateCount", { addDigits: 1 }]` |
+| Add the digit 2 to the counter | `2` (normal), `NumPad2` (normal), `2` (visual), `NumPad2` (visual) | `[".updateCount", { addDigits: 2 }]` |
+| Add the digit 3 to the counter | `3` (normal), `NumPad3` (normal), `3` (visual), `NumPad3` (visual) | `[".updateCount", { addDigits: 3 }]` |
+| Add the digit 4 to the counter | `4` (normal), `NumPad4` (normal), `4` (visual), `NumPad4` (visual) | `[".updateCount", { addDigits: 4 }]` |
+| Add the digit 5 to the counter | `5` (normal), `NumPad5` (normal), `5` (visual), `NumPad5` (visual) | `[".updateCount", { addDigits: 5 }]` |
+| Add the digit 6 to the counter | `6` (normal), `NumPad6` (normal), `6` (visual), `NumPad6` (visual) | `[".updateCount", { addDigits: 6 }]` |
+| Add the digit 7 to the counter | `7` (normal), `NumPad7` (normal), `7` (visual), `NumPad7` (visual) | `[".updateCount", { addDigits: 7 }]` |
+| Add the digit 8 to the counter | `8` (normal), `NumPad8` (normal), `8` (visual), `NumPad8` (visual) | `[".updateCount", { addDigits: 8 }]` |
+| Add the digit 9 to the counter | `9` (normal), `NumPad9` (normal), `9` (visual), `NumPad9` (visual) | `[".updateCount", { addDigits: 9 }]` |
+>>>>>>> 009823c (fixed match replace)
 
 
 This command:
@@ -884,12 +1242,13 @@ Set modes.
 
 <a name="modes.set" />
 
-### [`modes.set`](./modes.ts#L9-L30)
+### [`modes.set`](./modes.ts#L9-L34)
 
 Set Dance mode.
 
 #### Variants
 
+<<<<<<< HEAD
 | Title              | Identifier   | Keybinding                 | Command                                                     |
 | ------------------ | ------------ | -------------------------- | ----------------------------------------------------------- |
 | Set mode to Normal | `set.normal` | `escape` (kakoune: insert) | `[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]` |
@@ -903,6 +1262,25 @@ Other variants are provided to switch to insert mode:
 | Insert after         | `insert.after`     | `a` (kakoune: normal)   | `[".selections.faceForward" , { record: false }],           [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
 | Insert at line start | `insert.lineStart` | `s-i` (kakoune: normal) | `[".select.lineStart", { shift: "jump", skipBlank: true }], [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
 | Insert at line end   | `insert.lineEnd`   | `s-a` (kakoune: normal) | `[".select.lineEnd"  , { shift: "jump"                  }], [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
+=======
+| Title              | Identifier   | Keybinding        | Command                                                     |
+| ------------------ | ------------ | ----------------- | ----------------------------------------------------------- |
+| Set mode to Normal | `set.normal` | `escape` (insert) | `[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]` |
+| Set mode to Insert | `set.insert` |                   | `[".modes.set", { mode: "insert" }]`                        |
+| Set mode to Normal | `set.normal` | `escape` (visual) | `[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]` |
+| Set mode to Visual | `set.visual` |                   | `[".modes.set", { mode: "visual" }]`                        |
+
+Other variants are provided to switch to insert mode:
+
+| Title                | Identifier         | Keybinding     | Commands                                                                                                                                                                            |
+| -------------------- | ------------------ | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Visual               | `visual`           | `v` (normal)   | `[".selections.faceBackward", { record: false }],           [".modes.set", { mode: "visual", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
+| Normal               | `normal`           | `v` (visual)   | `[".selections.faceBackward", { record: false }],           [".modes.set", { mode: "normal", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
+| Insert before        | `insert.before`    | `i` (normal)   | `[".selections.faceBackward", { record: false }],           [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
+| Insert after         | `insert.after`     | `a` (normal)   | `[".selections.faceForward" , { record: false }],           [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
+| Insert at line start | `insert.lineStart` | `s-i` (normal) | `[".select.lineStart", { shift: "jump", skipBlank: true }], [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
+| Insert at line end   | `insert.lineEnd`   | `s-a` (normal) | `[".select.lineEnd"  , { shift: "jump"                  }], [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
+>>>>>>> 009823c (fixed match replace)
 
 
 This command:
@@ -910,7 +1288,7 @@ This command:
 
 <a name="modes.set.temporarily" />
 
-### [`modes.set.temporarily`](./modes.ts#L34-L46)
+### [`modes.set.temporarily`](./modes.ts#L38-L50)
 
 Set Dance mode temporarily.
 
@@ -937,11 +1315,19 @@ Search for patterns and replace or add selections.
 Search.
 
 
+<<<<<<< HEAD
 | Title                    | Identifier        | Keybinding              | Command                                                |
 | ------------------------ | ----------------- | ----------------------- | ------------------------------------------------------ |
 | Search (extend)          | `extend`          | `?` (kakoune: normal)   | `[".search", {                shift: "extend", ... }]` |
 | Search backward          | `backward`        | `a-/` (kakoune: normal) | `[".search", { direction: -1                 , ... }]` |
 | Search backward (extend) | `backward.extend` | `a-?` (kakoune: normal) | `[".search", { direction: -1, shift: "extend", ... }]` |
+=======
+| Title                    | Identifier        | Keybinding     | Command                                                |
+| ------------------------ | ----------------- | -------------- | ------------------------------------------------------ |
+| Search (extend)          | `extend`          | `a-/` (normal) | `[".search", {                shift: "extend", ... }]` |
+| Search backward          | `backward`        | `?` (normal)   | `[".search", { direction: -1                 , ... }]` |
+| Search backward (extend) | `backward.extend` | `a-?` (normal) | `[".search", { direction: -1, shift: "extend", ... }]` |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - accepts a register (by default, it uses `slash`).
@@ -950,8 +1336,12 @@ This command:
 - takes an argument `add` of type `boolean`.
 - takes an argument `interactive` of type `boolean`.
 
+<<<<<<< HEAD
 Default keybinding: `/` (kakoune: normal)
 `NumPad_Divide` (kakoune: normal)
+=======
+Default keybinding: `/` (normal), `NumPad_Divide` (normal), `/` (visual), `NumPad_Divide` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="search.selection" />
 
@@ -960,9 +1350,15 @@ Default keybinding: `/` (kakoune: normal)
 Search current selection.
 
 
+<<<<<<< HEAD
 | Title                            | Identifier        | Keybinding                                                 | Command                                             |
 | -------------------------------- | ----------------- | ---------------------------------------------------------- | --------------------------------------------------- |
 | Search current selection (smart) | `selection.smart` | `*` (kakoune: normal), `NumPad_Multiply` (kakoune: normal) | `[".search.selection", { smart: true, +register }]` |
+=======
+| Title                            | Identifier        | Keybinding                                                                         | Command                                             |
+| -------------------------------- | ----------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Search current selection (smart) | `selection.smart` | `*` (normal), `NumPad_Multiply` (normal), `*` (visual), `NumPad_Multiply` (visual) | `[".search.selection", { smart: true, +register }]` |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - accepts a register (by default, it uses `slash`).
@@ -978,11 +1374,19 @@ Default keybinding: `a-*` (kakoune: normal)
 Select next match.
 
 
+<<<<<<< HEAD
 | Title                 | Identifier     | Keybinding                | Command                                               |
 | --------------------- | -------------- | ------------------------- | ----------------------------------------------------- |
 | Add next match        | `next.add`     | `s-n` (kakoune: normal)   | `[".search.next", {                add: true, ... }]` |
 | Select previous match | `previous`     | `a-n` (kakoune: normal)   | `[".search.next", { direction: -1           , ... }]` |
 | Add previous match    | `previous.add` | `s-a-n` (kakoune: normal) | `[".search.next", { direction: -1, add: true, ... }]` |
+=======
+| Title                 | Identifier     | Keybinding                       | Command                                               |
+| --------------------- | -------------- | -------------------------------- | ----------------------------------------------------- |
+| Add next match        | `next.add`     | `a-n` (normal), `n` (visual)     | `[".search.next", {                add: true, ... }]` |
+| Select previous match | `previous`     | `s-n` (normal)                   | `[".search.next", { direction: -1           , ... }]` |
+| Add previous match    | `previous.add` | `s-a-n` (normal), `s-n` (visual) | `[".search.next", { direction: -1, add: true, ... }]` |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - accepts a register (by default, it uses `slash`).
@@ -1004,6 +1408,7 @@ Select to character (excluded).
 
 #### Variants
 
+<<<<<<< HEAD
 | Title                                    | Identifier                 | Keybinding                | Command                                                             |
 | ---------------------------------------- | -------------------------- | ------------------------- | ------------------------------------------------------------------- |
 | Extend to character (excluded)           | `extend`                   | `s-t` (kakoune: normal)   | `[".seek", {                shift: "extend"               , ... }]` |
@@ -1013,6 +1418,17 @@ Select to character (excluded).
 | Extend to character (included)           | `included.extend`          | `s-f` (kakoune: normal)   | `[".seek", { include: true, shift: "extend"               , ... }]` |
 | Select to character (included, backward) | `included.backward`        | `a-f` (kakoune: normal)   | `[".seek", { include: true,                  direction: -1, ... }]` |
 | Extend to character (included, backward) | `included.extend.backward` | `s-a-f` (kakoune: normal) | `[".seek", { include: true, shift: "extend", direction: -1, ... }]` |
+=======
+| Title                                    | Identifier                 | Keybinding       | Command                                                             |
+| ---------------------------------------- | -------------------------- | ---------------- | ------------------------------------------------------------------- |
+| Select to character (excluded, backward) | `backward`                 | `s-t` (normal)   | `[".seek", {                                 direction: -1, ... }]` |
+| Select to character (included)           | `included`                 | `f` (normal)     | `[".seek", { include: true                                , ... }]` |
+| Select to character (included, backward) | `included.backward`        | `s-f` (normal)   | `[".seek", { include: true,                  direction: -1, ... }]` |
+| Extend to character (excluded)           | `extend`                   | `t` (visual)     | `[".seek", {                shift: "extend"               , ... }]` |
+| Extend to character (excluded, backward) | `extend.backward`          | `s-t` (visual)   | `[".seek", {                shift: "extend", direction: -1, ... }]` |
+| Extend to character (included)           | `included.extend`          | `f` (visual)     | `[".seek", { include: true, shift: "extend"               , ... }]` |
+| Extend to character (included, backward) | `included.extend.backward` | `s-f` (visual)   | `[".seek", { include: true, shift: "extend", direction: -1, ... }]` |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - may be repeated with a given number of repetitions.
@@ -1030,17 +1446,29 @@ Select to next enclosing character.
 
 #### Variants
 
+<<<<<<< HEAD
 | Title                                  | Identifier                  | Keybinding                | Command                                                        |
 | -------------------------------------- | --------------------------- | ------------------------- | -------------------------------------------------------------- |
 | Extend to next enclosing character     | `enclosing.extend`          | `s-m` (kakoune: normal)   | `[".seek.enclosing", { shift: "extend"               , ... }]` |
 | Select to previous enclosing character | `enclosing.backward`        | `a-m` (kakoune: normal)   | `[".seek.enclosing", {                  direction: -1, ... }]` |
 | Extend to previous enclosing character | `enclosing.extend.backward` | `s-a-m` (kakoune: normal) | `[".seek.enclosing", { shift: "extend", direction: -1, ... }]` |
+=======
+| Title                                  | Identifier                  | Keybinding     | Command                                                        |
+| -------------------------------------- | --------------------------- | -------------- | -------------------------------------------------------------- |
+| Extend to next enclosing character     | `enclosing.extend`          | `s-m` (visual) | `[".seek.enclosing", { shift: "extend"               , ... }]` |
+| Select to previous enclosing character | `enclosing.backward`        | `a-m` (normal) | `[".seek.enclosing", {                  direction: -1, ... }]` |
+| Extend to previous enclosing character | `enclosing.extend.backward` | `a-m` (visual) | `[".seek.enclosing", { shift: "extend", direction: -1, ... }]` |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - takes an argument `open` of type `boolean`.
 - takes an argument `pairs` of type `readonly string[]`.
 
+<<<<<<< HEAD
 Default keybinding: `m` (kakoune: normal)
+=======
+Default keybinding: `s-m` (normal)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="seek.word" />
 
@@ -1053,6 +1481,7 @@ Select the word and following whitespaces on the right of the end of each select
 
 #### Variants
 
+<<<<<<< HEAD
 | Title                                        | Identifier                | Keybinding                | Command                                                                               |
 | -------------------------------------------- | ------------------------- | ------------------------- | ------------------------------------------------------------------------------------- |
 | Extend to next word start                    | `word.extend`             | `s-w` (kakoune: normal)   | `[".seek.word", {                             shift: "extend"               , ... }]` |
@@ -1066,6 +1495,21 @@ Select the word and following whitespaces on the right of the end of each select
 | Extend to next word end                      | `wordEnd.extend`          | `s-e` (kakoune: normal)   | `[".seek.word", { stopAtEnd: true ,           shift: "extend"               , ... }]` |
 | Select to next non-whitespace word end       | `wordEnd.ws`              | `a-e` (kakoune: normal)   | `[".seek.word", { stopAtEnd: true , ws: true                                , ... }]` |
 | Extend to next non-whitespace word end       | `wordEnd.ws.extend`       | `s-a-e` (kakoune: normal) | `[".seek.word", { stopAtEnd: true , ws: true, shift: "extend"               , ... }]` |
+=======
+| Title                                        | Identifier                | Keybinding       | Command                                                                              |
+| -------------------------------------------- | ------------------------- | ---------------- | ------------------------------------------------------------------------------------ |
+| Select to next WORD start                    | `word.ws`                 | `s-w` (normal)   | `[".seek.word", {                  ws: true                                , ... }]` |
+| Select to previous word start                | `word.backward`           | `b` (normal)     | `[".seek.word", {                                             direction: -1, ... }]` |
+| Select to previous WORD start                | `word.ws.backward`        | `s-b` (normal)   | `[".seek.word", {                  ws: true,                  direction: -1, ... }]` |
+| Select to next word end                      | `wordEnd`                 | `e` (normal)     | `[".seek.word", { stopAtEnd: true                                          , ... }]` |
+| Select to next WORD end                      | `wordEnd.ws`              | `s-e` (normal)   | `[".seek.word", { stopAtEnd: true, ws: true                                , ... }]` |
+| Extend to next word start                    | `word.extend`             | `w` (visual)     | `[".seek.word", {                            shift: "extend"               , ... }]` |
+| Extend to next WORD start                    | `word.ws.extend`          | `s-w` (visual)   | `[".seek.word", {                  ws: true, shift: "extend"               , ... }]` |
+| Extend to previous word start                | `word.backward.extend`    | `b` (visual)     | `[".seek.word", {                            shift: "extend", direction: -1, ... }]` |
+| Extend to previous WORD start                | `word.ws.backward.extend` | `s-b` (visual)   | `[".seek.word", {                  ws: true, shift: "extend", direction: -1, ... }]` |
+| Extend to next word end                      | `wordEnd.extend`          | `e` (visual)     | `[".seek.word", { stopAtEnd: true,           shift: "extend"               , ... }]` |
+| Extend to next WORD end                      | `wordEnd.ws.extend`       | `s-e` (visual)   | `[".seek.word", { stopAtEnd: true, ws: true, shift: "extend"               , ... }]` |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - may be repeated with a given number of repetitions.
@@ -1143,17 +1587,24 @@ Select whole buffer.
 
 
 
+<<<<<<< HEAD
 Default keybinding: `%` (kakoune: normal)
+=======
+Default keybinding: `%` (normal), `%` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="select.vertically" />
 
-### [`select.vertically`](./select.ts#L31-L64)
+### [`select.vertically`](./select.ts#L31-L70)
 
 Select vertically.
 
 
+ TODO: Keep s-down and s-up?
+
 #### Variants
 
+<<<<<<< HEAD
 | Title       | Identifier    | Keybinding                                          | Command                                                           |
 | ----------- | ------------- | --------------------------------------------------- | ----------------------------------------------------------------- |
 | Jump down   | `down.jump`   | `j` (kakoune: normal)  , `down` (kakoune: normal)   | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
@@ -1169,6 +1620,27 @@ The following keybindings are also defined:
 | `c-d` (kakoune: normal), `c-d` (kakoune: insert) | `[".select.vertically", { direction:  1, by: "halfPage", shift: "jump" }]` |
 | `c-b` (kakoune: normal), `c-b` (kakoune: insert) | `[".select.vertically", { direction: -1, by: "page"    , shift: "jump" }]` |
 | `c-u` (kakoune: normal), `c-u` (kakoune: insert) | `[".select.vertically", { direction: -1, by: "halfPage", shift: "jump" }]` |
+=======
+| Title       | Identifier    | Keybinding                                                       | Command                                                           |
+| ----------- | ------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Jump down   | `down.jump`   | `j` (normal)     , `down` (normal)                               | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
+| Extend down | `down.extend` | `s-down` (normal), `j` (visual), `down` (visual)                 | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
+| Jump up     | `up.jump`     | `k` (normal)     , `up` (normal)                                 | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
+| Extend up   | `up.extend`   | `s-up` (normal)  , `k` (visual), `up` (visual)                   | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
+
+The following keybindings are also defined:
+
+| Keybinding                     | Command                                                                      |
+| ------------------------------ | ---------------------------------------------------------------------------- |
+| `c-f` (normal), `c-f` (insert) | `[".select.vertically", { direction:  1, by: "page"    , shift: "jump" }]`   |
+| `c-d` (normal), `c-d` (insert) | `[".select.vertically", { direction:  1, by: "halfPage", shift: "jump" }]`   |
+| `c-b` (normal), `c-b` (insert) | `[".select.vertically", { direction: -1, by: "page"    , shift: "jump" }]`   |
+| `c-u` (normal), `c-u` (insert) | `[".select.vertically", { direction: -1, by: "halfPage", shift: "jump" }]`   |
+| `c-f` (visual)                 | `[".select.vertically", { direction:  1, by: "page"    , shift: "extend" }]` |
+| `c-d` (visual)                 | `[".select.vertically", { direction:  1, by: "halfPage", shift: "extend" }]` |
+| `c-b` (visual)                 | `[".select.vertically", { direction: -1, by: "page"    , shift: "extend" }]` |
+| `c-u` (visual)                 | `[".select.vertically", { direction: -1, by: "halfPage", shift: "extend" }]` |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - may be repeated with a given number of repetitions.
@@ -1177,19 +1649,30 @@ This command:
 
 <a name="select.horizontally" />
 
-### [`select.horizontally`](./select.ts#L217-L239)
+### [`select.horizontally`](./select.ts#L223-L247)
 
 Select horizontally.
 
 
+TODO: keep s-left and s-right?
+
 #### Variants
 
+<<<<<<< HEAD
 | Title        | Identifier     | Keybinding                                           | Command                                                             |
 | ------------ | -------------- | ---------------------------------------------------- | ------------------------------------------------------------------- |
 | Jump right   | `right.jump`   | `l` (kakoune: normal)  , `right` (kakoune: normal)   | `[".select.horizontally", { direction:  1, shift: "jump"  , ... }]` |
 | Extend right | `right.extend` | `s-l` (kakoune: normal), `s-right` (kakoune: normal) | `[".select.horizontally", { direction:  1, shift: "extend", ... }]` |
 | Jump left    | `left.jump`    | `h` (kakoune: normal)  , `left` (kakoune: normal)    | `[".select.horizontally", { direction: -1, shift: "jump"  , ... }]` |
 | Extend left  | `left.extend`  | `s-h` (kakoune: normal), `s-left` (kakoune: normal)  | `[".select.horizontally", { direction: -1, shift: "extend", ... }]` |
+=======
+| Title        | Identifier     | Keybinding                                         | Command                                                             |
+| ------------ | -------------- | -------------------------------------------------- | ------------------------------------------------------------------- |
+| Jump right   | `right.jump`   | `l` (normal), `right` (normal)                     | `[".select.horizontally", { direction:  1, shift: "jump"  , ... }]` |
+| Extend right | `right.extend` | `s-right` (normal), `l` (visual), `right` (visual) | `[".select.horizontally", { direction:  1, shift: "extend", ... }]` |
+| Jump left    | `left.jump`    | `h` (normal), `left` (normal)                      | `[".select.horizontally", { direction: -1, shift: "jump"  , ... }]` |
+| Extend left  | `left.extend`  | `s-left` (normal), `h` (visual), `left` (visual)   | `[".select.horizontally", { direction: -1, shift: "extend", ... }]` |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - may be repeated with a given number of repetitions.
@@ -1197,7 +1680,7 @@ This command:
 
 <a name="select.to" />
 
-### [`select.to`](./select.ts#L286-L304)
+### [`select.to`](./select.ts#L294-L312)
 
 Select to.
 
@@ -1206,10 +1689,17 @@ line. If no count is specified, this command will shift open the `goto` menu.
 
 #### Variants
 
+<<<<<<< HEAD
 | Title     | Identifier  | Keybinding              | Command                                    |
 | --------- | ----------- | ----------------------- | ------------------------------------------ |
 | Go to     | `to.jump`   | `g` (kakoune: normal)   | `[".select.to", { shift: "jump"  , ... }]` |
 | Extend to | `to.extend` | `s-g` (kakoune: normal) | `[".select.to", { shift: "extend", ... }]` |
+=======
+| Title     | Identifier  | Keybinding                   | Command                                    |
+| --------- | ----------- | ---------------------------- | ------------------------------------------ |
+| Go to     | `to.jump`   | `g` (normal)                 | `[".select.to", { shift: "jump"  , ... }]` |
+| Extend to | `to.extend` | `s-g` (normal), `g` (visual) | `[".select.to", { shift: "extend", ... }]` |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - accepts an argument of type `object`.
@@ -1217,7 +1707,11 @@ This command:
 
 <a name="select.line.below" />
 
+<<<<<<< HEAD
 ### [`select.line.below`](./select.ts#L314-L317)
+=======
+### [`select.line.below`](./select.ts#L322-L327)
+>>>>>>> 009823c (fixed match replace)
 
 Select line below.
 
@@ -1226,16 +1720,28 @@ This command:
 
 <a name="select.line.below.extend" />
 
+<<<<<<< HEAD
 ### [`select.line.below.extend`](./select.ts#L342-L345)
+=======
+### [`select.line.below.extend`](./select.ts#L352-L357)
+>>>>>>> 009823c (fixed match replace)
 
 Extend to line below.
 
 This command:
 - may be repeated with a given number of repetitions.
 
+<<<<<<< HEAD
 <a name="select.line.above" />
 
 ### [`select.line.above`](./select.ts#L372-L375)
+=======
+Default keybinding: `s-x` (normal), `x` (visual)
+
+<a name="select.line.above" />
+
+### [`select.line.above`](./select.ts#L384-L387)
+>>>>>>> 009823c (fixed match replace)
 
 Select line above.
 
@@ -1244,7 +1750,11 @@ This command:
 
 <a name="select.line.above.extend" />
 
+<<<<<<< HEAD
 ### [`select.line.above.extend`](./select.ts#L399-L402)
+=======
+### [`select.line.above.extend`](./select.ts#L411-L414)
+>>>>>>> 009823c (fixed match replace)
 
 Extend to line above.
 
@@ -1253,7 +1763,11 @@ This command:
 
 <a name="select.lineStart" />
 
+<<<<<<< HEAD
 ### [`select.lineStart`](./select.ts#L448-L470)
+=======
+### [`select.lineStart`](./select.ts#L460-L482)
+>>>>>>> 009823c (fixed match replace)
 
 Select to line start.
 
@@ -1278,9 +1792,13 @@ Default keybinding: `a-h` (kakoune: normal)
 
 <a name="select.lineEnd" />
 
+<<<<<<< HEAD
 ### [`select.lineEnd`](./select.ts#L495-L517)
+=======
+### [`select.lineEnd`](./select.ts#L507-L529)
+>>>>>>> 009823c (fixed match replace)
 
-Select to line end.
+Select to line end. TODO: helix
 
 
 
@@ -1301,7 +1819,11 @@ Default keybinding: `a-l` (kakoune: normal)
 
 <a name="select.lastLine" />
 
+<<<<<<< HEAD
 ### [`select.lastLine`](./select.ts#L545-L555)
+=======
+### [`select.lastLine`](./select.ts#L557-L567)
+>>>>>>> 009823c (fixed match replace)
 
 Select to last line.
 
@@ -1314,7 +1836,11 @@ Select to last line.
 
 <a name="select.firstVisibleLine" />
 
+<<<<<<< HEAD
 ### [`select.firstVisibleLine`](./select.ts#L566-L576)
+=======
+### [`select.firstVisibleLine`](./select.ts#L578-L588)
+>>>>>>> 009823c (fixed match replace)
 
 Select to first visible line.
 
@@ -1327,7 +1853,11 @@ Select to first visible line.
 
 <a name="select.middleVisibleLine" />
 
+<<<<<<< HEAD
 ### [`select.middleVisibleLine`](./select.ts#L583-L593)
+=======
+### [`select.middleVisibleLine`](./select.ts#L595-L605)
+>>>>>>> 009823c (fixed match replace)
 
 Select to middle visible line.
 
@@ -1340,7 +1870,11 @@ Select to middle visible line.
 
 <a name="select.lastVisibleLine" />
 
+<<<<<<< HEAD
 ### [`select.lastVisibleLine`](./select.ts#L600-L610)
+=======
+### [`select.lastVisibleLine`](./select.ts#L612-L622)
+>>>>>>> 009823c (fixed match replace)
 
 Select to last visible line.
 
@@ -1365,7 +1899,11 @@ Copy selections text.
 This command:
 - accepts a register (by default, it uses `dquote`).
 
+<<<<<<< HEAD
 Default keybinding: `y` (kakoune: normal)
+=======
+Default keybinding: `y` (normal), `y` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="selections.save" />
 
@@ -1380,19 +1918,27 @@ This command:
 - takes an argument `untilDelay` of type `number`.
 - takes an argument `until` of type `AutoDisposable.Event[]`.
 
+<<<<<<< HEAD
 Default keybinding: `s-z` (kakoune: normal)
+=======
+Default keybinding: `s-a-z` (normal)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="selections.restore" />
 
 ### [`selections.restore`](./selections.ts#L95-L103)
 
-Restore selections.
+Restore selections. TODO: Needed?
 
 
 This command:
 - accepts a register (by default, it uses `caret`).
 
+<<<<<<< HEAD
 Default keybinding: `z` (kakoune: normal)
+=======
+Default keybinding: `a-z` (normal)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="selections.restore.withCurrent" />
 
@@ -1451,12 +1997,21 @@ Filter selections.
 
 #### Variants
 
+<<<<<<< HEAD
 | Title                      | Identifier              | Keybinding                | Commands                                                                 |
 | -------------------------- | ----------------------- | --------------------------| ------------------------------------------------------------------------ |
 | Keep matching selections   | `filter.regexp`         | `a-k` (kakoune: normal)   | `[".selections.filter", { defaultExpression: "/"               , ... }]` |
 | Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (kakoune: normal) | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
 | Clear secondary selections | `clear.secondary`       | `,` (kakoune: normal)     | `[".selections.filter", { expression: "i === count"            , ... }]` |
 | Clear main selections      | `clear.main`            | `a-,` (kakoune: normal)   | `[".selections.filter", { expression: "i !== count"            , ... }]` |
+=======
+| Title                      | Identifier              | Keybinding                         | Commands                                                                 |
+| -------------------------- | ----------------------- | ---------------------------------- | ------------------------------------------------------------------------ |
+| Keep matching selections   | `filter.regexp`         | `s-k` (normal), `s-k` (visual)     | `[".selections.filter", { defaultExpression: "/"               , ... }]` |
+| Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (normal), `s-a-k` (visual) | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
+| Clear secondary selections | `clear.secondary`       | `;` (normal), `;` (visual)         | `[".selections.filter", { expression: "i === count"            , ... }]` |
+| Clear main selections      | `clear.main`            | `a-;` (normal), `a-;` (visual)     | `[".selections.filter", { expression: "i !== count"            , ... }]` |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - accepts an argument of type `{ expression?: string }`.
@@ -1465,7 +2020,11 @@ This command:
 - takes an argument `interactive` of type `boolean`.
 - takes an argument `inverse` of type `boolean`.
 
+<<<<<<< HEAD
 Default keybinding: `$` (kakoune: normal)
+=======
+Default keybinding: `$` (normal), `$` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="selections.select" />
 
@@ -1483,6 +2042,11 @@ This command:
 - accepts an argument of type `{ re?: string | RegExp }`.
 - takes an argument `interactive` of type `boolean`.
 
+<<<<<<< HEAD
+=======
+Default keybinding: `s` (normal), `s` (visual)
+
+>>>>>>> 009823c (fixed match replace)
 <a name="selections.split" />
 
 ### [`selections.split`](./selections.ts#L379-L390)
@@ -1495,7 +2059,11 @@ This command:
 - takes an argument `excludeEmpty` of type `boolean`.
 - takes an argument `interactive` of type `boolean`.
 
+<<<<<<< HEAD
 Default keybinding: `s-s` (kakoune: normal)
+=======
+Default keybinding: `s-s` (normal), `s-s` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="selections.splitLines" />
 
@@ -1513,6 +2081,11 @@ This command:
 - may be repeated with a given number of repetitions.
 - takes an argument `excludeEol` of type `boolean`.
 
+<<<<<<< HEAD
+=======
+Default keybinding: `a-s` (normal), `a-s` (visual)
+
+>>>>>>> 009823c (fixed match replace)
 <a name="selections.expandToLines" />
 
 ### [`selections.expandToLines`](./selections.ts#L474-L481)
@@ -1523,7 +2096,11 @@ Expand selections to contain full lines (including end-of-line characters).
 
 
 
+<<<<<<< HEAD
 Default keybinding: `x` (kakoune: normal)
+=======
+Default keybinding: `s-x` (normal), `s-x` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="selections.trimLines" />
 
@@ -1547,7 +2124,11 @@ Trim whitespace at beginning and end of selections.
 
 
 
+<<<<<<< HEAD
 Default keybinding: `_` (kakoune: normal)
+=======
+Default keybinding: `_` (normal), `_` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="selections.reduce" />
 
@@ -1567,7 +2148,11 @@ This command:
 - takes an argument `empty` of type `boolean`.
 - takes an argument `where` of type `"active" | "anchor" | "start" | "end" | "both"`.
 
+<<<<<<< HEAD
 Default keybinding: `;` (kakoune: normal)
+=======
+Default keybinding: `,` (normal), `,` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="selections.changeDirection" />
 
@@ -1621,14 +2206,24 @@ Copy selections below.
 
 #### Variant
 
+<<<<<<< HEAD
 | Title                 | Identifier   | Keybinding                | Command                                   |
 | --------------------- | ------------ | ------------------------- | ----------------------------------------- |
 | Copy selections above | `copy.above` | `s-a-c` (kakoune: normal) | `[".selections.copy", { direction: -1 }]` |
+=======
+| Title                 | Identifier   | Keybinding                         | Command                                   |
+| --------------------- | ------------ | ---------------------------------- | ----------------------------------------- |
+| Copy selections above | `copy.above` | `s-a-c` (normal), `s-a-c` (normal) | `[".selections.copy", { direction: -1 }]` |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - may be repeated with a given number of repetitions.
 
+<<<<<<< HEAD
 Default keybinding: `s-c` (kakoune: normal)
+=======
+Default keybinding: `s-c` (normal), `s-c` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 <a name="selections.merge" />
 
@@ -1664,7 +2259,11 @@ This command:
 - takes an argument `display` of type `boolean | undefined`.
 - takes an argument `until` of type `AutoDisposable.Event[]`.
 
+<<<<<<< HEAD
 Default keybinding: `enter` (dance: normal)
+=======
+Default keybinding: `enter` (normal), `enter` (visual)
+>>>>>>> 009823c (fixed match replace)
 
 ## [`selections.rotate`](./selections.rotate.ts)
 
@@ -1707,22 +2306,44 @@ This command:
 
 <a name="selections.rotate.selections" />
 
-### [`selections.rotate.selections`](./selections.rotate.ts#L45-L56)
+### [`selections.rotate.selections`](./selections.rotate.ts#L45-L58)
 
 Rotate selections clockwise (selections only).
+
+TODO: ( seems to be broken. Fix it...
 
 
 The following keybinding is also available:
 
+<<<<<<< HEAD
 | Title                                                 | Identifier           | Keybinding            | Command                                                |
 | ----------------------------------------------------- | -------------------- | --------------------- | ------------------------------------------------------ |
 | Rotate selections counter-clockwise (selections only) | `selections.reverse` | `)` (kakoune: normal) | `[".selections.rotate.selections", { reverse: true }]` |
+=======
+| Title                                                 | Identifier           | Keybinding                 | Command                                                |
+| ----------------------------------------------------- | -------------------- | -------------------------- | ------------------------------------------------------ |
+| Rotate selections counter-clockwise (selections only) | `selections.reverse` | `)` (normal), `)` (visual) | `[".selections.rotate.selections", { reverse: true }]` |
+>>>>>>> 009823c (fixed match replace)
 
 This command:
 - may be repeated with a given number of repetitions.
 - takes an argument `reverse` of type `boolean`.
 
+<<<<<<< HEAD
 Default keybinding: `(` (kakoune: normal)
+=======
+Default keybinding: `(` (normal), `(` (visual)
+
+## [`space`](./space.ts)
+
+General purpose space menu.
+
+#### Predefined keybindings
+
+| Title                   | Keybinding                         | Command                                 |
+| ----------------------- | ---------------------------------- | --------------------------------------- |
+| Show space menu         | `space` (normal), `space` (visual) | `[".openMenu", { menu: "space", ... }]` |
+>>>>>>> 009823c (fixed match replace)
 
 ## [`view`](./view.ts)
 
@@ -1730,10 +2351,17 @@ Moving the editor view.
 
 #### Predefined keybindings
 
+<<<<<<< HEAD
 | Title                   | Keybinding              | Command                                              |
 | ----------------------- | ----------------------- | ---------------------------------------------------- |
 | Show view menu          | `v` (kakoune: normal)   | `[".openMenu", { menu: "view", ...               }]` |
 | Show view menu (locked) | `s-v` (kakoune: normal) | `[".openMenu", { menu: "view", locked: true, ... }]` |
+=======
+| Title                   | Keybinding                     | Command                                              |
+| ----------------------- | ------------------------------ | ---------------------------------------------------- |
+| Show view menu          | `z` (normal), `z` (visual)     | `[".openMenu", { menu: "view", ...               }]` |
+| Show view menu (locked) | `s-z` (normal), `s-z` (visual) | `[".openMenu", { menu: "view", locked: true, ... }]` |
+>>>>>>> 009823c (fixed match replace)
 
 <a name="view.line" />
 
@@ -1744,3 +2372,15 @@ Reveals a position based on the main cursor.
 This command:
 - takes an argument `at` of type `"top" | "center" | "bottom"`.
 
+<<<<<<< HEAD
+=======
+## [`window`](./window.ts)
+
+Window menu.
+
+#### Predefined keybindings
+
+| Title                   | Keybinding                     | Command                                 |
+| ----------------------- | ------------------------------ | --------------------------------------- |
+| Show window menu        | `c-w` (normal), `c-w` (visual) | `[".openMenu", { menu: "window", ... }]` |
+>>>>>>> 009823c (fixed match replace)
