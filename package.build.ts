@@ -76,7 +76,7 @@ const selectionDecorationType = {
 // Package information
 // ============================================================================
 
-const version = "0.5.12",
+const version = "0.5.13",
       preRelease = 1;
 
 export const pkg = (modules: Builder.ParsedModule[]) => ({
@@ -84,19 +84,19 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
   // Common package.json properties.
   // ==========================================================================
 
-  name: "dance",
-  description: "Kakoune-inspired key bindings, modes, menus and scripting.",
+  name: "dancehelix",
+  description: "Fork of Dance with helix keybindings (Unfinished)",
   version,
   license: "ISC",
 
   author: {
-    name: "Grégoire Geis",
-    email: "opensource@gregoirege.is",
+    name: "Leo",
+    email: "le.lueker@gmail.com",
   },
 
   repository: {
     type: "git",
-    url: "https://github.com/71/dance.git",
+    url: "https://github.com/Silverquark/dance.git",
   },
 
   main: "./out/src/extension.js",
@@ -149,8 +149,8 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
   // VS Code-specific properties.
   // ==========================================================================
 
-  displayName: "Dance",
-  publisher: "gregoire",
+  displayName: "Dance - Helix Alpha",
+  publisher: "silverquark",
   categories: ["Keymaps", "Other"],
   readme: "README.md",
   icon: "assets/dance.png",
@@ -304,6 +304,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               cursorStyle: "underline-thin",
             },
             insert: {
+              selectionBehavior: "character",
               onLeaveMode: [
                 [".selections.save", {
                   register: " insert",
@@ -311,7 +312,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               ],
             },
             visual: {
-              cursorStyle: "block",
+              cursorStyle: "underline",
               selectionBehavior: "character",
               decorations: {
                 applyTo: "main",
@@ -546,10 +547,10 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   text: "Start debug",
                   command: "workbench.action.debug.start",
                 },
-                // "w": {
-                //   text: "Window",
-                //   command: "",
-                // },
+                "w": {
+                  text: "Window",
+                  command: "dance.window.windowMenu",
+                },
                 "y": {
                   text: "Join and yank selections to clipboard",
                   command: "dance.selections.saveText",
