@@ -13,16 +13,14 @@ declare module "./modes";
  *
  * | Title              | Identifier   | Keybinding                                         | Command                                                     |
  * | ------------------ | ------------ | -------------------------------------------------- | ----------------------------------------------------------- |
- * | Set mode to Normal | `set.normal` | `escape` (helix: insert), `escape` (helix: visual) | `[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]` |
- * | Set mode to Insert | `set.insert` |                                                    | `[".modes.set", { mode: "insert" }]`                        |
- * | Set mode to Visual | `set.visual` |                                                    | `[".modes.set", { mode: "visual" }]`                        |
+ * | Set mode to Normal | `set.normal` | `escape` (helix: insert), `escape` (helix: visual), `v` (helix: visual) | `[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]` |
+ * | Set mode to Insert | `set.insert` |                                                                         | `[".modes.set", { mode: "insert" }]`                        |
+ * | Set mode to Visual | `set.visual` | `v` (helix: normal)                                                     | `[".modes.set", { mode: "visual" }]`                        |
  *
  * Other variants are provided to switch to insert mode:
  *
  * | Title                | Identifier         | Keybinding                                   | Commands                                                                                                                                                                            |
  * | -------------------- | ------------------ | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
- * | Visual               | `visual`           | `v` (helix: normal)                          | `[".selections.faceBackward", { record: false }],           [".modes.set", { mode: "visual", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
- * | Normal               | `normal`           | `v` (helix: visual)                          | `[".selections.faceBackward", { record: false }],           [".modes.set", { mode: "normal", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
  * | Insert before        | `insert.before`    | `i` (helix: normal), `i` (helix: visual)     | `[".selections.faceBackward", { record: false }],           [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
  * | Insert after         | `insert.after`     | `a` (helix: normal), `a` (helix: visual)     | `[".selections.faceForward" , { record: false }],           [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
  * | Insert at line start | `insert.lineStart` | `s-i` (helix: normal), `s-i` (helix: visual) | `[".select.lineStart", { shift: "jump", skipBlank: true }], [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
