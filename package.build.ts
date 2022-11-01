@@ -645,7 +645,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 },
                 "d": {
                   text: "to definition",
-                  command: "editor.action.revealDefinitiong",
+                  command: "editor.action.revealDefinition",
                 },
                 "y": {
                   text: "to type definition",
