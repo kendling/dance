@@ -369,7 +369,7 @@ export function select(
         re = newRegExp(re, "mu");
       }
 
-      Selections.set(Selections.bottomToTop(Selections.selectWithin(re, selections)));
+      Selections.set(Selections.topToBottom(Selections.selectWithin(re, selections)));
 
       return Promise.resolve(re);
     },
@@ -405,7 +405,7 @@ export function split(
         split = split.filter((s) => !s.isEmpty);
       }
 
-      Selections.set(Selections.bottomToTop(split));
+      Selections.set(Selections.topToBottom(split));
 
       return Promise.resolve(re);
     },
@@ -468,7 +468,7 @@ export function splitLines(
     }
   }
 
-  Selections.set(Selections.bottomToTop(newSelections));
+  Selections.set(Selections.topToBottom(newSelections));
 }
 
 /**
