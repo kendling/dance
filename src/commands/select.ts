@@ -350,7 +350,7 @@ export function line_below(_: Context, count: number) {
 /**
  * Extend to line below.
  *
- * @keys `s-x` (helix: normal), `x` (helix: visual)
+ * @keys `x` (helix: normal), `x` (helix: visual)
  */
 export function line_below_extend(_: Context, count: number) {
   if (count === 0 || count === 1) {

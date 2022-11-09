@@ -299,8 +299,8 @@ const filterHistory: string[] = [];
  * | -------------------------- | ----------------------- | ------------------------------------------------ | ------------------------------------------------------------------------ |
  * | Keep matching selections   | `filter.regexp`         | `s-k` (helix: normal), `s-k` (helix: visual)     | `[".selections.filter", { defaultExpression: "/"               , ... }]` |
  * | Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (helix: normal), `s-a-k` (helix: visual) | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
- * | Clear secondary selections | `clear.secondary`       | `;` (helix: normal), `;` (helix: visual)         | `[".selections.filter", { expression: "i === count"            , ... }]` |
- * | Clear main selections      | `clear.main`            | `a-;` (helix: normal), `a-;` (helix: visual)     | `[".selections.filter", { expression: "i !== count"            , ... }]` |
+ * | Clear secondary selections | `clear.secondary`       | `,` (helix: normal), `,` (helix: visual)         | `[".selections.filter", { expression: "i === count"            , ... }]` |
+ * | Clear main selections      | `clear.main`            | `a-,` (helix: normal), `a-,` (helix: visual)     | `[".selections.filter", { expression: "i !== count"            , ... }]` |
  */
 export function filter(
   _: Context,
@@ -569,7 +569,7 @@ export function trimWhitespace(_: Context) {
  * @param where Which edge each selection should be reduced to; defaults to
  *   "active".
  *
- * @keys `,` (helix: normal), `,` (helix: visual)
+ * @keys `;` (helix: normal), `;` (helix: visual)
  *
  * #### Variant
  *
