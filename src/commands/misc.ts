@@ -14,6 +14,7 @@ import { ArgumentError, CancellationError, InputError } from "../utils/errors";
  * | Keybinding                                   | Command                                      |
  * | -------------------------------------------- | -------------------------------------------- |
  * | `s-;` (helix: normal), `s-;` (helix: visual) | `["workbench.action.showCommands", { ... }]` |
+ * | `c-c` (helix: normal), `c-c` (helix: visual) | `["editor.action.commentLine", { ... }]` |
  */
 declare module "./misc";
 

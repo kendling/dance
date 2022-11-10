@@ -972,9 +972,16 @@ Miscellaneous commands that don't deserve their own category.
 By default, Dance also exports the following keybindings for existing
 commands:
 
+<<<<<<< HEAD
 | Keybinding           | Command                                      |
 | -------------------- | -------------------------------------------- |
 | `s-;` (core: normal) | `["workbench.action.showCommands", { ... }]` |
+=======
+| Keybinding                     | Command                                      |
+| ------------------------------ | -------------------------------------------- |
+| `s-;` (normal), `s-;` (visual) | `["workbench.action.showCommands", { ... }]` |
+| `c-c` (normal), `c-c` (visual) | `["editor.action.commentLine", { ... }]` |
+>>>>>>> 9e59a1b (feat: toggle comments with ctrl+c)
 
 <a name="cancel" />
 
