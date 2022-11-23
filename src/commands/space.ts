@@ -5,8 +5,8 @@ import * as vscode from "vscode";
  *
  * #### Predefined keybindings
  *
- * | Title                   | Keybinding                         | Command                                 |
- * | ----------------------- | ---------------------------------- | --------------------------------------- |
- * | Show space menu         | `space` (normal), `space` (visual) | `[".openMenu", { menu: "space", ... }]` |
+ * | Title                   | Keybinding                                       | Command                                 |
+ * | ----------------------- | ------------------------------------------------ | --------------------------------------- |
+ * | Show space menu         | `space` (helix: normal), `space` (helix: visual) | `[".openMenu", { menu: "space", ... }]` |
  */
 declare module "./space";

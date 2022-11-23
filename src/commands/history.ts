@@ -98,7 +98,7 @@ export async function repeat(
 /**
  * Repeat last edit without a command.
  *
- * @keys `.` (helix: normal), `NumPad_Decimal` (helix: normal), `.` (helix: visual), `NumPad_Decimal` (helix: visual)
+ * @keys `.` (helix: normal) , `NumPad_Decimal` (helix: normal) , `.` (helix: visual) , `NumPad_Decimal` (helix: visual)
  * @noreplay
  */
 export async function repeat_edit(_: Context, repetitions: number) {
@@ -167,7 +167,7 @@ const recordingPerRegister = new WeakMap<Register, ActiveRecording>();
 /**
  * Start recording.
  *
- * @keys `s-q` (helix: normal, !recording), `s-q` (helix: visual, !recording)
+ * @keys `s-q` (helix: normal, !recording) , `s-q` (helix: visual, !recording)
  * @noreplay
  */
 export function recording_start(
@@ -188,7 +188,7 @@ export function recording_start(
 /**
  * Stop recording.
  *
- * @keys `escape` (helix: normal, recording), `s-q` (helix: normal, recording), `escape` (helix: visual, recording), `s-q` (helix: visual, recording)
+ * @keys `escape` (helix: normal, recording) , `s-q` (helix: normal, recording) , `escape` (helix: visual, recording) , `s-q` (helix: visual, recording)
  * @noreplay
  */
 export function recording_stop(

@@ -38,12 +38,12 @@ const preferredColumnsToken =
  *
  * #### Variants
  *
- * | Title       | Identifier    | Keybinding                                                                                         | Command                                                           |
- * | ----------- | ------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
- * | Jump down   | `down.jump`   | `j` (helix: normal)         , `down` (helix: normal)                                               | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
- * | Extend down | `down.extend` | `s-j` (helix: helix: normal),`s-down` (helix: normal), `j` (helix: visual), `down` (helix: visual) | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
- * | Jump up     | `up.jump`     | `k` (helix: normal)         , `up` (helix: normal)                                                 | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
- * | Extend up   | `up.extend`   | `s-k` (helix: helix: normal),`s-up` (helix: normal)  , `k` (helix: visual), `up` (helix: visual)   | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
+ * | Title       | Identifier    | Keybinding                                                                                     | Command                                                           |
+ * | ----------- | ------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+ * | Jump down   | `down.jump`   | `j` (helix: normal)  , `down` (helix: normal)                                                  | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
+ * | Extend down | `down.extend` | `s-j` (helix: normal), `s-down` (helix: normal) , `j` (helix: visual) , `down` (helix: visual) | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
+ * | Jump up     | `up.jump`     | `k` (helix: normal)  , `up` (helix: normal)                                                    | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
+ * | Extend up   | `up.extend`   | `s-k` (helix: normal), `s-up` (helix: normal)  , `k` (helix: visual) , `up` (helix: visual)    | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
  *
  * The following keybindings are also defined:
  *
@@ -230,12 +230,12 @@ export function vertically(
  *
  * #### Variants
  *
- * | Title        | Identifier     | Keybinding                                                              | Command                                                             |
- * | ------------ | -------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------- |
- * | Jump right   | `right.jump`   | `l` (helix: normal), `right` (helix: normal)                            | `[".select.horizontally", { direction:  1, shift: "jump"  , ... }]` |
- * | Extend right | `right.extend` | `s-right` (helix: normal), `l` (helix: visual), `right` (helix: visual) | `[".select.horizontally", { direction:  1, shift: "extend", ... }]` |
- * | Jump left    | `left.jump`    | `h` (helix: normal), `left` (helix: normal)                             | `[".select.horizontally", { direction: -1, shift: "jump"  , ... }]` |
- * | Extend left  | `left.extend`  | `s-left` (helix: normal), `h` (helix: visual), `left` (helix: visual)   | `[".select.horizontally", { direction: -1, shift: "extend", ... }]` |
+ * | Title        | Identifier     | Keybinding                                                               | Command                                                             |
+ * | ------------ | -------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+ * | Jump right   | `right.jump`   | `l` (helix: normal) , `right` (helix: normal)                            | `[".select.horizontally", { direction:  1, shift: "jump"  , ... }]` |
+ * | Extend right | `right.extend` | `s-right` (helix: normal), `l` (helix: visual) , `right` (helix: visual) | `[".select.horizontally", { direction:  1, shift: "extend", ... }]` |
+ * | Jump left    | `left.jump`    | `h` (helix: normal) , `left` (helix: normal)                             | `[".select.horizontally", { direction: -1, shift: "jump"  , ... }]` |
+ * | Extend left  | `left.extend`  | `s-left` (helix: normal) , `h` (helix: visual) , `left` (helix: visual)  | `[".select.horizontally", { direction: -1, shift: "extend", ... }]` |
  */
 export function horizontally(
   _: Context,
@@ -458,18 +458,18 @@ export function line_above_extend(_: Context, count: number) {
 /**
  * Select to line start.
  *
- * @keys `a-h` (kakoune: normal), `home` (kakoune: normal)
+ * @keys `a-h` (helix: normal), `home` (helix: normal)
  *
  * #### Variants
  *
- * | Title                             | Identifier                   | Keybinding                                            | Command                                                            |
- * | --------------------              | ------------------           | ----------------------------------------------------- | ------------------------------------------------------------------ |
- * | Jump to line start                | `lineStart.jump`             |                                                       | `[".select.lineStart", {                  shift: "jump"  , ... }]` |
- * | Extend to line start              | `lineStart.extend`           | `s-a-h` (kakoune: normal), `s-home` (kakoune: normal) | `[".select.lineStart", {                  shift: "extend", ... }]` |
- * | Jump to line start (skip blank)   | `lineStart.skipBlank.jump`   |                                                       | `[".select.lineStart", { skipBlank: true, shift: "jump"  , ... }]` |
- * | Extend to line start (skip blank) | `lineStart.skipBlank.extend` |                                                       | `[".select.lineStart", { skipBlank: true, shift: "extend", ... }]` |
- * | Jump to first line                | `firstLine.jump`             |                                                       | `[".select.lineStart", { count: 0,        shift: "jump"  , ... }]` |
- * | Extend to first line              | `firstLine.extend`           |                                                       | `[".select.lineStart", { count: 0,        shift: "extend", ... }]` |
+ * | Title                             | Identifier                   | Keybinding                                        | Command                                                            |
+ * | --------------------------------- | ---------------------------- | ------------------------------------------------- | ------------------------------------------------------------------ |
+ * | Jump to line start                | `lineStart.jump`             |                                                   | `[".select.lineStart", {                  shift: "jump"  , ... }]` |
+ * | Extend to line start              | `lineStart.extend`           | `s-a-h` (helix: normal), `s-home` (helix: normal) | `[".select.lineStart", {                  shift: "extend", ... }]` |
+ * | Jump to line start (skip blank)   | `lineStart.skipBlank.jump`   |                                                   | `[".select.lineStart", { skipBlank: true, shift: "jump"  , ... }]` |
+ * | Extend to line start (skip blank) | `lineStart.skipBlank.extend` |                                                   | `[".select.lineStart", { skipBlank: true, shift: "extend", ... }]` |
+ * | Jump to first line                | `firstLine.jump`             |                                                   | `[".select.lineStart", { count: 0,        shift: "jump"  , ... }]` |
+ * | Extend to first line              | `firstLine.extend`           |                                                   | `[".select.lineStart", { count: 0,        shift: "extend", ... }]` |
  */
 export function lineStart(
   _: Context,

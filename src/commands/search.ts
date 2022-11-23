@@ -14,7 +14,7 @@ declare module "./search";
 /**
  * Search.
  *
- * @keys `/` (helix: normal), `NumPad_Divide` (helix: normal), `/` (helix: visual), `NumPad_Divide` (helix: visual)
+ * @keys `/` (helix: normal) , `NumPad_Divide` (helix: normal) , `/` (helix: visual) , `NumPad_Divide` (helix: visual)
  *
  * | Title                    | Identifier        | Keybinding            | Command                                                |
  * | ------------------------ | ----------------- | --------------------- | ------------------------------------------------------ |
@@ -83,11 +83,11 @@ export async function search(
 /**
  * Search current selection.
  *
- * @keys `a-*` (helix: normal), `a-NumPad_Multiply` (helix: normal)
+ * @keys `a-*` (helix: normal) , `a-NumPad_Multiply` (helix: normal)
  *
- * | Title                            | Identifier        | Keybinding                                                                                                     | Command                                             |
- * | -------------------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
- * | Search current selection (smart) | `selection.smart` | `*` (helix: normal), `NumPad_Multiply` (helix: normal), `*` (helix: visual), `NumPad_Multiply` (helix: visual) | `[".search.selection", { smart: true, +register }]` |
+ * | Title                            | Identifier        | Keybinding                                                                                                        | Command                                             |
+ * | -------------------------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+ * | Search current selection (smart) | `selection.smart` | `*` (helix: normal) , `NumPad_Multiply` (helix: normal) , `*` (helix: visual) , `NumPad_Multiply` (helix: visual) | `[".search.selection", { smart: true, +register }]` |
  */
 export function selection(
   document: vscode.TextDocument,

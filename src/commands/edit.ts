@@ -31,20 +31,20 @@ declare module "./edit";
  *
  * | Title                              | Identifier               | Keybinding                                                          | Commands                                                                                                                       |
  * | ---------------------------------- | ------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
- * | Pick register and replace          | `selectRegister-insert`  | `c-r` (helix: normal), `c-r` (helix: visual), `c-r` (helix: insert) | `[".selectRegister", { +register }], [".edit.insert", { ... }]`                                                                |
+ * | Pick register and replace          | `selectRegister-insert`  | `c-r` (helix: normal), `c-r` (helix: visual)                        | `[".selectRegister", { +register }], [".edit.insert", { ... }]`                                                                |
  * | Paste before                       | `paste.before`           |                                                                     | `[".edit.insert", { handleNewLine: true, where: "start", ... }]`                                                               |
  * | Paste after                        | `paste.after`            |                                                                     | `[".edit.insert", { handleNewLine: true, where: "end"  , ... }]`                                                               |
- * | Paste before and select            | `paste.before.select`    | `s-p` (helix: normal) `s-p` (helix: visual)                         | `[".edit.insert", { handleNewLine: true, where: "start", shift: "select", ... }]`                                              |
- * | Paste after and select             | `paste.after.select`     | `p` (helix: normal) `p` (helix: visual)                             | `[".edit.insert", { handleNewLine: true, where: "end"  , shift: "select", ... }]`                                              |
+ * | Paste before and select            | `paste.before.select`    | `s-p` (helix: normal), `s-p` (helix: visual)                        | `[".edit.insert", { handleNewLine: true, where: "start", shift: "select", ... }]`                                              |
+ * | Paste after and select             | `paste.after.select`     | `p` (helix: normal)  , `p` (helix: visual)                          | `[".edit.insert", { handleNewLine: true, where: "end"  , shift: "select", ... }]`                                              |
  * | Paste all before                   | `pasteAll.before`        |                                                                     | `[".edit.insert", { handleNewLine: true, where: "start", all: true, ... }]`                                                    |
  * | Paste all after                    | `pasteAll.after`         |                                                                     | `[".edit.insert", { handleNewLine: true, where: "end"  , all: true, ... }]`                                                    |
- * | Paste all before and select        | `pasteAll.before.select` | `s-a-p` (helix: normal) `s-a-p` (helix: visual)                     | `[".edit.insert", { handleNewLine: true, where: "start", all: true, shift: "select", ... }]`                                   |
- * | Paste all after and select         | `pasteAll.after.select`  | `a-p` (helix: normal) `a-p` (helix: visual)                         | `[".edit.insert", { handleNewLine: true, where: "end"  , all: true, shift: "select", ... }]`                                   |
- * | Delete                             | `delete`                 | `a-d` (helix: normal) `a-d` (helix: visual)                         | `[".edit.insert", { register: "_", ... }]`                                                                                     |
- * | Delete and switch to Insert        | `delete-insert`          | `a-c` (helix: normal) `a-c` (helix: visual)                         | `[".modes.set", { mode: "insert", +mode }], [".edit.insert", { register: "_", ... }]`                                          |
- * | Copy and delete                    | `yank-delete`            | `d` (helix: normal) `d` (helix: visual)                             | `[".selections.saveText", { +register }],                                            [".edit.insert", { register: "_", ... }]` |
- * | Copy, delete and switch to Insert  | `yank-delete-insert`     | `c` (helix: normal) `c` (helix: visual)                             | `[".selections.saveText", { +register }], [".modes.set", { mode: "insert", +mode }], [".edit.insert", { register: "_", ... }]` |
- * | Copy and replace                   | `yank-replace`           | `s-r` (helix: normal), `s-r` (helix: visual)                        | `[".selections.saveText", { register: "tmp" }], [".edit.insert"], [".updateRegister", { copyFrom: "tmp", ... }]`               |
+ * | Paste all before and select        | `pasteAll.before.select` | `s-a-p` (helix: normal), `s-a-p` (helix: visual)                    | `[".edit.insert", { handleNewLine: true, where: "start", all: true, shift: "select", ... }]`                                   |
+ * | Paste all after and select         | `pasteAll.after.select`  | `a-p` (helix: normal)  , `a-p` (helix: visual)                      | `[".edit.insert", { handleNewLine: true, where: "end"  , all: true, shift: "select", ... }]`                                   |
+ * | Delete                             | `delete`                 | `a-d` (helix: normal)  , `a-d` (helix: visual)                      | `[".edit.insert", { register: "_", ... }]`                                                                                     |
+ * | Delete and switch to Insert        | `delete-insert`          | `a-c` (helix: normal)  , `a-c` (helix: visual)                      | `[".modes.set", { mode: "insert", +mode }], [".edit.insert", { register: "_", ... }]`                                          |
+ * | Copy and delete                    | `yank-delete`            | `d` (helix: normal)    , `d` (helix: visual)                        | `[".selections.saveText", { +register }],                                            [".edit.insert", { register: "_", ... }]` |
+ * | Copy, delete and switch to Insert  | `yank-delete-insert`     | `c` (helix: normal)    , `c` (helix: visual)                        | `[".selections.saveText", { +register }], [".modes.set", { mode: "insert", +mode }], [".edit.insert", { register: "_", ... }]` |
+ * | Copy and replace                   | `yank-replace`           | `s-r` (helix: normal)  , `s-r` (helix: visual)                      | `[".selections.saveText", { register: "tmp" }], [".edit.insert"], [".updateRegister", { copyFrom: "tmp", ... }]`               |
  */
 export async function insert(
   _: Context,
@@ -351,8 +351,6 @@ export function copyIndentation(
  * keep the current selections.
  *
  *
- * @keys `s-a-o` (normal), `s-a-o` (visual)
- *
  * #### Additional keybindings
  *
  * | Title                                      | Identifier             | Keybinding                                   | Commands                                                                          |
@@ -389,8 +387,6 @@ export function newLine_above(
  * Specify `"shift": "select"` to select the inserted selections, and nothing to
  * keep the current selections.
  *
- *
- * @keys `a-o` (helix: normal), `a-o` (helix: visual)
  *
  * #### Additional keybindings
  *

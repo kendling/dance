@@ -297,10 +297,10 @@ const filterHistory: string[] = [];
  *
  * | Title                      | Identifier              | Keybinding                                       | Commands                                                                 |
  * | -------------------------- | ----------------------- | ------------------------------------------------ | ------------------------------------------------------------------------ |
- * | Keep matching selections   | `filter.regexp`         | `s-k` (helix: normal), `s-k` (helix: visual)     | `[".selections.filter", { defaultExpression: "/"               , ... }]` |
+ * | Keep matching selections   | `filter.regexp`         | `s-k` (helix: normal)  , `s-k` (helix: visual)   | `[".selections.filter", { defaultExpression: "/"               , ... }]` |
  * | Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (helix: normal), `s-a-k` (helix: visual) | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
- * | Clear secondary selections | `clear.secondary`       | `,` (helix: normal), `,` (helix: visual)         | `[".selections.filter", { expression: "i === count"            , ... }]` |
- * | Clear main selections      | `clear.main`            | `a-,` (helix: normal), `a-,` (helix: visual)     | `[".selections.filter", { expression: "i !== count"            , ... }]` |
+ * | Clear secondary selections | `clear.secondary`       | `,` (helix: normal)    , `,` (helix: visual)     | `[".selections.filter", { expression: "i === count"            , ... }]` |
+ * | Clear main selections      | `clear.main`            | `a-,` (helix: normal)  , `a-,` (helix: visual)   | `[".selections.filter", { expression: "i !== count"            , ... }]` |
  */
 export function filter(
   _: Context,
@@ -799,7 +799,7 @@ export async function sort(
 /**
  * Copy selections below.
  *
- * @keys `s-c` (normal), `s-c` (visual)
+ * @keys `s-c` (helix: normal), `s-c` (helix: visual)
  *
  * #### Variant
  *
@@ -876,7 +876,7 @@ const indicesToken = PerEditorState.registerState<AutoDisposable>(/* isDisposabl
 /**
  * Toggle selection indices.
  *
- * @keys `enter` (dance: normal), `enter` (dance: visual)
+ * @keys `enter` (helix: normal), `enter` (helix: visual)
  *
  * #### Variants
  *

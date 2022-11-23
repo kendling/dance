@@ -12,10 +12,10 @@ import { select } from "./selections";
 /**
  * Match menu.
  *
- * | Title                   | Keybinding   | Command                            |
- * | ----------------------- | ------------ | ---------------------------------- |
- * | Show match menu         | `m` (normal) | `[".openMenu", { menu: "match" }]` |
- * | Show match menu         | `m` (visual) | `[".openMenu", { menu: "match" }]` |
+ * | Title                   | Keybinding          | Command                            |
+ * | ----------------------- | ------------------- | ---------------------------------- |
+ * | Show match menu         | `m` (helix: normal) | `[".openMenu", { menu: "match" }]` |
+ * | Show match menu         | `m` (helix: visual) | `[".openMenu", { menu: "match" }]` |
  */
 declare module "./match";
 
@@ -184,8 +184,8 @@ export async function surround(
     endText = input;
   }
 
-  await insert(_, selections, register, true, false, 0, false, undefined, endText, "end");
-  await insert(_, selections, register, true, false, 0, false, undefined, startText, "start");
+  await insert(_, selections, register, true, false, false, 0, undefined, endText, "end");
+  await insert(_, selections, register, true, false, false, 0, undefined, startText, "start");
 
 }
 
