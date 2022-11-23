@@ -76,24 +76,27 @@ const selectionDecorationType = {
 // Package information
 // ============================================================================
 
+const version = "0.5.13",
+      preRelease = 1;
+
 export const pkg = (modules: Builder.ParsedModule[]) => ({
 
   // Common package.json properties.
   // ==========================================================================
 
-  name: "dance",
-  description: "Kakoune-inspired key bindings, modes, menus and scripting.",
-  version: "0.5.12",
+  name: "dancehelix",
+  description: "Fork of Dance with helix keybindings (Unfinished)",
+  version,
   license: "ISC",
 
   author: {
-    name: "Grégoire Geis",
-    email: "opensource@gregoirege.is",
+    name: "Leo",
+    email: "le.lueker@gmail.com",
   },
 
   repository: {
     type: "git",
-    url: "https://github.com/71/dance.git",
+    url: "https://github.com/Silverquark/dance.git",
   },
 
   main: "./out/src/extension.js",
@@ -116,7 +119,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     "test": "yarn run compile && node ./out/test/run.js",
     "package": "vsce package --allow-star-activation",
     "publish": "vsce publish --allow-star-activation",
-    "publish:pre": "vsce publish --allow-star-activation --pre-release",
+    "publish:pre": `vsce publish --allow-star-activation --pre-release --no-git-tag-version --no-update-package-json ${version.replace(/\d+$/, "$&" + preRelease.toString().padStart(3, "0"))}`,
   },
 
   devDependencies: {
@@ -135,7 +138,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     "source-map-support": "^0.5.21",
     "ts-loader": "^9.3.1",
     "ts-node": "^10.8.1",
-    "typescript": "^4.7.4",
+    "typescript": "^4.8.4",
     "unexpected": "^13.0.0",
     "vsce": "^2.7.0",
     "webpack": "^5.72.1",
@@ -146,8 +149,8 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
   // VS Code-specific properties.
   // ==========================================================================
 
-  displayName: "Dance",
-  publisher: "gregoire",
+  displayName: "Dance - Helix Alpha",
+  publisher: "silverquark",
   categories: ["Keymaps", "Other"],
   readme: "README.md",
   icon: "assets/dance.png",
@@ -307,13 +310,15 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 }],
               ],
             },
-            normal: {
+            visual: {
               lineNumbers: "relative",
-              decorations: {
-                applyTo: "main",
-                backgroundColor: "$editor.hoverHighlightBackground",
-                isWholeLine: true,
-              },
+              cursorStyle: "underline",
+              selectionBehavior: "character",
+              // decorations: {
+              //   applyTo: "main",
+              //   backgroundColor: "$merge.incomingContentBackground",
+              //   isWholeLine: true,
+              // },
               onEnterMode: [
                 [".selections.restore", { register: " ^", try: true }],
               ],
@@ -328,6 +333,36 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   },
                   until: [
                     ["mode-did-change", { include: "normal" }],
+                    ["mode-did-change", { include: "visual" }],
+                    ["selections-did-change"],
+                  ],
+                }],
+              ],
+            },
+            normal: {
+              lineNumbers: "relative",
+              cursorStyle: "block",
+              selectionBehavior: "character",
+              // decorations: {
+              //   applyTo: "main",
+              //   backgroundColor: "$editor.hoverHighlightBackground",
+              //   isWholeLine: true,
+              // },
+              onEnterMode: [
+                [".selections.restore", { register: " ^", try: true }],
+              ],
+              onLeaveMode: [
+                [".selections.save", {
+                  register: " ^",
+                  style: {
+                    borderColor: "$editor.selectionBackground",
+                    borderStyle: "solid",
+                    borderWidth: "2px",
+                    borderRadius: "1px",
+                  },
+                  until: [
+                    ["mode-did-change", { include: "normal" }],
+                    ["mode-did-change", { include: "visual" }],
                     ["selections-did-change"],
                   ],
                 }],
@@ -375,41 +410,6 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             "object": {
               title: "Select object...",
               items: ((command = "dance.seek.object") => ({
-                "b()": {
-                  command,
-                  args: [{ input: "\\((?#inner)\\)" }],
-                  text: "parenthesis block",
-                },
-                "B{}": {
-                  command,
-                  args: [{ input: "\\{(?#inner)\\}" }],
-                  text: "braces block",
-                },
-                "r[]": {
-                  command,
-                  args: [{ input: "\\[(?#inner)\\]" }],
-                  text: "brackets block",
-                },
-                "a<>": {
-                  command,
-                  args: [{ input: "<(?#inner)>" }],
-                  text: "angle block",
-                },
-                'Q"': {
-                  command,
-                  args: [{ input: "(?#noescape)\"(?#inner)(?#noescape)\"" }],
-                  text: "double quote string",
-                },
-                "q'": {
-                  command,
-                  args: [{ input: "(?#noescape)'(?#inner)(?#noescape)'" }],
-                  text: "single quote string",
-                },
-                "g`": {
-                  command,
-                  args: [{ input: "(?#noescape)`(?#inner)(?#noescape)`" }],
-                  text: "grave quote string",
-                },
                 "w": {
                   command,
                   args: [{ input: "[\\p{L}_\\d]+(?<after>[^\\S\\n]+)" }],
@@ -440,15 +440,40 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   args: [{ input: "(?#predefined=indent)" }],
                   text: "indent",
                 },
-                "n": {
+                "()": {
                   command,
-                  args: [{ input: "(?#singleline)-?[\\d_]+(\\.[0-9]+)?([eE]\\d+)?" }],
-                  text: "number",
+                  args: [{ input: "\\((?#inner)\\)" }],
+                  text: "parenthesis block",
                 },
-                "u": {
+                "{}": {
                   command,
-                  args: [{ input: "(?#predefined=argument)" }],
-                  text: "argument",
+                  args: [{ input: "\\{(?#inner)\\}" }],
+                  text: "braces block",
+                },
+                "[]": {
+                  command,
+                  args: [{ input: "\\[(?#inner)\\]" }],
+                  text: "brackets block",
+                },
+                "<>": {
+                  command,
+                  args: [{ input: "<(?#inner)>" }],
+                  text: "angle block",
+                },
+                '"': {
+                  command,
+                  args: [{ input: "(?#noescape)\"(?#inner)(?#noescape)\"" }],
+                  text: "double quote string",
+                },
+                "'": {
+                  command,
+                  args: [{ input: "(?#noescape)'(?#inner)(?#noescape)'" }],
+                  text: "single quote string",
+                },
+                "`": {
+                  command,
+                  args: [{ input: "(?#noescape)`(?#inner)(?#noescape)`" }],
+                  text: "grave quote string",
                 },
                 "c": {
                   command,
@@ -456,10 +481,143 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 },
               }))(),
             },
-
+            "match": {
+              title: "Match...",
+              items: {
+                "m": {
+                  text: "Goto matching bracket",
+                  command: "dance.seek.enclosing",
+                },
+                "s": {
+                  text: "Surround add",
+                  command: "dance.match.surround",
+                },
+                "r": {
+                  text: "Surround replace",
+                  command: "dance.match.surroundreplace",
+                  // args: [{ input: "\\((?#inner)\\)" }],
+                },
+                "d": {
+                  text: "Surround delete",
+                  command: "dance.match.surrounddelete",
+                  // args: [{ input: "\\((?#inner)\\)" }],
+                },
+                "a": {
+                  text: "Select around object",
+                  command: "dance.seek.askObject",
+                  // args: [{ input: "\\((?#inner)\\)" }],
+                },
+                "i": {
+                  text: "Select inside object",
+                  command: "dance.seek.askObject.inner",
+                  // args: [{ input: "\\((?#inner)\\)" }],
+                },
+              },
+            },
+            "space": {
+              title: "Space",
+              items: {
+                "f": {
+                  text: "Open file picker",
+                  command: "workbench.action.quickOpen",
+                },
+                // "F": {
+                //   text: "Open file picker at current working directory?",
+                //   command: "",
+                // },
+                "b": {
+                  text: "Open buffer picker",
+                  command: "workbench.action.showAllEditors",
+                },
+                "s": {
+                  text: "Open symbol picker",
+                  command: "workbench.action.gotoSymbol",
+                },
+                // "S": {
+                //   text: "Global symbol picker",
+                //   command: "Currently not possible?",
+                // },
+                "a": {
+                  text: "Perform code action",
+                  command: "editor.action.quickFix",
+                },
+                // "'": {
+                //   text: "Open last picker",
+                //   command: "Currently not possible/necessary?",
+                // },
+                "d": {
+                  text: "Start debug",
+                  command: "workbench.action.debug.start",
+                },
+                "w": {
+                  text: "Window",
+                  command: "dance.window.windowMenu",
+                },
+                "y": {
+                  text: "Join and yank selections to clipboard",
+                  command: "dance.selections.saveText",
+                  args: [{
+                    register: "",
+                  }],
+                },
+                // "Y": {
+                //   text: "Yank main selection to clipboard",
+                //   command: "dance.selections.saveText",
+                // },
+                "p": {
+                  text: "Paste clipboard after selections",
+                  command: "dance.edit.insert",
+                  args: [{
+                    handleNewLine: true,
+                    where: "end",
+                  }],
+                },
+                // There is a zero width space (U+200B) behind the P.
+                // This is a dirty hack. Otherwise vscode will think its the same as lowecase p
+                // Any other symbol would also work, but this one is invisible
+                "P​": {
+                  text: "Paste clipboard before selections",
+                  command: "dance.edit.insert",
+                  args: [{
+                    handleNewLine: true,
+                    where: "start",
+                  }],
+                },
+                "/": {
+                  text: "Global Search in workspace folder",
+                  command: "workbench.action.findInFiles",
+                },
+                "k": {
+                  text: "Show docs for item under cursor (hover)",
+                  command: "editor.action.showHover",
+                },
+                "r": {
+                  text: "Rename symbol",
+                  command: "editor.action.rename",
+                },
+                "?": {
+                  text: "Open command palette",
+                  command: "workbench.action.showCommands",
+                },
+              },
+            },
             "goto": {
               title: "Go...",
               items: {
+                "g": {
+                  text: "to first line",
+                  command: "dance.select.lineStart",
+                  args: [{ count: 1 }],
+                },
+                "e": {
+                  text: "to last char of last line",
+                  command: "dance.select.lineEnd",
+                  args: [{ count: 2 ** 31 - 1 }],
+                },
+                "f": {
+                  text: "to file whose name is selected",
+                  command: "dance.selections.open",
+                },
                 "h": {
                   text: "to line start",
                   command: "dance.select.lineStart",
@@ -468,24 +626,10 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   text: "to line end",
                   command: "dance.select.lineEnd",
                 },
-                "i": {
+                "s": {
                   text: "to non-blank line start",
                   command: "dance.select.lineStart",
                   args: [{ skipBlank: true }],
-                },
-                "gk": {
-                  text: "to first line",
-                  command: "dance.select.lineStart",
-                  args: [{ count: 1 }],
-                },
-                "j": {
-                  text: "to last line",
-                  command: "dance.select.lastLine",
-                },
-                "e": {
-                  text: "to last char of last line",
-                  command: "dance.select.lineEnd",
-                  args: [{ count: 2 ** 31 - 1 }],
                 },
                 "t": {
                   text: "to first displayed line",
@@ -499,19 +643,121 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   text: "to last displayed line",
                   command: "dance.select.lastVisibleLine",
                 },
+                "d": {
+                  text: "to definition",
+                  command: "editor.action.revealDefinition",
+                },
+                "y": {
+                  text: "to type definition",
+                  command: "editor.action.goToTypeDefinition",
+                },
+                "r": {
+                  text: "to references",
+                  command: "editor.action.goToReferences",
+                },
+                "i": {
+                  text: "to implementation",
+                  command: "editor.action.goToImplementation",
+                },
                 "a": {
-                  text: "to last buffer",
+                  text: "to last accessed buffer",
                   command: "workbench.action.openPreviousRecentlyUsedEditorInGroup",
                 },
-                "f": {
-                  text: "to file whose name is selected",
-                  command: "dance.selections.open",
+                // Currently not possible
+                // "m": {
+                //   text: "to last modified buffer",
+                //   command: "",
+                // },
+                "n": {
+                  text: "to next buffer",
+                  command: "workbench.action.nextEditor",
+                },
+                "p": {
+                  text: "to previous buffer",
+                  command: "workbench.action.previousEditor",
                 },
                 ".": {
                   text: "to last buffer modification position",
                   command: "dance.selections.restore",
                   args: [{ register: " insert" }],
                 },
+                // "j": {
+                //   text: "to last line",
+                //   command: "dance.select.lastLine",
+                // },
+              },
+            },
+            "window": {
+              title: "Window",
+              items: {
+                "w": {
+                  text: "Goto next window",
+                  command: "workbench.action.nextEditor",
+                },
+                "s": {
+                  text: "Horizontal bottom split",
+                  command: "workbench.action.splitEditorDown",
+                },
+                "v": {
+                  text: "Vertical right split",
+                  command: "workbench.action.splitEditor",
+                },
+                "t": {
+                  text: "Transpose splits",
+                  command: "workbench.action.toggleEditorGroupLayout",
+                },
+                // "f": {
+                //   text: "Open files in selection (hsplit)",
+                //   command: "dance.selections.open", function needs to be modified
+                // },
+                // "F": {
+                //   text: "Open files in selection (vsplit)",
+                //   command: "dance.selections.open", function needs to be modified
+                // },
+                "q": {
+                  text: "Close window",
+                  command: "workbench.action.closeActiveEditor",
+                },
+                "o": {
+                  text: "Close all other windows (Current window only)",
+                  command: "workbench.action.closeOtherEditors",
+                },
+                "h": {
+                  text: "Jump to the split on the left",
+                  command: "workbench.action.focusLeftGroup",
+                },
+                "j": {
+                  text: "Jump to the split below",
+                  command: "workbench.action.focusBelowGroup",
+                },
+                "k": {
+                  text: "Jump to the split above",
+                  command: "workbench.action.focusAboveGroup",
+                },
+                "l": {
+                  text: "Jump to the split to the right",
+                  command: "workbench.action.focusRightGroup",
+                },
+                "H": {
+                  text: "Swap with the split to the left",
+                  command: "workbench.action.moveActiveEditorGroupLeft",
+                },
+                "J": {
+                  text: "Swap with the split below",
+                  command: "workbench.action.moveActiveEditorGroupDown",
+                },
+                "K": {
+                  text: "Swap with the split above",
+                  command: "workbench.action.moveActiveEditorGroupUp",
+                },
+                "L": {
+                  text: "Swap with the split to the right",
+                  command: "workbench.action.moveActiveEditorGroupRight",
+                },
+                // "n": { Not easily possible. Neccessary?
+                //   text: "New split scratch buffer",
+                //   command: "",
+                // },
               },
             },
 
@@ -523,7 +769,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 // - m, center cursor horizontally
                 // - h, scroll left
                 // - l, scroll right
-                "vc": {
+                "zc": {
                   text: "center cursor vertically",
                   command: "dance.view.line",
                   args: [{ at: "center" }],
@@ -714,27 +960,56 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     keybindings: (() => {
       const keybindings = modules.flatMap((module) => module.keybindings),
             alphanum = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"],
+            symbols = [...",'-=", "Space", "NumPad_Add", "NumPad_Subtract"],
             keysToAssign = new Set([
               ...alphanum,
               ...alphanum.map((x) => `Shift+${x}`),
-              ...",'-",
-              "Shift+=",
-              "Shift+Space",
-              "NumPad_Add",
-              "NumPad_Subtract",
+              ...symbols,
+              ...symbols.map((x) => `Shift+${x}`),
             ]);
 
+      const normalKeys = keysToAssign;
+      const visualKeys = keysToAssign;
       for (const keybinding of keybindings) {
-        keysToAssign.delete(keybinding.key);
+        if (keybinding.when.includes("normal")) {
+          normalKeys.delete(keybinding.key);
+        }
+        if (keybinding.when.includes("visual")) {
+          visualKeys.delete(keybinding.key);
+        }
       }
 
-      for (const keyToAssign of keysToAssign) {
+      for (const keyToAssign of normalKeys) {
         keybindings.push({
           command: "dance.ignore",
           key: keyToAssign,
           when: "editorTextFocus && dance.mode == 'normal'",
         });
       }
+      for (const keyToAssign of visualKeys) {
+        keybindings.push({
+          command: "dance.ignore",
+          key: keyToAssign,
+          when: "editorTextFocus && dance.mode == 'visual'",
+        });
+      }
+
+      // allow c-i/c-o independent of mode. remove clashing default keybind
+      keybindings.push({
+        command: "-lineBreakInsert",
+        key: "Ctrl+O",
+        when: "",
+      });
+      keybindings.push({
+        command: "workbench.action.navigateBack",
+        key: "Ctrl+O",
+        when: "canNavigateBack",
+      });
+      keybindings.push({
+        command: "workbench.action.navigateForward",
+        key: "Ctrl+I",
+        when: "canNavigateForward",
+      });
 
       return keybindings;
     })(),

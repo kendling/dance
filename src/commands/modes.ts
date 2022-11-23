@@ -11,19 +11,20 @@ declare module "./modes";
  *
  * #### Variants
  *
- * | Title              | Identifier   | Keybinding                 | Command                                                     |
- * | ------------------ | ------------ | -------------------------- | ----------------------------------------------------------- |
- * | Set mode to Normal | `set.normal` | `escape` (kakoune: insert) | `[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]` |
- * | Set mode to Insert | `set.insert` |                            | `[".modes.set", { mode: "insert" }]`                        |
+ * | Title              | Identifier   | Keybinding                                                                | Command                                                     |
+ * | ------------------ | ------------ | ------------------------------------------------------------------------- | ----------------------------------------------------------- |
+ * | Set mode to Normal | `set.normal` | `escape` (helix: insert) , `escape` (helix: visual) , `v` (helix: visual) | `[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]` |
+ * | Set mode to Insert | `set.insert` |                                                                           | `[".modes.set", { mode: "insert" }]`                        |
+ * | Set mode to Visual | `set.visual` | `v` (helix: normal)                                                       | `[".modes.set", { mode: "visual" }]`                        |
  *
  * Other variants are provided to switch to insert mode:
  *
- * | Title                | Identifier         | Keybinding              | Commands                                                                                                                                                                            |
- * | -------------------- | ------------------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
- * | Insert before        | `insert.before`    | `i` (kakoune: normal)   | `[".selections.faceBackward", { record: false }],           [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
- * | Insert after         | `insert.after`     | `a` (kakoune: normal)   | `[".selections.faceForward" , { record: false }],           [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
- * | Insert at line start | `insert.lineStart` | `s-i` (kakoune: normal) | `[".select.lineStart", { shift: "jump", skipBlank: true }], [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
- * | Insert at line end   | `insert.lineEnd`   | `s-a` (kakoune: normal) | `[".select.lineEnd"  , { shift: "jump"                  }], [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
+ * | Title                | Identifier         | Keybinding                                   | Commands                                                                                                                                                                            |
+ * | -------------------- | ------------------ | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+ * | Insert before        | `insert.before`    | `i` (helix: normal), `i` (helix: visual)     | `[".selections.faceBackward", { record: false }],           [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
+ * | Insert after         | `insert.after`     | `a` (helix: normal), `a` (helix: visual)     | `[".selections.faceForward" , { record: false }],           [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
+ * | Insert at line start | `insert.lineStart` | `s-i` (helix: normal), `s-i` (helix: visual) | `[".select.lineStart", { shift: "jump", skipBlank: true }], [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
+ * | Insert at line end   | `insert.lineEnd`   | `s-a` (helix: normal), `s-a` (helix: visual) | `[".select.lineEnd"  , { shift: "jump"                  }], [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
  *
  * @noreplay
  */

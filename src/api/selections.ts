@@ -44,6 +44,7 @@ export function set(selections: readonly vscode.Selection[], context = Context.c
 
   context.selections = selections;
   reveal(selections[0], context);
+  vscode.commands.executeCommand("editor.action.wordHighlight.trigger");
 
   return selections;
 }
@@ -1258,6 +1259,26 @@ export function isNonDirectional(selection: vscode.Selection, context = Context.
   return context.selectionBehavior === SelectionBehavior.Character
       && !selection.isReversed
       && isSingleCharacter(selection, context.document);
+}
+
+/**
+ * Returns whether the current selection is _strictly reversed_, i.e. it is both
+ * **directional** (non-empty, and more than one characters in `character`
+ * selection mode) and reversed.
+ *
+ * {@link vscode.Selection.isReversed} returns `true` even for empty selections,
+ * which is not suitable in many cases.
+ */
+export function isStrictlyReversed(selection: vscode.Selection, context = Context.current) {
+  if (selection.isEmpty || !selection.isReversed) {
+    // Empty or forward: not reversed.
+    return false;
+  }
+
+  // In `caret` selection mode, we can stop checking here. In `character`
+  // selection mode, 1-character selections are considered "empty", and
+  // therefore not reversed.
+  return !isNonDirectional(selection, context);
 }
 
 /**

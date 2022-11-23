@@ -1,3 +1,15 @@
+## Dance with Helix bindings
+This is a modification to the [Dance](https://github.com/71/dance) VsCode
+extension, that aims to replace the [Kakoune][kakoune]-inspired 
+Keybindings with [Helix](https://helix-editor.com) inspired keybindings 
+
+*** This is a WIP ***
+
+Should be mostly usable, but probably contains bugs, missing features and differences in behaviour with helix
+
+
+Original README:
+
 # Dance
 
 [Kakoune]-inspired key bindings, modes, menus and scripting for
@@ -208,6 +220,12 @@ naming.
 
 Your PR will be rebased on top of `master` in order to keep a clean commit
 history. Please avoid unnecessary commits (`git commit --amend` is your friend).
+
+### Misc.
+
+[Pre-release versions](https://code.visualstudio.com/api/working-with-extensions/publishing-extension#prerelease-extensions)
+follow the pattern `<major>.<minor>.<prev-patch><pre-release>`, so for instance
+pre-release `1` of version `0.5.13` is `0.5.12001`.
 
 [api]: ./src/api
 [commands]: ./src/commands

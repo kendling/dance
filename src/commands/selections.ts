@@ -21,7 +21,7 @@ declare module "./selections";
 /**
  * Copy selections text.
  *
- * @keys `y` (kakoune: normal)
+ * @keys `y` (helix: normal), `y` (helix: visual)
  */
 export function saveText(
   document: vscode.TextDocument,
@@ -34,7 +34,7 @@ export function saveText(
 /**
  * Save selections.
  *
- * @keys `s-z` (kakoune: normal)
+ * @keys `s-a-z` (helix: normal)
  */
 export function save(
   _: Context,
@@ -93,9 +93,9 @@ export function save(
 }
 
 /**
- * Restore selections.
+ * Restore selections. TODO: Needed?
  *
- * @keys `z` (kakoune: normal)
+ * @keys `a-z` (helix: normal)
  */
 export async function restore(
   _: Context,
@@ -250,11 +250,11 @@ const pipeHistory: string[] = [];
  *
  * #### Additional commands
  *
- * | Title               | Identifier     | Keybinding              | Commands                                                                                                   |
- * | ------------------- | -------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------- |
- * | Pipe and replace    | `pipe.replace` | `|` (kakoune: normal)   | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|"                , ... }]` |
- * | Pipe and append     | `pipe.append`  | `!` (kakoune: normal)   | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|", where: "end"  , ... }]` |
- * | Pipe and prepend    | `pipe.prepend` | `a-!` (kakoune: normal) | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|", where: "start", ... }]` |
+ * | Title               | Identifier     | Keybinding              | Commands                                                                                                                    |
+ * | ------------------- | -------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+ * | Pipe and replace    | `pipe.replace` | `|` (kakoune: normal)   | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|",                                  ... }]` |
+ * | Pipe and append     | `pipe.append`  | `!` (kakoune: normal)   | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|", where: "end"  , shift: "select", ... }]` |
+ * | Pipe and prepend    | `pipe.prepend` | `a-!` (kakoune: normal) | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|", where: "start", shift: "select", ... }]` |
  */
 export async function pipe(
   _: Context,
@@ -291,16 +291,16 @@ const filterHistory: string[] = [];
 /**
  * Filter selections.
  *
- * @keys `$` (kakoune: normal)
+ * @keys `$` (helix: normal), `$` (helix: visual)
  *
  * #### Variants
  *
- * | Title                      | Identifier              | Keybinding                  | Commands                                                                 |
- * | -------------------------- | ----------------------- | --------------------------- | ------------------------------------------------------------------------ |
- * | Keep matching selections   | `filter.regexp`         | `a-k` (kakoune: normal)     | `[".selections.filter", { defaultExpression: "/"               , ... }]` |
- * | Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (kakoune: normal)   | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
- * | Clear secondary selections | `clear.secondary`       | `space` (kakoune: normal)   | `[".selections.filter", { expression: "i === count"            , ... }]` |
- * | Clear main selections      | `clear.main`            | `a-space` (kakoune: normal) | `[".selections.filter", { expression: "i !== count"            , ... }]` |
+ * | Title                      | Identifier              | Keybinding                                       | Commands                                                                 |
+ * | -------------------------- | ----------------------- | ------------------------------------------------ | ------------------------------------------------------------------------ |
+ * | Keep matching selections   | `filter.regexp`         | `s-k` (helix: normal)  , `s-k` (helix: visual)   | `[".selections.filter", { defaultExpression: "/"               , ... }]` |
+ * | Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (helix: normal), `s-a-k` (helix: visual) | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
+ * | Clear secondary selections | `clear.secondary`       | `,` (helix: normal)    , `,` (helix: visual)     | `[".selections.filter", { expression: "i === count"            , ... }]` |
+ * | Clear main selections      | `clear.main`            | `a-,` (helix: normal)  , `a-,` (helix: visual)   | `[".selections.filter", { expression: "i !== count"            , ... }]` |
  */
 export function filter(
   _: Context,
@@ -348,9 +348,9 @@ export function filter(
  *
  * #### Variants
  *
- * | Title          | Identifier      | Keybinding            | Command                                                                                           |
- * | -------------- | --------------- | --------------------- | ------------------------------------------------------------------------------------------------- |
- * | Leap or select | `select.orLeap` | `s` (kakoune: normal) | `[".ifEmpty", { then: [[".seek.leap", { ... }]], otherwise: [[".selections.select", { ... }]] }]` |
+ * | Title          | Identifier      | Keybinding                               | Command                                                                                           |
+ * | -------------- | --------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------- |
+ * | Leap or select | `select.orLeap` | `s` (helix: normal), `s` (helix: visual) | `[".ifEmpty", { then: [[".seek.leap", { ... }]], otherwise: [[".selections.select", { ... }]] }]` |
  */
 export function select(
   _: Context,
@@ -369,7 +369,7 @@ export function select(
         re = newRegExp(re, "mu");
       }
 
-      Selections.set(Selections.bottomToTop(Selections.selectWithin(re, selections)));
+      Selections.set(Selections.topToBottom(Selections.selectWithin(re, selections)));
 
       return Promise.resolve(re);
     },
@@ -379,7 +379,7 @@ export function select(
 /**
  * Split selections.
  *
- * @keys `s-s` (kakoune: normal)
+ * @keys `s-s` (helix: normal), `s-s` (helix: visual)
  */
 export function split(
   _: Context,
@@ -405,7 +405,7 @@ export function split(
         split = split.filter((s) => !s.isEmpty);
       }
 
-      Selections.set(Selections.bottomToTop(split));
+      Selections.set(Selections.topToBottom(split));
 
       return Promise.resolve(re);
     },
@@ -417,17 +417,21 @@ export function split(
  *
  * #### Variants
  *
- * | Title                   | Identifier                   | Keybinding              | Command                                                                                                              |
- * | ----------------------- | ---------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------- |
- * | Leap or select backward | `splitLines.orLeap.backward` | `a-s` (kakoune: normal) | `[".ifEmpty", { then: [[".seek.leap", { direction: -1, ... }]], otherwise: [[".selections.splitLines", { ... }]] }]` |
+ * | Title                   | Identifier                   | Keybinding                                   | Command                                                                                                              |
+ * | ----------------------- | ---------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+ * | Leap or select backward | `splitLines.orLeap.backward` | `a-s` (helix: normal), `a-s` (helix: visual) | `[".ifEmpty", { then: [[".seek.leap", { direction: -1, ... }]], otherwise: [[".selections.splitLines", { ... }]] }]` |
  */
 export function splitLines(
   _: Context,
   document: vscode.TextDocument,
   selections: readonly vscode.Selection[],
   repetitions: number,
+<<<<<<< HEAD
 
   excludeEol: Argument<boolean> = false,
+=======
+  excludeEol: Argument<boolean> = true,
+>>>>>>> 7f3474e (fix: match helix for split lines (a-s))
 ) {
   const newSelections = [] as vscode.Selection[],
         lineEnd = excludeEol ? Positions.lineEnd : Positions.lineBreak;
@@ -468,7 +472,7 @@ export function splitLines(
     }
   }
 
-  Selections.set(Selections.bottomToTop(newSelections));
+  Selections.set(Selections.topToBottom(newSelections));
 }
 
 /**
@@ -476,10 +480,10 @@ export function splitLines(
  *
  * Expand selections to contain full lines (including end-of-line characters).
  *
- * @keys `a-x` (kakoune: normal)
+ * @keys `s-x` (helix: normal), `s-x` (helix: visual)
  */
 export function expandToLines(_: Context) {
-  return Selections.updateByIndex((_, selection, document) => {
+  return Selections.updateByIndex((_i, selection, document) => {
     const start = selection.start,
           end = selection.end;
 
@@ -487,7 +491,7 @@ export function expandToLines(_: Context) {
     const newStart = start.with(undefined, 0);
     let newEnd: vscode.Position;
 
-    if (end.character === 0) {
+    if (end.character === 0 && end.line !== start.line) {
       // End is next line start, which means the selection already includes the
       // line break of last line.
       newEnd = end;
@@ -501,7 +505,7 @@ export function expandToLines(_: Context) {
     }
 
     // After expanding, the selection should be in the same direction as before.
-    return Selections.fromStartEnd(newStart, newEnd, selection.isReversed);
+    return Selections.fromStartEnd(newStart, newEnd, Selections.isStrictlyReversed(selection, _));
   });
 }
 
@@ -510,7 +514,7 @@ export function expandToLines(_: Context) {
  *
  * Trim selections to only contain full lines (from start to line break).
  *
- * @keys `s-a-x` (kakoune: normal)
+ * @keys `a-x` (kakoune: normal)
  */
 export function trimLines(_: Context) {
   return Selections.updateByIndex((_, selection) => {
@@ -542,7 +546,7 @@ export function trimLines(_: Context) {
  *
  * Trim whitespace at beginning and end of selections.
  *
- * @keys `_` (kakoune: normal)
+ * @keys `_` (helix: normal), `_` (helix: visual)
  */
 export function trimWhitespace(_: Context) {
   const blank = getCharacters(CharSet.Blank, _.document),
@@ -569,7 +573,7 @@ export function trimWhitespace(_: Context) {
  * @param where Which edge each selection should be reduced to; defaults to
  *   "active".
  *
- * @keys `;` (kakoune: normal)
+ * @keys `;` (helix: normal), `;` (helix: visual)
  *
  * #### Variant
  *
@@ -799,13 +803,13 @@ export async function sort(
 /**
  * Copy selections below.
  *
- * @keys `s-c` (kakoune: normal)
+ * @keys `s-c` (helix: normal), `s-c` (helix: visual)
  *
  * #### Variant
  *
- * | Title                 | Identifier   | Keybinding                | Command                                   |
- * | --------------------- | ------------ | ------------------------- | ----------------------------------------- |
- * | Copy selections above | `copy.above` | `s-a-c` (kakoune: normal) | `[".selections.copy", { direction: -1 }]` |
+ * | Title                 | Identifier   | Keybinding                                       | Command                                   |
+ * | --------------------- | ------------ | ------------------------------------------------ | ----------------------------------------- |
+ * | Copy selections above | `copy.above` | `s-a-c` (helix: normal), `s-a-c` (helix: visual) | `[".selections.copy", { direction: -1 }]` |
  */
 export function copy(
   _: Context,
@@ -876,7 +880,7 @@ const indicesToken = PerEditorState.registerState<AutoDisposable>(/* isDisposabl
 /**
  * Toggle selection indices.
  *
- * @keys `enter` (dance: normal)
+ * @keys `enter` (helix: normal), `enter` (helix: visual)
  *
  * #### Variants
  *
