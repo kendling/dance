@@ -5,7 +5,9 @@ Keybindings with [Helix](https://helix-editor.com) inspired keybindings
 
 *** This is a WIP ***
 
-Should be mostly usable, but probably contains bugs, missing features and differences in behaviour with helix
+Should be mostly usable, but may contain bugs, missing features and differences in behaviour with original helix
+
+[Try it out here](https://marketplace.visualstudio.com/items?itemName=silverquark.dancehelix)
 
 
 Original README:
