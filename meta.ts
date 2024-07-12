@@ -1,7 +1,7 @@
-import * as assert from "assert";
-import * as fs     from "fs/promises";
-import * as G      from "glob";
-import * as path   from "path";
+import assert from "assert";
+import G      from "glob";
+import * as fs   from "fs/promises";
+import * as path from "path";
 
 const verbose = process.argv.includes("--verbose");
 
@@ -67,6 +67,9 @@ const valueConverter: Record<keyof Builder.AdditionalCommand, (x: string) => str
   },
   title(title) {
     return title;
+  },
+  enablement(enablement) {
+    return enablement;
   },
   qualifiedIdentifier(qualifiedIdentifier) {
     return qualifiedIdentifier;
@@ -194,6 +197,7 @@ function parseDocComments(code: string, modulePath: string) {
             .split("\n")
             .map((line) => line.slice(indentation).replace(/^ \* ?/g, ""))
             .join("\n");
+    const enablements = new Set<string>();
 
     for (const parameter of parameters) {
       if (parameter[0].endsWith("?")) {
@@ -206,6 +210,8 @@ function parseDocComments(code: string, modulePath: string) {
         if (match !== null) {
           // Optional parameters with default values.
           parameter[1] = match[1] + " | undefined";
+        } else if (parameter[0] === "treeSitter" || parameter[0] === "documentTree") {
+          enablements.add("tree-sitter.activeEditorIsSupported");
         }
       }
     }
@@ -234,6 +240,15 @@ function parseDocComments(code: string, modulePath: string) {
       qualifiedName += nameWithDot;
     }
 
+    const enablement = enablements.size === 0 ? undefined : [...enablements].sort().join(" && ");
+    const additional = parseAdditional(modulePrefix, splitDocComment[0], startLine);
+
+    if (enablement !== undefined) {
+      for (const command of additional) {
+        command.enablement = enablement;
+      }
+    }
+
     functions.push({
       name: functionName,
       nameWithDot,
@@ -246,7 +261,8 @@ function parseDocComments(code: string, modulePath: string) {
       properties,
       summary,
       examples: examplesStrings,
-      additional: parseAdditional(modulePrefix, splitDocComment[0], startLine),
+      additional,
+      enablement,
 
       parameters,
       returnType: returnType.length === 0 ? undefined : returnType,
@@ -428,6 +444,7 @@ export declare namespace Builder {
     readonly summary: string;
     readonly examples: string[];
     readonly additional: AdditionalCommand[];
+    readonly enablement?: string;
 
     readonly parameters: readonly [name: string, type: string][];
     readonly returnType: string | undefined;
@@ -438,6 +455,7 @@ export declare namespace Builder {
     identifier?: string;
     qualifiedIdentifier?: string;
     keys?: string;
+    enablement?: string;
     commands?: string;
     line: number;
   }
@@ -455,6 +473,7 @@ export declare namespace Builder {
       readonly id: string;
       readonly title: string;
       readonly when?: string;
+      readonly enablement?: string;
     }[];
 
     readonly keybindings: {
@@ -476,7 +495,7 @@ export function parseKeys(keys: string) {
     return [];
   }
 
-  return keys.replace("\n", ", ").split(/ *, (?=`)/g).map((keyString) => {
+  return keys.replace(/\n/g, ", ").split(/ *, (?=`)/g).map((keyString) => {
     const [,, rawKeybinding, rawMetadata] = /^(`+)(.+?)\1 \((.+?)\)$/.exec(keyString)!,
           keybinding = rawKeybinding.trim().replace(
             specialCharacterRegExp, (m) => (specialCharacterMapping as Record<string, string>)[m]),
@@ -510,6 +529,7 @@ export function parseKeys(keys: string) {
       case "insert":
       case "visual":
       case "input":
+      case "select":
         whenClauses.push(`dance.mode ${negate ? "!=" : "=="} '${tag}'`);
         break;
 
@@ -520,7 +540,7 @@ export function parseKeys(keys: string) {
       case "prompt":
         assert(!negate);
         whenClauses.splice(whenClauses.indexOf("editorTextFocus"), 1);
-        whenClauses.push("inputFocus && !textInputFocus");
+        whenClauses.push("inputFocus && dance.inPrompt");
         break;
 
       default: {
@@ -550,12 +570,22 @@ export function parseKeys(keys: string) {
  * Returns all defined commands in the given module.
  */
 function getCommands(module: Omit<Builder.ParsedModule, "commands">) {
-  // TODO: improve conditions
+  const computeWhen = ({ enablement }: Builder.ParsedFunction | Builder.AdditionalCommand) => {
+    // TODO: improve conditions
+    let when = "dance.mode == 'normal'";
+
+    if (enablement !== undefined) {
+      when += " && " + enablement;
+    }
+
+    return when;
+  };
+
   return [
     ...module.functions.map((f) => ({
       id: `dance.${f.qualifiedName}`,
       title: f.summary,
-      when: "dance.mode == 'normal'",
+      when: computeWhen(f),
     })),
     ...module.additional
       .concat(...module.functions.flatMap((f) => f.additional))
@@ -563,7 +593,7 @@ function getCommands(module: Omit<Builder.ParsedModule, "commands">) {
       .map((a) => ({
         id: `dance.${a.qualifiedIdentifier}`,
         title: a.title!,
-        when: "dance.mode == 'normal'",
+        when: computeWhen(a),
       })),
   ].sort((a, b) => a.id.localeCompare(b.id));
 }

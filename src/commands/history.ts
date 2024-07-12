@@ -15,7 +15,7 @@ declare module "./history";
 /**
  * Undo.
  *
- * @keys `u` (helix: normal), `u` (helix: visual)
+ * @keys `u` (helix: normal), `u` (helix: visual), `u` (helix: select)
  */
 export function undo() {
   return vscode.commands.executeCommand("undo");
@@ -24,7 +24,7 @@ export function undo() {
 /**
  * Redo.
  *
- * @keys `s-u` (helix: normal), `s-u` (helix: visual)
+ * @keys `s-u` (helix: normal), `s-u` (helix: visual), `s-u` (helix: select)
  */
 export function redo() {
   return vscode.commands.executeCommand("redo");

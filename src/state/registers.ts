@@ -1,7 +1,9 @@
 import * as vscode from "vscode";
 
+import type { Extension } from "./extension";
 import type { Recording } from "./recorder";
 import { Context, prompt, SelectionBehavior, Selections } from "../api";
+import { availableClipboardRegisters } from "../utils/constants";
 import { ArgumentError, assert, EditNotAppliedError, EditorRequiredError } from "../utils/errors";
 import { noUndoStops } from "../utils/misc";
 import type * as TrackedSelection from "../utils/tracked-selection";
@@ -173,7 +175,7 @@ export abstract class Register {
   }
 }
 
-export declare namespace Register {
+export /* enum */ namespace Register {
   /**
    * Flags describing the capabilities of a `Register`.
    */
@@ -195,6 +197,14 @@ export declare namespace Register {
     CanReadWriteMacros = 16,
   }
 
+  export const enum ChangeKind {
+    Contents,
+    Selections,
+    Recording,
+  }
+}
+
+export declare namespace Register {
   /**
    * Given an array of `Flags` types, returns what interfaces correspond to
    * these flags.
@@ -234,12 +244,6 @@ export declare namespace Register {
   export interface ReadableWriteableMacros {
     getRecording(): Recording | undefined;
     setRecording(recording: Recording): void;
-  }
-
-  export const enum ChangeKind {
-    Contents,
-    Selections,
-    Recording,
   }
 }
 
@@ -398,11 +402,11 @@ export abstract class RegisterSet implements vscode.Disposable {
   private readonly _onLastMatchesChange = new vscode.EventEmitter<void>();
 
   private readonly _named = new Map<string, Register>();
-  private readonly _letters = Array.from(
+  private readonly _letters: readonly GeneralPurposeRegister[] = Array.from(
     { length: 26 },
-    (_, i) => new GeneralPurposeRegister(String.fromCharCode(97 + i), "symbol-text") as Register,
+    (_, i) => new GeneralPurposeRegister(String.fromCharCode(97 + i), "symbol-text"),
   );
-  private readonly _digits = Array.from(
+  private readonly _digits: readonly SpecialRegister[] = Array.from(
     { length: 9 },
     (_, i) => new SpecialRegister(
       (i + 1).toString(),
@@ -414,6 +418,12 @@ export abstract class RegisterSet implements vscode.Disposable {
   );
 
   private _lastMatches: readonly (readonly string[])[] = [];
+
+  /*
+   * The system clipboard register set with the
+   * `dance.systemClipboardRegister` setting.
+   */
+  private _systemClipboardRegister: string | undefined = undefined;
 
   /**
    * The set of registers.
@@ -430,11 +440,12 @@ export abstract class RegisterSet implements vscode.Disposable {
   }
 
   /**
-   * The '"' (`dquote`) register, mapped to the system clipboard and default
-   * register for edit operations.
+   * The '"' (`dquote`) register, default register for edit operations and
+   * mapped to the system clipboard by default.
    */
-  public readonly dquote = new ClipboardRegister();
-
+  public get dquote(): Register {
+    return this._named.get("dquote")!;
+  }
   /**
    * The "/" (`slash`) register, default register for search / regex operations.
    */
@@ -553,7 +564,7 @@ export abstract class RegisterSet implements vscode.Disposable {
     () => Promise.resolve(),
   );
 
-  public constructor() {
+  public constructor(extension?: Extension) {
     for (const [longName, register] of [
       ["dquote", this.dquote] as const,
       ["slash", this.slash] as const,
@@ -566,7 +577,6 @@ export abstract class RegisterSet implements vscode.Disposable {
       ["underscore", this.underscore] as const,
       ["colon", this.colon] as const,
     ]) {
-      this._letters[longName.charCodeAt(0) - 97 /* a */] = register;
       this._named.set(longName, register);
     }
 
@@ -583,6 +593,33 @@ export abstract class RegisterSet implements vscode.Disposable {
 
     this._named.set("", this.null);
     this._named.set("null", this.null);
+
+    // Watch systemClipboardRegister setting and update binding
+    if (extension !== undefined) {
+      extension.observePreference<string | null>(
+        ".systemClipboardRegister",
+        (value, validator) => {
+          if (!["dquote", null, ...availableClipboardRegisters].includes(value)) {
+            value = null;
+            validator.reportInvalidSetting(`Invalid systemClipboardRegister value: ${value}`);
+          }
+
+          // Reset old value to be a GeneralRegister
+          if (this._systemClipboardRegister !== undefined) {
+            const icon = this._systemClipboardRegister === "dquote" ? "copy" : "clippy";
+            this._named.set(this._systemClipboardRegister, new GeneralPurposeRegister(this._systemClipboardRegister, icon));
+          }
+
+          // Set new value to be a ClipboardRegister
+          if (value !== null) {
+            this._named.set(value, new ClipboardRegister());
+          }
+
+          this._systemClipboardRegister = value ?? undefined;
+        },
+        true,
+      );
+    }
   }
 
   public dispose() {
@@ -669,6 +706,19 @@ export abstract class RegisterSet implements vscode.Disposable {
  * The set of all registers linked to a specific document.
  */
 export class DocumentRegisters extends RegisterSet {
+  public override get registers(): Set<Register> {
+    const registers = super.registers;
+
+    // Remove special registers.
+    for (const register of registers) {
+      if (!(register instanceof GeneralPurposeRegister)) {
+        registers.delete(register);
+      }
+    }
+
+    return registers;
+  }
+
   public constructor(
     /**
      * The document to which the registers are linked.
