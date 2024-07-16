@@ -85,8 +85,8 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
   // Common package.json properties.
   // ==========================================================================
 
-  name: "dancehelix",
-  description: "Fork of Dance with helix keybindings (Unfinished)",
+  name: "dancehelixkey",
+  description: "Fork of Dance with helix keybindings (Unfinished, base on silverquark's code)",
   version,
   license: "ISC",
 
@@ -97,7 +97,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
 
   repository: {
     type: "git",
-    url: "https://github.com/Silverquark/dance.git",
+    url: "https://github.com/kendling/dance.git",
   },
 
   main: "./out/extension.js",
@@ -159,8 +159,8 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
   // VS Code-specific properties.
   // ==========================================================================
 
-  displayName: "Dance - Helix Alpha",
-  publisher: "silverquark",
+  displayName: "Dance - Helix Keybindings",
+  publisher: "kend",
   categories: ["Keymaps", "Other"],
   readme: "README.md",
   icon: "assets/dance.png",

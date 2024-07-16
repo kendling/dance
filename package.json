@@ -1,6 +1,6 @@
 {
-  "name": "dancehelix",
-  "description": "Fork of Dance with helix keybindings (Unfinished)",
+  "name": "dancehelixkey",
+  "description": "Fork of Dance with helix keybindings (Unfinished, base on silverquark's code)",
   "version": "0.5.15",
   "license": "ISC",
   "author": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Silverquark/dance.git"
+    "url": "https://github.com/kendling/dance.git"
   },
   "main": "./out/extension.js",
   "browser": "./out/web-extension.js",
@@ -59,8 +59,8 @@
     "web-tree-sitter": "^0.20.8",
     "yaml": "^2.1.1"
   },
-  "displayName": "Dance - Helix Alpha",
-  "publisher": "silverquark",
+  "displayName": "Dance - Helix Keybindings",
+  "publisher": "kend",
   "categories": [
     "Keymaps",
     "Other"
