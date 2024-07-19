@@ -11,11 +11,12 @@ declare module "./modes";
  *
  * #### Variants
  *
- * | Title              | Identifier   | Keybinding                                                                | Command                                                     |
- * | ------------------ | ------------ | ------------------------------------------------------------------------- | ----------------------------------------------------------- |
- * | Set mode to Normal | `set.normal` | `escape` (helix: insert) , `escape` (helix: visual) , `v` (helix: visual) | `[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]` |
- * | Set mode to Insert | `set.insert` |                                                                           | `[".modes.set", { mode: "insert" }]`                        |
- * | Set mode to Visual | `set.visual` | `v` (helix: normal)                                                       | `[".modes.set", { mode: "visual" }]`                        |
+ * | Title              | Identifier   | Keybinding                                                                                         | Command                                                     |
+ * | ------------------ | ------------ | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+ * | Set mode to Normal | `set.normal` | `escape` (helix: insert), `escape` (helix: select), `escape` (helix: visual) , `v` (helix: visual) | `[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]` |
+ * | Set mode to Insert | `set.insert` |                                                                                                    | `[".modes.set", { mode: "insert" }]`                        |
+ * | Set mode to Select | `set.select` |                                                                                                    | `[".modes.set", { mode: "select" }]`                        |
+ * | Set mode to Visual | `set.visual` | `v` (helix: normal)                                                                                | `[".modes.set", { mode: "visual" }]`                        |
  *
  * Other variants are provided to switch to insert mode:
  *

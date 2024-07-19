@@ -57,6 +57,9 @@ export function prompt(
       });
     }
 
+    const contextKey = "dance.inPrompt";
+    const setContextPromise = vscode.commands.executeCommand("setContext", contextKey, true);
+
     const disposables = [
       inputBox,
       inputBox.onDidChangeValue(updateAndValidateValue),
@@ -99,6 +102,10 @@ export function prompt(
       }),
       inputBox.onDidHide(() => {
         disposables.forEach((d) => d.dispose());
+
+        setContextPromise.then(() =>
+          vscode.commands.executeCommand("setContext", contextKey, false),
+        );
 
         const reason = context.cancellationToken?.isCancellationRequested
           ? CancellationError.Reason.CancellationToken
@@ -158,7 +165,7 @@ export function prompt(
     // Hack to set the `valueSelection`, since it isn't supported when using
     // `createInputBox`.
     if (options.valueSelection !== undefined) {
-      (inputBox as any).update({ valueSelection: options.valueSelection });
+      (inputBox as vscode.InputBoxOptions).valueSelection = options.valueSelection;
     }
 
     inputBox.show();

@@ -4,6 +4,7 @@ import { Editors } from "./editors";
 import { Modes } from "./modes";
 import { Recorder } from "./recorder";
 import { Register, Registers } from "./registers";
+import { RegistersView } from "./registers-view";
 import { StatusBar } from "./status-bar";
 import { Menu, validateMenu } from "../api";
 import type { Commands } from "../commands";
@@ -11,7 +12,7 @@ import { extensionName } from "../utils/constants";
 import { AutoDisposable } from "../utils/disposables";
 import { assert, CancellationError } from "../utils/errors";
 import { SettingsValidator } from "../utils/settings-validator";
-import { RegistersView } from "./registers-view";
+import { onDidLoadTreeSitter, type TreeSitter } from "../utils/tree-sitter";
 
 // ===============================================================================================
 // ==  EXTENSION  ================================================================================
@@ -37,6 +38,8 @@ export class Extension implements vscode.Disposable {
   // State.
   // ==========================================================================
 
+  private _treeSitter?: TreeSitter;
+
   /**
    * `StatusBar` for this instance of the extension.
    */
@@ -45,7 +48,7 @@ export class Extension implements vscode.Disposable {
   /**
    * `Registers` for this instance of the extension.
    */
-  public readonly registers = new Registers();
+  public readonly registers = new Registers(this);
 
   /**
    * `Modes` for this instance of the extension.
@@ -100,6 +103,18 @@ export class Extension implements vscode.Disposable {
     } else {
       this.statusBar.registerSegment.setContent();
     }
+  }
+
+  public get treeSitter(): TreeSitter | undefined {
+    return this._treeSitter;
+  }
+
+  public treeSitterOrThrow(): TreeSitter {
+    if (this._treeSitter === undefined) {
+      throw new Error("TreeSitter is not available");
+    }
+
+    return this._treeSitter;
   }
 
   public constructor(public readonly commands: Commands) {
@@ -171,6 +186,9 @@ export class Extension implements vscode.Disposable {
 
     // Render views.
     this._subscriptions.push(new RegistersView(this.registers).register());
+
+    // Tree Sitter support.
+    this._subscriptions.push(onDidLoadTreeSitter((treeSitter) => this._treeSitter = treeSitter));
   }
 
   /**

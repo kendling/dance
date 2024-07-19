@@ -1,4 +1,4 @@
-import * as assert from "assert";
+import assert from "assert";
 import { Builder, unindent } from "../../meta";
 
 export async function build(builder: Builder) {
@@ -89,6 +89,7 @@ export async function build(builder: Builder) {
 function determineFunctionExpression(f: Builder.ParsedFunction) {
   const givenParameters: string[] = [];
   let takeArgument = false;
+  let takeDocumentTree = false;
 
   for (const [name, type] of f.parameters) {
     let match: RegExpExecArray | null;
@@ -131,6 +132,19 @@ function determineFunctionExpression(f: Builder.ParsedFunction) {
 
     case "registers":
       givenParameters.push("_.extension.registers");
+      break;
+
+    case "treeSitter":
+      if (type === "TreeSitter | undefined") {
+        givenParameters.push("_.extension.treeSitter");
+      } else {
+        givenParameters.push("_.extension.treeSitterOrThrow()");
+      }
+      break;
+
+    case "documentTree":
+      takeDocumentTree = true;
+      givenParameters.push("documentTree");
       break;
 
     case "count":
@@ -189,10 +203,15 @@ function determineFunctionExpression(f: Builder.ParsedFunction) {
     }
   }
 
-  const inputParameters = ["_", ...(takeArgument ? ["argument"] : [])],
-        call = `${f.qualifiedName.replace(/\./g, "_")}(${givenParameters.join(", ")})`;
+  const inputParameters = ["_", ...(takeArgument ? ["argument"] : [])];
+  let call = `${f.qualifiedName.replace(/\./g, "_")}(${givenParameters.join(", ")})`;
 
-  return `(${inputParameters.join(", ")}) => _.runAsync((_) => ${call})`;
+  if (takeDocumentTree) {
+    call =
+      `_.extension.treeSitterOrThrow().withDocumentTree(_.document, (documentTree) => ${call})`;
+  }
+
+  return `(${inputParameters.join(", ")}) => _.runAsync(async (_) => await ${call})`;
 }
 
 function determineFunctionFlags(f: Builder.ParsedFunction) {

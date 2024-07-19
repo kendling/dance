@@ -38,12 +38,12 @@ const preferredColumnsToken =
  *
  * #### Variants
  *
- * | Title       | Identifier    | Keybinding                                                                                     | Command                                                           |
- * | ----------- | ------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
- * | Jump down   | `down.jump`   | `j` (helix: normal)  , `down` (helix: normal)                                                  | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
- * | Extend down | `down.extend` | `s-j` (helix: normal), `s-down` (helix: normal) , `j` (helix: visual) , `down` (helix: visual) | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
- * | Jump up     | `up.jump`     | `k` (helix: normal)  , `up` (helix: normal)                                                    | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
- * | Extend up   | `up.extend`   | `s-k` (helix: normal), `s-up` (helix: normal)  , `k` (helix: visual) , `up` (helix: visual)    | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
+ * | Title       | Identifier    | Keybinding                                                                                                                                   | Command                                                           |
+ * | ----------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+ * | Jump down   | `down.jump`   | `j` (helix: normal)  , `down` (helix: normal)                                                                                                | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
+ * | Extend down | `down.extend` | `s-j` (helix: normal), `s-down` (helix: normal) , `j` (helix: select), `down` (helix: select) , `j` (helix: visual) , `down` (helix: visual) | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
+ * | Jump up     | `up.jump`     | `k` (helix: normal)  , `up` (helix: normal)                                                                                                  | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
+ * | Extend up   | `up.extend`   | `s-k` (helix: normal), `s-up` (helix: normal)  , `k` (helix: select), `up` (helix: select) , `k` (helix: visual) , `up` (helix: visual)      | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
  *
  * The following keybindings are also defined:
  *
@@ -230,12 +230,12 @@ export function vertically(
  *
  * #### Variants
  *
- * | Title        | Identifier     | Keybinding                                                               | Command                                                             |
- * | ------------ | -------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------- |
- * | Jump right   | `right.jump`   | `l` (helix: normal) , `right` (helix: normal)                            | `[".select.horizontally", { direction:  1, shift: "jump"  , ... }]` |
- * | Extend right | `right.extend` | `s-right` (helix: normal), `l` (helix: visual) , `right` (helix: visual) | `[".select.horizontally", { direction:  1, shift: "extend", ... }]` |
- * | Jump left    | `left.jump`    | `h` (helix: normal) , `left` (helix: normal)                             | `[".select.horizontally", { direction: -1, shift: "jump"  , ... }]` |
- * | Extend left  | `left.extend`  | `s-left` (helix: normal) , `h` (helix: visual) , `left` (helix: visual)  | `[".select.horizontally", { direction: -1, shift: "extend", ... }]` |
+ * | Title        | Identifier     | Keybinding                                                                                                              | Command                                                             |
+ * | ------------ | -------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+ * | Jump right   | `right.jump`   | `l` (helix: normal) , `right` (helix: normal)                                                                           | `[".select.horizontally", { direction:  1, shift: "jump"  , ... }]` |
+ * | Extend right | `right.extend` | `s-right` (helix: normal), `l` (helix: select), `right` (helix: select) , `l` (helix: visual) , `right` (helix: visual) | `[".select.horizontally", { direction:  1, shift: "extend", ... }]` |
+ * | Jump left    | `left.jump`    | `h` (helix: normal) , `left` (helix: normal)                                                                            | `[".select.horizontally", { direction: -1, shift: "jump"  , ... }]` |
+ * | Extend left  | `left.extend`  | `s-left` (helix: normal) , `h` (helix: select), `left` (helix: select) , `h` (helix: visual) , `left` (helix: visual)   | `[".select.horizontally", { direction: -1, shift: "extend", ... }]` |
  */
 export function horizontally(
   _: Context,
@@ -299,10 +299,10 @@ export function horizontally(
  *
  * #### Variants
  *
- * | Title     | Identifier  | Keybinding                                 | Command                                    |
- * | --------- | ----------- | ------------------------------------------ | ------------------------------------------ |
- * | Go to     | `to.jump`   | `g` (helix: normal)                        | `[".select.to", { shift: "jump"  , ... }]` |
- * | Extend to | `to.extend` | `s-g` (helix: normal), `g` (helix: visual) | `[".select.to", { shift: "extend", ... }]` |
+ * | Title     | Identifier  | Keybinding                                                      | Command                                    |
+ * | --------- | ----------- | --------------------------------------------------------------- | ------------------------------------------ |
+ * | Go to     | `to.jump`   | `g` (helix: normal)                                             | `[".select.to", { shift: "jump"  , ... }]` |
+ * | Extend to | `to.extend` | `s-g` (helix: normal), `g` (helix: select), `g` (helix: visual) | `[".select.to", { shift: "extend", ... }]` |
  */
 export function to(
   _: Context,

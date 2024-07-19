@@ -225,8 +225,8 @@ edit.insert:
       | Paste all after and select         | `pasteAll.after.select`  | `a-p` (helix: normal)  , `a-p` (helix: visual)                      | `[".edit.insert", { handleNewLine: true, where: "end"  , all: true, shift: "select", ... }]`                                   |
       | Delete                             | `delete`                 | `a-d` (helix: normal)  , `a-d` (helix: visual)                      | `[".edit.insert", { register: "_", ... }]`                                                                                     |
       | Delete and switch to Insert        | `delete-insert`          | `a-c` (helix: normal)  , `a-c` (helix: visual)                      | `[".modes.set", { mode: "insert", +mode }], [".edit.insert", { register: "_", ... }]`                                          |
-      | Copy and delete                    | `yank-delete`            | `d` (helix: normal)    , `d` (helix: visual)                        | `[".selections.saveText", { +register }],                                            [".edit.insert", { register: "_", ... }]` |
-      | Copy, delete and switch to Insert  | `yank-delete-insert`     | `c` (helix: normal)    , `c` (helix: visual)                        | `[".selections.saveText", { +register }], [".modes.set", { mode: "insert", +mode }], [".edit.insert", { register: "_", ... }]` |
+      | Copy and delete                    | `yank-delete`            | `d` (helix: normal), `d` (helix: select)    , `d` (helix: visual)   | `[".selections.saveText", { +register }],                                            [".edit.insert", { register: "_", ... }]` |
+      | Copy, delete and switch to Insert  | `yank-delete-insert`     | `c` (helix: normal), `c` (helix: select)    , `c` (helix: visual)   | `[".selections.saveText", { +register }], [".modes.set", { mode: "insert", +mode }], [".edit.insert", { register: "_", ... }]` |
       | Copy and replace                   | `yank-replace`           | `s-r` (helix: normal)  , `s-r` (helix: visual)                      | `[".selections.saveText", { register: "tmp" }], [".edit.insert"], [".updateRegister", { copyFrom: "tmp", ... }]`               |
 
 edit.join:
@@ -434,7 +434,8 @@ edit.yank-delete:
 
   keys:
     qwerty: |-
-      `d` (helix: normal)    , `d` (helix: visual)
+      `d` (helix: normal)
+      `d` (helix: select)    , `d` (helix: visual)
 
 edit.yank-delete-insert:
   title:
@@ -445,7 +446,8 @@ edit.yank-delete-insert:
 
   keys:
     qwerty: |-
-      `c` (helix: normal)    , `c` (helix: visual)
+      `c` (helix: normal)
+      `c` (helix: select)    , `c` (helix: visual)
 
 edit.yank-replace:
   title:
@@ -502,6 +504,7 @@ history.redo:
   keys:
     qwerty: |-
       `s-u` (helix: normal)
+      `s-u` (helix: select)
       `s-u` (helix: visual)
 
   doc:
@@ -574,6 +577,7 @@ history.undo:
   keys:
     qwerty: |-
       `u` (helix: normal)
+      `u` (helix: select)
       `u` (helix: visual)
 
   doc:
@@ -701,11 +705,12 @@ modes.set:
 
       #### Variants
 
-      | Title              | Identifier   | Keybinding                                                                | Command                                                     |
-      | ------------------ | ------------ | ------------------------------------------------------------------------- | ----------------------------------------------------------- |
-      | Set mode to Normal | `set.normal` | `escape` (helix: insert) , `escape` (helix: visual) , `v` (helix: visual) | `[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]` |
-      | Set mode to Insert | `set.insert` |                                                                           | `[".modes.set", { mode: "insert" }]`                        |
-      | Set mode to Visual | `set.visual` | `v` (helix: normal)                                                       | `[".modes.set", { mode: "visual" }]`                        |
+      | Title              | Identifier   | Keybinding                                                                                         | Command                                                     |
+      | ------------------ | ------------ | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+      | Set mode to Normal | `set.normal` | `escape` (helix: insert), `escape` (helix: select), `escape` (helix: visual) , `v` (helix: visual) | `[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]` |
+      | Set mode to Insert | `set.insert` |                                                                                                    | `[".modes.set", { mode: "insert" }]`                        |
+      | Set mode to Select | `set.select` |                                                                                                    | `[".modes.set", { mode: "select" }]`                        |
+      | Set mode to Visual | `set.visual` | `v` (helix: normal)                                                                                | `[".modes.set", { mode: "visual" }]`                        |
 
       Other variants are provided to switch to insert mode:
 
@@ -735,7 +740,19 @@ modes.set.normal:
 
   keys:
     qwerty: |-
-      `escape` (helix: insert) , `escape` (helix: visual) , `v` (helix: visual)
+      `escape` (helix: insert)
+      `escape` (helix: select)
+      `escape` (helix: visual) , `v` (helix: visual)
+
+modes.set.select:
+  title:
+    en: Set mode to Select
+
+  commands: |-
+    [".modes.set", { mode: "select" }]
+
+  keys:
+    qwerty: ""
 
 modes.set.temporarily:
   title:
@@ -1054,15 +1071,15 @@ seek:
 
       #### Variants
 
-      | Title                                    | Identifier                 | Keybinding              | Command                                                             |
-      | ---------------------------------------- | -------------------------- | ----------------------- | ------------------------------------------------------------------- |
-      | Select to character (excluded, backward) | `backward`                 | `s-t` (helix: normal)   | `[".seek", {                                 direction: -1, ... }]` |
-      | Select to character (included)           | `included`                 | `f` (helix: normal)     | `[".seek", { include: true                                , ... }]` |
-      | Select to character (included, backward) | `included.backward`        | `s-f` (helix: normal)   | `[".seek", { include: true,                  direction: -1, ... }]` |
-      | Extend to character (excluded)           | `extend`                   | `t` (helix: visual)     | `[".seek", {                shift: "extend"               , ... }]` |
-      | Extend to character (excluded, backward) | `extend.backward`          | `s-t` (helix: visual)   | `[".seek", {                shift: "extend", direction: -1, ... }]` |
-      | Extend to character (included)           | `included.extend`          | `f` (helix: visual)     | `[".seek", { include: true, shift: "extend"               , ... }]` |
-      | Extend to character (included, backward) | `included.extend.backward` | `s-f` (helix: visual)   | `[".seek", { include: true, shift: "extend", direction: -1, ... }]` |
+      | Title                                    | Identifier                 | Keybinding                                   | Command                                                             |
+      | ---------------------------------------- | -------------------------- | -------------------------------------------- | ------------------------------------------------------------------- |
+      | Extend to character (excluded)           | `extend`                   | `t` (helix: visual), `t` (helix: select)     | `[".seek", {                shift: "extend"               , ... }]` |
+      | Select to character (excluded, backward) | `backward`                 | `s-t` (helix: normal)                        | `[".seek", {                                 direction: -1, ... }]` |
+      | Extend to character (excluded, backward) | `extend.backward`          | `s-t` (helix: visual), `s-t` (helix: select) | `[".seek", {                shift: "extend", direction: -1, ... }]` |
+      | Select to character (included)           | `included`                 | `f` (helix: normal)                          | `[".seek", { include: true                                , ... }]` |
+      | Extend to character (included)           | `included.extend`          | `f` (helix: visual), `f` (helix: select)     | `[".seek", { include: true, shift: "extend"               , ... }]` |
+      | Select to character (included, backward) | `included.backward`        | `s-f` (helix: normal)                        | `[".seek", { include: true,                  direction: -1, ... }]` |
+      | Extend to character (included, backward) | `included.extend.backward` | `s-f` (helix: visual), `s-f` (helix: select) | `[".seek", { include: true, shift: "extend", direction: -1, ... }]` |
 
 seek.askObject:
   title:
@@ -1251,6 +1268,7 @@ seek.extend:
   keys:
     qwerty: |-
       `t` (helix: visual)
+      `t` (helix: select)
 
 seek.extend.backward:
   title:
@@ -1262,6 +1280,7 @@ seek.extend.backward:
   keys:
     qwerty: |-
       `s-t` (helix: visual)
+      `s-t` (helix: select)
 
 seek.included:
   title:
@@ -1295,6 +1314,7 @@ seek.included.extend:
   keys:
     qwerty: |-
       `f` (helix: visual)
+      `f` (helix: select)
 
 seek.included.extend.backward:
   title:
@@ -1306,6 +1326,7 @@ seek.included.extend.backward:
   keys:
     qwerty: |-
       `s-f` (helix: visual)
+      `s-f` (helix: select)
 
 seek.leap:
   title:
@@ -1367,6 +1388,51 @@ seek.object:
       | Select to inner object end   | `askObject.inner.end`          | `a-]` (kakoune: normal)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "end"                    }] }]` |
       | Extend to inner object end   | `askObject.inner.end.extend`   | `a-}` (kakoune: normal)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "end"  , shift: "extend" }] }]` |
 
+seek.syntax.child.experimental:
+  title:
+    en: Select child syntax object
+
+  commands: |-
+    [".seek.syntax.experimental", { where: "child" }]
+
+seek.syntax.experimental:
+  title:
+    en: Select syntax object
+
+  doc:
+    en: |
+      Select syntax object.
+
+      #### Variants
+
+      | Title                         | Identifier                     | Command                                                |
+      | ----------------------------- | ------------------------------ | ------------------------------------------------------ |
+      | Select next syntax object     | `syntax.next.experimental`     | `[".seek.syntax.experimental", { where: "next"     }]` |
+      | Select previous syntax object | `syntax.previous.experimental` | `[".seek.syntax.experimental", { where: "previous" }]` |
+      | Select parent syntax object   | `syntax.parent.experimental`   | `[".seek.syntax.experimental", { where: "parent"   }]` |
+      | Select child syntax object    | `syntax.child.experimental`    | `[".seek.syntax.experimental", { where: "child"    }]` |
+
+seek.syntax.next.experimental:
+  title:
+    en: Select next syntax object
+
+  commands: |-
+    [".seek.syntax.experimental", { where: "next" }]
+
+seek.syntax.parent.experimental:
+  title:
+    en: Select parent syntax object
+
+  commands: |-
+    [".seek.syntax.experimental", { where: "parent" }]
+
+seek.syntax.previous.experimental:
+  title:
+    en: Select previous syntax object
+
+  commands: |-
+    [".seek.syntax.experimental", { where: "previous" }]
+
 seek.word:
   title:
     en: Select to next word start
@@ -1384,19 +1450,19 @@ seek.word:
 
       #### Variants
 
-      | Title                                        | Identifier                | Keybinding              | Command                                                                              |
-      | -------------------------------------------- | ------------------------- | ----------------------- | ------------------------------------------------------------------------------------ |
-      | Select to next WORD start                    | `word.ws`                 | `s-w` (helix: normal)   | `[".seek.word", {                  ws: true                                , ... }]` |
-      | Select to previous word start                | `word.backward`           | `b` (helix: normal)     | `[".seek.word", {                                             direction: -1, ... }]` |
-      | Select to previous WORD start                | `word.ws.backward`        | `s-b` (helix: normal)   | `[".seek.word", {                  ws: true,                  direction: -1, ... }]` |
-      | Select to next word end                      | `wordEnd`                 | `e` (helix: normal)     | `[".seek.word", { stopAtEnd: true                                          , ... }]` |
-      | Select to next WORD end                      | `wordEnd.ws`              | `s-e` (helix: normal)   | `[".seek.word", { stopAtEnd: true, ws: true                                , ... }]` |
-      | Extend to next word start                    | `word.extend`             | `w` (helix: visual)     | `[".seek.word", {                            shift: "extend"               , ... }]` |
-      | Extend to next WORD start                    | `word.ws.extend`          | `s-w` (helix: visual)   | `[".seek.word", {                  ws: true, shift: "extend"               , ... }]` |
-      | Extend to previous word start                | `word.backward.extend`    | `b` (helix: visual)     | `[".seek.word", {                            shift: "extend", direction: -1, ... }]` |
-      | Extend to previous WORD start                | `word.ws.backward.extend` | `s-b` (helix: visual)   | `[".seek.word", {                  ws: true, shift: "extend", direction: -1, ... }]` |
-      | Extend to next word end                      | `wordEnd.extend`          | `e` (helix: visual)     | `[".seek.word", { stopAtEnd: true,           shift: "extend"               , ... }]` |
-      | Extend to next WORD end                      | `wordEnd.ws.extend`       | `s-e` (helix: visual)   | `[".seek.word", { stopAtEnd: true, ws: true, shift: "extend"               , ... }]` |
+      | Title                                        | Identifier                | Keybinding                                   | Command                                                                              |
+      | -------------------------------------------- | ------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------ |
+      | Extend to next word start                    | `word.extend`             | `w` (helix: visual), `w` (helix: select)     | `[".seek.word", {                            shift: "extend"               , ... }]` |
+      | Select to previous word start                | `word.backward`           | `b` (helix: normal)                          | `[".seek.word", {                                             direction: -1, ... }]` |
+      | Extend to previous word start                | `word.extend.backward`    | `b` (helix: visual), `b` (helix: select)     | `[".seek.word", {                            shift: "extend", direction: -1, ... }]` |
+      | Select to next WORD start                    | `word.ws`                 | `s-w` (helix: normal)                        | `[".seek.word", {                  ws: true                                , ... }]` |
+      | Extend to next WORD start                    | `word.ws.extend`          | `s-w` (helix: visual), `s-w` (helix: select) | `[".seek.word", {                  ws: true, shift: "extend"               , ... }]` |
+      | Select to previous WORD start                | `word.ws.backward`        | `s-b` (helix: normal)                        | `[".seek.word", {                  ws: true,                  direction: -1, ... }]` |
+      | Extend to previous WORD start                | `word.ws.extend.backward` | `s-b` (helix: visual), `s-b` (helix: select) | `[".seek.word", {                  ws: true, shift: "extend", direction: -1, ... }]` |
+      | Select to next word end                      | `wordEnd`                 | `e` (helix: normal)                          | `[".seek.word", { stopAtEnd: true                                          , ... }]` |
+      | Extend to next word end                      | `wordEnd.extend`          | `e` (helix: visual), `e` (helix: select)     | `[".seek.word", { stopAtEnd: true,           shift: "extend"               , ... }]` |
+      | Select to next WORD end                      | `wordEnd.ws`              | `s-e` (helix: normal)                        | `[".seek.word", { stopAtEnd: true, ws: true                                , ... }]` |
+      | Extend to next WORD end                      | `wordEnd.ws.extend`       | `s-e` (helix: visual), `s-e` (helix: select) | `[".seek.word", { stopAtEnd: true, ws: true, shift: "extend"               , ... }]` |
 
 seek.word.backward:
   title:
@@ -1409,17 +1475,6 @@ seek.word.backward:
     qwerty: |-
       `b` (helix: normal)
 
-seek.word.backward.extend:
-  title:
-    en: Extend to previous word start
-
-  commands: |-
-    [".seek.word", { shift: "extend", direction: -1, $exclude: [] }]
-
-  keys:
-    qwerty: |-
-      `b` (helix: visual)
-
 seek.word.extend:
   title:
     en: Extend to next word start
@@ -1430,6 +1485,19 @@ seek.word.extend:
   keys:
     qwerty: |-
       `w` (helix: visual)
+      `w` (helix: select)
+
+seek.word.extend.backward:
+  title:
+    en: Extend to previous word start
+
+  commands: |-
+    [".seek.word", { shift: "extend", direction: -1, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `b` (helix: visual)
+      `b` (helix: select)
 
 seek.word.ws:
   title:
@@ -1453,17 +1521,6 @@ seek.word.ws.backward:
     qwerty: |-
       `s-b` (helix: normal)
 
-seek.word.ws.backward.extend:
-  title:
-    en: Extend to previous WORD start
-
-  commands: |-
-    [".seek.word", { ws: true, shift: "extend", direction: -1, $exclude: [] }]
-
-  keys:
-    qwerty: |-
-      `s-b` (helix: visual)
-
 seek.word.ws.extend:
   title:
     en: Extend to next WORD start
@@ -1474,6 +1531,19 @@ seek.word.ws.extend:
   keys:
     qwerty: |-
       `s-w` (helix: visual)
+      `s-w` (helix: select)
+
+seek.word.ws.extend.backward:
+  title:
+    en: Extend to previous WORD start
+
+  commands: |-
+    [".seek.word", { ws: true, shift: "extend", direction: -1, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-b` (helix: visual)
+      `s-b` (helix: select)
 
 seek.wordEnd:
   title:
@@ -1496,6 +1566,7 @@ seek.wordEnd.extend:
   keys:
     qwerty: |-
       `e` (helix: visual)
+      `e` (helix: select)
 
 seek.wordEnd.ws:
   title:
@@ -1518,6 +1589,7 @@ seek.wordEnd.ws.extend:
   keys:
     qwerty: |-
       `s-e` (helix: visual)
+      `s-e` (helix: select)
 
 select.buffer:
   title:
@@ -1562,7 +1634,8 @@ select.down.extend:
   keys:
     qwerty: |-
       `s-j` (helix: normal)
-      `s-down` (helix: normal) , `j` (helix: visual) , `down` (helix: visual)
+      `s-down` (helix: normal) , `j` (helix: select)
+      `down` (helix: select) , `j` (helix: visual) , `down` (helix: visual)
 
 select.down.jump:
   title:
@@ -1637,12 +1710,12 @@ select.horizontally:
 
       #### Variants
 
-      | Title        | Identifier     | Keybinding                                                               | Command                                                             |
-      | ------------ | -------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------- |
-      | Jump right   | `right.jump`   | `l` (helix: normal) , `right` (helix: normal)                            | `[".select.horizontally", { direction:  1, shift: "jump"  , ... }]` |
-      | Extend right | `right.extend` | `s-right` (helix: normal), `l` (helix: visual) , `right` (helix: visual) | `[".select.horizontally", { direction:  1, shift: "extend", ... }]` |
-      | Jump left    | `left.jump`    | `h` (helix: normal) , `left` (helix: normal)                             | `[".select.horizontally", { direction: -1, shift: "jump"  , ... }]` |
-      | Extend left  | `left.extend`  | `s-left` (helix: normal) , `h` (helix: visual) , `left` (helix: visual)  | `[".select.horizontally", { direction: -1, shift: "extend", ... }]` |
+      | Title        | Identifier     | Keybinding                                                                                                              | Command                                                             |
+      | ------------ | -------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+      | Jump right   | `right.jump`   | `l` (helix: normal) , `right` (helix: normal)                                                                           | `[".select.horizontally", { direction:  1, shift: "jump"  , ... }]` |
+      | Extend right | `right.extend` | `s-right` (helix: normal), `l` (helix: select), `right` (helix: select) , `l` (helix: visual) , `right` (helix: visual) | `[".select.horizontally", { direction:  1, shift: "extend", ... }]` |
+      | Jump left    | `left.jump`    | `h` (helix: normal) , `left` (helix: normal)                                                                            | `[".select.horizontally", { direction: -1, shift: "jump"  , ... }]` |
+      | Extend left  | `left.extend`  | `s-left` (helix: normal) , `h` (helix: select), `left` (helix: select) , `h` (helix: visual) , `left` (helix: visual)   | `[".select.horizontally", { direction: -1, shift: "extend", ... }]` |
 
 select.lastLine:
   title:
@@ -1711,7 +1784,8 @@ select.left.extend:
 
   keys:
     qwerty: |-
-      `s-left` (helix: normal) , `h` (helix: visual) , `left` (helix: visual)
+      `s-left` (helix: normal) , `h` (helix: select)
+      `left` (helix: select) , `h` (helix: visual) , `left` (helix: visual)
 
 select.left.jump:
   title:
@@ -1902,7 +1976,8 @@ select.right.extend:
   keys:
     qwerty: |-
       `s-right` (helix: normal)
-      `l` (helix: visual) , `right` (helix: visual)
+      `l` (helix: select)
+      `right` (helix: select) , `l` (helix: visual) , `right` (helix: visual)
 
 select.right.jump:
   title:
@@ -1928,10 +2003,10 @@ select.to:
 
       #### Variants
 
-      | Title     | Identifier  | Keybinding                                 | Command                                    |
-      | --------- | ----------- | ------------------------------------------ | ------------------------------------------ |
-      | Go to     | `to.jump`   | `g` (helix: normal)                        | `[".select.to", { shift: "jump"  , ... }]` |
-      | Extend to | `to.extend` | `s-g` (helix: normal), `g` (helix: visual) | `[".select.to", { shift: "extend", ... }]` |
+      | Title     | Identifier  | Keybinding                                                      | Command                                    |
+      | --------- | ----------- | --------------------------------------------------------------- | ------------------------------------------ |
+      | Go to     | `to.jump`   | `g` (helix: normal)                                             | `[".select.to", { shift: "jump"  , ... }]` |
+      | Extend to | `to.extend` | `s-g` (helix: normal), `g` (helix: select), `g` (helix: visual) | `[".select.to", { shift: "extend", ... }]` |
 
 select.to.extend:
   title:
@@ -1943,6 +2018,7 @@ select.to.extend:
   keys:
     qwerty: |-
       `s-g` (helix: normal)
+      `g` (helix: select)
       `g` (helix: visual)
 
 select.to.jump:
@@ -1966,7 +2042,8 @@ select.up.extend:
   keys:
     qwerty: |-
       `s-k` (helix: normal)
-      `s-up` (helix: normal)  , `k` (helix: visual) , `up` (helix: visual)
+      `s-up` (helix: normal)  , `k` (helix: select)
+      `up` (helix: select) , `k` (helix: visual) , `up` (helix: visual)
 
 select.up.jump:
   title:
@@ -1992,12 +2069,12 @@ select.vertically:
 
       #### Variants
 
-      | Title       | Identifier    | Keybinding                                                                                     | Command                                                           |
-      | ----------- | ------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-      | Jump down   | `down.jump`   | `j` (helix: normal)  , `down` (helix: normal)                                                  | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
-      | Extend down | `down.extend` | `s-j` (helix: normal), `s-down` (helix: normal) , `j` (helix: visual) , `down` (helix: visual) | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
-      | Jump up     | `up.jump`     | `k` (helix: normal)  , `up` (helix: normal)                                                    | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
-      | Extend up   | `up.extend`   | `s-k` (helix: normal), `s-up` (helix: normal)  , `k` (helix: visual) , `up` (helix: visual)    | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
+      | Title       | Identifier    | Keybinding                                                                                                                                   | Command                                                           |
+      | ----------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+      | Jump down   | `down.jump`   | `j` (helix: normal)  , `down` (helix: normal)                                                                                                | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
+      | Extend down | `down.extend` | `s-j` (helix: normal), `s-down` (helix: normal) , `j` (helix: select), `down` (helix: select) , `j` (helix: visual) , `down` (helix: visual) | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
+      | Jump up     | `up.jump`     | `k` (helix: normal)  , `up` (helix: normal)                                                                                                  | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
+      | Extend up   | `up.extend`   | `s-k` (helix: normal), `s-up` (helix: normal)  , `k` (helix: select), `up` (helix: select) , `k` (helix: visual) , `up` (helix: visual)      | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
 
       The following keybindings are also defined:
 
@@ -2356,7 +2433,7 @@ selections.rotate.both:
 
   keys:
     qwerty: |-
-      `a-(` (kakoune: normal)
+      `a-)` (kakoune: normal)
 
   doc:
     en: |
@@ -2367,7 +2444,7 @@ selections.rotate.both:
 
       | Title                               | Identifier     | Keybinding              | Command                                          |
       | ----------------------------------- | -------------- | ----------------------- | ------------------------------------------------ |
-      | Rotate selections counter-clockwise | `both.reverse` | `a-)` (kakoune: normal) | `[".selections.rotate.both", { reverse: true }]` |
+      | Rotate selections counter-clockwise | `both.reverse` | `a-(` (kakoune: normal) | `[".selections.rotate.both", { reverse: true }]` |
 
 selections.rotate.both.reverse:
   title:
@@ -2378,7 +2455,7 @@ selections.rotate.both.reverse:
 
   keys:
     qwerty: |-
-      `a-)` (kakoune: normal)
+      `a-(` (kakoune: normal)
 
 selections.rotate.contents:
   title:
@@ -2407,21 +2484,21 @@ selections.rotate.selections:
 
   keys:
     qwerty: |-
-      `(` (helix: normal)
-      `(` (helix: visual)
+      `)` (helix: normal)
+      `)` (helix: visual)
 
   doc:
     en: |
       Rotate selections clockwise (selections only).
 
-      TODO: ( seems to be broken. Fix it...
+      TODO: ) seems to be broken. Fix it...
 
 
       The following keybinding is also available:
 
       | Title                                                 | Identifier           | Keybinding                               | Command                                                |
       | ----------------------------------------------------- | -------------------- | ---------------------------------------- | ------------------------------------------------------ |
-      | Rotate selections counter-clockwise (selections only) | `selections.reverse` | `)` (helix: normal), `)` (helix: visual) | `[".selections.rotate.selections", { reverse: true }]` |
+      | Rotate selections counter-clockwise (selections only) | `selections.reverse` | `(` (helix: normal), `(` (helix: visual) | `[".selections.rotate.selections", { reverse: true }]` |
 
 selections.rotate.selections.reverse:
   title:
@@ -2432,8 +2509,8 @@ selections.rotate.selections.reverse:
 
   keys:
     qwerty: |-
-      `)` (helix: normal)
-      `)` (helix: visual)
+      `(` (helix: normal)
+      `(` (helix: visual)
 
 selections.save:
   title:

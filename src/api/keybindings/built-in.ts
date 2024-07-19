@@ -1212,7 +1212,7 @@ const builtinKeybindings = [
     key: "B",
     when: "editorTextFocus && dance.mode == 'visual'",
     title: "Extend to previous word start",
-    command: "dance.seek.word.backward.extend",
+    command: "dance.seek.word.extend.backward",
   },
   {
     key: "W",
@@ -1236,7 +1236,7 @@ const builtinKeybindings = [
     key: "Shift+B",
     when: "editorTextFocus && dance.mode == 'visual'",
     title: "Extend to previous WORD start",
-    command: "dance.seek.word.ws.backward.extend",
+    command: "dance.seek.word.ws.extend.backward",
   },
   {
     key: "Shift+W",

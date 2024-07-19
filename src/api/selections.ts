@@ -467,7 +467,7 @@ export function update(
    | map.Mapper<Thenable<vscode.Selection | undefined>>,
   context?: Context,
 ): any {
-  const selections = map(f as any, context?.selections);
+  const selections = map(f as map.Mapper<vscode.Selection | undefined>, context?.selections);
 
   if (Array.isArray(selections)) {
     return set(selections, context);
@@ -538,7 +538,7 @@ export function updateByIndex(
    | mapByIndex.Mapper<Thenable<vscode.Selection | undefined>>,
   context?: Context,
 ): any {
-  const selections = mapByIndex(f as any, context?.selections);
+  const selections = mapByIndex(f as mapByIndex.Mapper<vscode.Selection>, context?.selections);
 
   if (Array.isArray(selections)) {
     return set(selections, context);
@@ -558,7 +558,7 @@ export function updateWithFallback<T extends updateWithFallback.SelectionOrFallb
 ): T extends Thenable<updateWithFallback.SelectionOrFallback>
     ? Thenable<vscode.Selection[]>
     : vscode.Selection[] {
-  const selections = map(f as any);
+  const selections = map(f as map.Mapper<updateWithFallback.SelectionOrFallback>);
 
   if (Array.isArray(selections)) {
     return set(mapFallbackSelections(selections)) as any;
@@ -589,7 +589,7 @@ export function updateWithFallbackByIndex<
 ): T extends Thenable<updateWithFallback.SelectionOrFallback>
     ? Thenable<vscode.Selection[]>
     : vscode.Selection[] {
-  const selections = mapByIndex(f as any);
+  const selections = mapByIndex(f as mapByIndex.Mapper<updateWithFallback.SelectionOrFallback>);
 
   if (Array.isArray(selections)) {
     return set(mapFallbackSelections(selections)) as any;
@@ -611,15 +611,15 @@ export function updateWithFallbackByIndex<
  * Before:
  * ```
  * foo bar baz
- * ^^^ 0   ^^^ 2
- *     ^^^ 1
+ * ^^^ 1   ^^^ 0
+ *     ^^^ 2
  * ```
  *
  * After:
  * ```
  * foo bar baz
- * ^^^ 1   ^^^ 0
- *     ^^^ 2
+ * ^^^ 0   ^^^ 2
+ *     ^^^ 1
  * ```
  *
  * ### Example
@@ -631,8 +631,8 @@ export function updateWithFallbackByIndex<
  * Before:
  * ```
  * foo bar baz
- * ^^^ 0   ^^^ 2
- *     ^^^ 1
+ * ^^^ 1   ^^^ 0
+ *     ^^^ 2
  * ```
  *
  * After:
@@ -655,13 +655,18 @@ export function rotate(
     return selections.slice();
   }
 
-  const newSelections = new Array<vscode.Selection>(selections.length);
+  // Figure out how much the main selection should rotate (in terms of indices)
+  // to rotate (visually) by `by`.
+  const sortedIndices = Array.from({ length: len }, (_, i) => i)
+    .sort((a, b) => sortTopToBottom(selections[a], selections[b]));
 
-  for (let i = 0; i < len; i++) {
-    newSelections[(i + by) % len] = selections[i];
-  }
+  return Array.from({ length: len }, (_, i) => {
+    const indexInSortedArray = sortedIndices.indexOf(i);
+    const rotatedIndexInSortedArray = (indexInSortedArray + by) % len;
+    const rotatedIndex = sortedIndices[rotatedIndexInSortedArray];
 
-  return newSelections;
+    return selections[rotatedIndex];
+  });
 }
 
 /**

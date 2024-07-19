@@ -6,6 +6,7 @@ import { CharSet } from "../utils/charset";
 import { ArgumentError, assert } from "../utils/errors";
 import { escapeForRegExp, execRange } from "../utils/regexp";
 import * as TrackedSelection from "../utils/tracked-selection";
+import { SyntaxNode, Tree, TreeSitter } from "../utils/tree-sitter";
 
 /**
  * Update selections based on the text surrounding them.
@@ -19,15 +20,15 @@ declare module "./seek";
  *
  * #### Variants
  *
- * | Title                                    | Identifier                 | Keybinding              | Command                                                             |
- * | ---------------------------------------- | -------------------------- | ----------------------- | ------------------------------------------------------------------- |
- * | Select to character (excluded, backward) | `backward`                 | `s-t` (helix: normal)   | `[".seek", {                                 direction: -1, ... }]` |
- * | Select to character (included)           | `included`                 | `f` (helix: normal)     | `[".seek", { include: true                                , ... }]` |
- * | Select to character (included, backward) | `included.backward`        | `s-f` (helix: normal)   | `[".seek", { include: true,                  direction: -1, ... }]` |
- * | Extend to character (excluded)           | `extend`                   | `t` (helix: visual)     | `[".seek", {                shift: "extend"               , ... }]` |
- * | Extend to character (excluded, backward) | `extend.backward`          | `s-t` (helix: visual)   | `[".seek", {                shift: "extend", direction: -1, ... }]` |
- * | Extend to character (included)           | `included.extend`          | `f` (helix: visual)     | `[".seek", { include: true, shift: "extend"               , ... }]` |
- * | Extend to character (included, backward) | `included.extend.backward` | `s-f` (helix: visual)   | `[".seek", { include: true, shift: "extend", direction: -1, ... }]` |
+ * | Title                                    | Identifier                 | Keybinding                                   | Command                                                             |
+ * | ---------------------------------------- | -------------------------- | -------------------------------------------- | ------------------------------------------------------------------- |
+ * | Extend to character (excluded)           | `extend`                   | `t` (helix: visual), `t` (helix: select)     | `[".seek", {                shift: "extend"               , ... }]` |
+ * | Select to character (excluded, backward) | `backward`                 | `s-t` (helix: normal)                        | `[".seek", {                                 direction: -1, ... }]` |
+ * | Extend to character (excluded, backward) | `extend.backward`          | `s-t` (helix: visual), `s-t` (helix: select) | `[".seek", {                shift: "extend", direction: -1, ... }]` |
+ * | Select to character (included)           | `included`                 | `f` (helix: normal)                          | `[".seek", { include: true                                , ... }]` |
+ * | Extend to character (included)           | `included.extend`          | `f` (helix: visual), `f` (helix: select)     | `[".seek", { include: true, shift: "extend"               , ... }]` |
+ * | Select to character (included, backward) | `included.backward`        | `s-f` (helix: normal)                        | `[".seek", { include: true,                  direction: -1, ... }]` |
+ * | Extend to character (included, backward) | `included.extend.backward` | `s-f` (helix: visual), `s-f` (helix: select) | `[".seek", { include: true, shift: "extend", direction: -1, ... }]` |
  */
 export async function seek(
   _: Context,
@@ -179,19 +180,19 @@ export function enclosing(
  *
  * #### Variants
  *
- * | Title                                        | Identifier                | Keybinding              | Command                                                                              |
- * | -------------------------------------------- | ------------------------- | ----------------------- | ------------------------------------------------------------------------------------ |
- * | Select to next WORD start                    | `word.ws`                 | `s-w` (helix: normal)   | `[".seek.word", {                  ws: true                                , ... }]` |
- * | Select to previous word start                | `word.backward`           | `b` (helix: normal)     | `[".seek.word", {                                             direction: -1, ... }]` |
- * | Select to previous WORD start                | `word.ws.backward`        | `s-b` (helix: normal)   | `[".seek.word", {                  ws: true,                  direction: -1, ... }]` |
- * | Select to next word end                      | `wordEnd`                 | `e` (helix: normal)     | `[".seek.word", { stopAtEnd: true                                          , ... }]` |
- * | Select to next WORD end                      | `wordEnd.ws`              | `s-e` (helix: normal)   | `[".seek.word", { stopAtEnd: true, ws: true                                , ... }]` |
- * | Extend to next word start                    | `word.extend`             | `w` (helix: visual)     | `[".seek.word", {                            shift: "extend"               , ... }]` |
- * | Extend to next WORD start                    | `word.ws.extend`          | `s-w` (helix: visual)   | `[".seek.word", {                  ws: true, shift: "extend"               , ... }]` |
- * | Extend to previous word start                | `word.backward.extend`    | `b` (helix: visual)     | `[".seek.word", {                            shift: "extend", direction: -1, ... }]` |
- * | Extend to previous WORD start                | `word.ws.backward.extend` | `s-b` (helix: visual)   | `[".seek.word", {                  ws: true, shift: "extend", direction: -1, ... }]` |
- * | Extend to next word end                      | `wordEnd.extend`          | `e` (helix: visual)     | `[".seek.word", { stopAtEnd: true,           shift: "extend"               , ... }]` |
- * | Extend to next WORD end                      | `wordEnd.ws.extend`       | `s-e` (helix: visual)   | `[".seek.word", { stopAtEnd: true, ws: true, shift: "extend"               , ... }]` |
+ * | Title                                        | Identifier                | Keybinding                                   | Command                                                                              |
+ * | -------------------------------------------- | ------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------ |
+ * | Extend to next word start                    | `word.extend`             | `w` (helix: visual), `w` (helix: select)     | `[".seek.word", {                            shift: "extend"               , ... }]` |
+ * | Select to previous word start                | `word.backward`           | `b` (helix: normal)                          | `[".seek.word", {                                             direction: -1, ... }]` |
+ * | Extend to previous word start                | `word.extend.backward`    | `b` (helix: visual), `b` (helix: select)     | `[".seek.word", {                            shift: "extend", direction: -1, ... }]` |
+ * | Select to next WORD start                    | `word.ws`                 | `s-w` (helix: normal)                        | `[".seek.word", {                  ws: true                                , ... }]` |
+ * | Extend to next WORD start                    | `word.ws.extend`          | `s-w` (helix: visual), `s-w` (helix: select) | `[".seek.word", {                  ws: true, shift: "extend"               , ... }]` |
+ * | Select to previous WORD start                | `word.ws.backward`        | `s-b` (helix: normal)                        | `[".seek.word", {                  ws: true,                  direction: -1, ... }]` |
+ * | Extend to previous WORD start                | `word.ws.extend.backward` | `s-b` (helix: visual), `s-b` (helix: select) | `[".seek.word", {                  ws: true, shift: "extend", direction: -1, ... }]` |
+ * | Select to next word end                      | `wordEnd`                 | `e` (helix: normal)                          | `[".seek.word", { stopAtEnd: true                                          , ... }]` |
+ * | Extend to next word end                      | `wordEnd.extend`          | `e` (helix: visual), `e` (helix: select)     | `[".seek.word", { stopAtEnd: true,           shift: "extend"               , ... }]` |
+ * | Select to next WORD end                      | `wordEnd.ws`              | `s-e` (helix: normal)                        | `[".seek.word", { stopAtEnd: true, ws: true                                , ... }]` |
+ * | Extend to next WORD end                      | `wordEnd.ws.extend`       | `s-e` (helix: visual), `s-e` (helix: select) | `[".seek.word", { stopAtEnd: true, ws: true, shift: "extend"               , ... }]` |
  */
 export function word(
   _: Context,
@@ -285,6 +286,8 @@ export async function object(
   inner: Argument<boolean> = false,
   where?: Argument<"start" | "end">,
   shift = Shift.Select,
+
+  treeSitter?: TreeSitter,
 ) {
   const input = await inputOr(() => prompt({
     prompt: "Object description",
@@ -491,7 +494,124 @@ export async function object(
     return Selections.set(newSelections);
   }
 
+  // Helix text objects:
+  //   https://github.com/helix-editor/helix/blob/master/book/src/guides/textobject.md#L1
+  if (match = /^\(\?#textobject=(\w+)\)$/.exec(input)) {
+    if (treeSitter === undefined) {
+      throw new Error("tree-sitter is not available");
+    }
+
+    const query = await treeSitter.textObjectQueryFor(_.document);
+
+    if (query === undefined) {
+      throw new Error("no textobject query available for current document");
+    }
+
+    // Languages with queries available are a subset of supported languages, so
+    // given that we have a `query` `withDocumentTree()` will not fail.
+    const newSelections = await treeSitter.withDocumentTree(_.document, (documentTree) => {
+      const textObjectName = match![1] + (inner ? ".inside" : ".around");
+
+      if (!query.captureNames.includes(textObjectName)) {
+        const existingValues = query.captureNames.map((name) =>
+          `"${name.replace(".inside", "").replace(".around", "")}"`,
+        ).join(", ");
+
+        throw new Error(
+          `unknown textobject ${JSON.stringify(textObjectName)}, valid values are ${existingValues}`,
+        );
+      }
+
+      // TODO(71): add helpers for checking if a VS Code Position is within a Tree
+      //   Sitter range without creating temporary objects
+      const captures = query.captures(documentTree.rootNode)
+        .filter((capture) => capture.name === textObjectName)
+        .map(({ node }) => [node, treeSitter.toRange(node)] as const);
+
+      return Selections.mapByIndex((_i, selection) => {
+        const active = selection.active;
+
+        let smallestNode: SyntaxNode | undefined;
+        const smallestNodeLength = Number.MAX_SAFE_INTEGER;
+
+        for (const [node, nodeRange] of captures) {
+          if (!nodeRange.contains(active)) {
+            continue;
+          }
+
+          const nodeLength = node.endIndex - node.startIndex;
+
+          if (nodeLength < smallestNodeLength && !nodeRange.isEqual(selection)) {
+            smallestNode = node;
+          }
+        }
+
+        return smallestNode === undefined
+          ? selection
+          : Selections.fromStartEnd(
+            treeSitter.toPosition(smallestNode.startPosition),
+            treeSitter.toPosition(smallestNode.endPosition),
+            Selections.isStrictlyReversed(selection, _));
+      });
+    });
+
+    return Selections.set(newSelections);
+  }
+
   throw new Error("unknown object " + JSON.stringify(input));
+}
+
+/**
+ * Select syntax object.
+ *
+ * #### Variants
+ *
+ * | Title                         | Identifier                     | Command                                                |
+ * | ----------------------------- | ------------------------------ | ------------------------------------------------------ |
+ * | Select next syntax object     | `syntax.next.experimental`     | `[".seek.syntax.experimental", { where: "next"     }]` |
+ * | Select previous syntax object | `syntax.previous.experimental` | `[".seek.syntax.experimental", { where: "previous" }]` |
+ * | Select parent syntax object   | `syntax.parent.experimental`   | `[".seek.syntax.experimental", { where: "parent"   }]` |
+ * | Select child syntax object    | `syntax.child.experimental`    | `[".seek.syntax.experimental", { where: "child"    }]` |
+ */
+export function syntax_experimental(
+  _: Context,
+
+  treeSitter: TreeSitter,
+  documentTree: Tree,
+
+  where: Argument<"next" | "previous" | "parent" | "child"> = "next",
+): void {
+  const rootNode = documentTree.rootNode;
+
+  Selections.updateByIndex((_, selection) => {
+    const activeNode =
+      rootNode.namedDescendantForPosition(treeSitter.fromPosition(selection.active));
+    let newNode: SyntaxNode | null;
+
+    switch (where) {
+    case "next":
+      newNode = activeNode.nextNamedSibling;
+      break;
+
+    case "previous":
+      newNode = activeNode.previousNamedSibling;
+      break;
+
+    case "child":
+      newNode = activeNode.firstNamedChild;
+      break;
+
+    case "parent":
+      newNode = activeNode.parent;
+      break;
+    }
+
+    if (newNode == null) {
+      return selection;
+    }
+
+    return Selections.fromRange(treeSitter.toRange(newNode));
+  }, _);
 }
 
 /**
@@ -516,7 +636,8 @@ export async function leap(
   labels = labels.toLowerCase();
 
   ArgumentError.validate(
-    "labels", new Set(labels).size === [...labels].length, "must not reuse characters");
+    "labels",
+    new Set(labels as Iterable<string>).size === [...labels].length, "must not reuse characters");
 
   const editor = _.editor,
         doc = _.document,
@@ -647,6 +768,8 @@ export async function leap(
         styledSet.deleteSelections(selections);
       }
     }
+    // clear unlabeled highlight
+    unlabeledSelectionsSet.clearSelections();
 
     // Listen to jumps to labels.
     let offset = 0;

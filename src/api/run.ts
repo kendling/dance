@@ -448,8 +448,40 @@ const commonSpawnOptions = { stdio: "pipe", windowsHide: true } as const;
 export function execute(
   command: string,
   input?: string,
+  options: { cwd?: string; env?: Record<string, string> } = {},
   cancellationToken = Context.WithoutActiveEditor.current.cancellationToken,
 ) {
+  const {
+    cwd = function () {
+      const currentFileUri = Context.currentOrUndefined?.document.uri;
+
+      if (currentFileUri?.scheme === "file" || currentFileUri?.scheme === "vscode-userdata") {
+        return vscode.Uri.joinPath(currentFileUri, "..").fsPath;
+      }
+
+      const workspaceFolder = vscode.workspace.workspaceFolders?.[0]?.uri;
+
+      if (workspaceFolder?.scheme === "file") {
+        return workspaceFolder.fsPath;
+      }
+
+      return undefined;
+    }(),
+    env: givenEnv = function () {
+      if (vscode.env.remoteName !== undefined) {
+        return {};
+      }
+
+      const env = { ...process.env };
+
+      if (cwd !== undefined) {
+        env["PWD"] = cwd;
+      }
+
+      return env;
+    }(),
+  } = options;
+
   if (process.platform as string === "web") {
     return Context.WithoutActiveEditor.wrap(
       Promise.reject(new Error("execution of arbitrary commands is not supported on the web")),
@@ -467,10 +499,15 @@ export function execute(
       const automationProfile = getAutomationProfile(),
             shell = typeof automationProfile?.path === "string" ? automationProfile.path : "",
             args = Array.isArray(automationProfile?.args) ? automationProfile!.args : [],
-            env = typeof automationProfile?.env === "object" ? automationProfile.env : {},
+            env = {
+              ...(typeof automationProfile?.env === "object" ? automationProfile.env : {}),
+              ...givenEnv,
+            },
             child = shell.length === 0
-              ? cp.spawn(command, { ...commonSpawnOptions,shell: true, env })
-              : cp.spawn(shell, [...args, command], { ...commonSpawnOptions,shell: false, env });
+              ? cp.spawn(command, { ...commonSpawnOptions, shell: true, env, cwd: env["PWD"] })
+              : cp.spawn(shell,
+                         [...args, command],
+                         { ...commonSpawnOptions, shell: false, env, cwd: env["PWD"] });
 
       let stdout = "",
           stderr = "";
