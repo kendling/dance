@@ -77,7 +77,7 @@ const selectionDecorationType = {
 // Package information
 // ============================================================================
 
-const version = "0.5.15",
+const version = "0.5.15001",
       preRelease = 1;
 
 export const pkg = (modules: Builder.ParsedModule[]) => ({
@@ -995,6 +995,9 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
           keysToAssignForNormal.delete(keybinding.key);
         }
         if (keybinding.when.includes("dance.mode == 'select'")) {
+          keysToAssignForVisual.delete(keybinding.key);
+        }
+        if (keybinding.when.includes("dance.mode == 'visual'")) {
           keysToAssignForVisual.delete(keybinding.key);
         }
       }
