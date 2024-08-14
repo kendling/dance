@@ -38,12 +38,12 @@ const preferredColumnsToken =
  *
  * #### Variants
  *
- * | Title       | Identifier    | Keybinding                                                                                                                                   | Command                                                           |
- * | ----------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
- * | Jump down   | `down.jump`   | `j` (helix: normal)  , `down` (helix: normal)                                                                                                | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
- * | Extend down | `down.extend` | `s-j` (helix: normal), `s-down` (helix: normal) , `j` (helix: select), `down` (helix: select) , `j` (helix: visual) , `down` (helix: visual) | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
- * | Jump up     | `up.jump`     | `k` (helix: normal)  , `up` (helix: normal)                                                                                                  | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
- * | Extend up   | `up.extend`   | `s-k` (helix: normal), `s-up` (helix: normal)  , `k` (helix: select), `up` (helix: select) , `k` (helix: visual) , `up` (helix: visual)      | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
+ * | Title       | Identifier    | Keybinding                                                                                                            | Command                                                           |
+ * | ----------- | ------------- | ----------------------------------------------------------------------------------------------------------------------| ----------------------------------------------------------------- |
+ * | Jump down   | `down.jump`   | `j` (helix: normal)  , `down` (helix: normal)                                                                         | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
+ * | Extend down | `down.extend` | `s-down` (helix: normal) , `j` (helix: select), `down` (helix: select) , `j` (helix: visual) , `down` (helix: visual) | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
+ * | Jump up     | `up.jump`     | `k` (helix: normal)  , `up` (helix: normal)                                                                           | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
+ * | Extend up   | `up.extend`   | `s-up` (helix: normal)  , `k` (helix: select), `up` (helix: select) , `k` (helix: visual) , `up` (helix: visual)      | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
  *
  * The following keybindings are also defined:
  *

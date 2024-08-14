@@ -1,7 +1,7 @@
 {
   "name": "dancehelixkey",
   "description": "Fork of Dance with helix keybindings (Unfinished, base on silverquark's code)",
-  "version": "0.5.15001",
+  "version": "0.5.15002",
   "license": "ISC",
   "author": {
     "name": "Leo",
@@ -32,8 +32,8 @@
     "vscode:prepublish": "yarn run generate && yarn run compile && yarn run compile-web",
     "package": "vsce package --allow-star-activation",
     "publish": "vsce publish --allow-star-activation",
-    "package:pre": "vsce package --allow-star-activation --pre-release --no-git-tag-version --no-update-package-json 0.5.15001001",
-    "publish:pre": "vsce publish --allow-star-activation --pre-release --no-git-tag-version --no-update-package-json 0.5.15001001"
+    "package:pre": "vsce package --allow-star-activation --pre-release --no-git-tag-version --no-update-package-json 0.5.15002001",
+    "publish:pre": "vsce publish --allow-star-activation --pre-release --no-git-tag-version --no-update-package-json 0.5.15002001"
   },
   "devDependencies": {
     "@types/glob": "^7.2.0",
@@ -4387,12 +4387,6 @@
         "command": "dance.select.buffer"
       },
       {
-        "key": "Shift+J",
-        "when": "editorTextFocus && dance.mode == 'normal'",
-        "title": "Extend down",
-        "command": "dance.select.down.extend"
-      },
-      {
         "key": "Shift+Down",
         "when": "editorTextFocus && dance.mode == 'normal'",
         "title": "Extend down",
@@ -4601,12 +4595,6 @@
         "when": "editorTextFocus && dance.mode == 'normal'",
         "title": "Go to",
         "command": "dance.select.to.jump"
-      },
-      {
-        "key": "Shift+K",
-        "when": "editorTextFocus && dance.mode == 'normal'",
-        "title": "Extend up",
-        "command": "dance.select.up.extend"
       },
       {
         "key": "Shift+Up",

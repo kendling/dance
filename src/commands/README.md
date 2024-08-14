@@ -160,7 +160,7 @@ selections are empty</td><td></td></tr>
 <tr><td><a href="#select.middleVisibleLine"><code>select.middleVisibleLine</code></a></td><td>Select to middle visible line</td><td></td></tr>
 <tr><td><a href="./select.ts#L519"><code>select.documentEnd.extend</code></a></td><td>Extend to last character</td><td></td></tr>
 <tr><td><a href="./select.ts#L518"><code>select.documentEnd.jump</code></a></td><td>Jump to last character</td><td></td></tr>
-<tr><td><a href="./select.ts#L44"><code>select.down.extend</code></a></td><td>Extend down</td><td><code>Shift+J</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+Down</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>J</code> (<code>editorTextFocus && dance.mode == 'select'</code>)<code>Down</code> (<code>editorTextFocus && dance.mode == 'select'</code>)<code>J</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)<code>Down</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+<tr><td><a href="./select.ts#L44"><code>select.down.extend</code></a></td><td>Extend down</td><td><code>Shift+Down</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>J</code> (<code>editorTextFocus && dance.mode == 'select'</code>)<code>Down</code> (<code>editorTextFocus && dance.mode == 'select'</code>)<code>J</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)<code>Down</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
 <tr><td><a href="./select.ts#L43"><code>select.down.jump</code></a></td><td>Jump down</td><td><code>J</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Down</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
 <tr><td><a href="./select.ts#L472"><code>select.firstLine.extend</code></a></td><td>Extend to first line</td><td></td></tr>
 <tr><td><a href="./select.ts#L471"><code>select.firstLine.jump</code></a></td><td>Jump to first line</td><td></td></tr>
@@ -183,7 +183,7 @@ selections are empty</td><td></td></tr>
 <tr><td><a href="./select.ts#L235"><code>select.right.jump</code></a></td><td>Jump right</td><td><code>L</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Right</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
 <tr><td><a href="./select.ts#L305"><code>select.to.extend</code></a></td><td>Extend to</td><td><code>Shift+G</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>G</code> (<code>editorTextFocus && dance.mode == 'select'</code>)<code>G</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
 <tr><td><a href="./select.ts#L304"><code>select.to.jump</code></a></td><td>Go to</td><td><code>G</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
-<tr><td><a href="./select.ts#L46"><code>select.up.extend</code></a></td><td>Extend up</td><td><code>Shift+K</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Shift+Up</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>K</code> (<code>editorTextFocus && dance.mode == 'select'</code>)<code>Up</code> (<code>editorTextFocus && dance.mode == 'select'</code>)<code>K</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)<code>Up</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
+<tr><td><a href="./select.ts#L46"><code>select.up.extend</code></a></td><td>Extend up</td><td><code>Shift+Up</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>K</code> (<code>editorTextFocus && dance.mode == 'select'</code>)<code>Up</code> (<code>editorTextFocus && dance.mode == 'select'</code>)<code>K</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)<code>Up</code> (<code>editorTextFocus && dance.mode == 'visual'</code>)</td></tr>
 <tr><td><a href="./select.ts#L45"><code>select.up.jump</code></a></td><td>Jump up</td><td><code>K</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)<code>Up</code> (<code>editorTextFocus && dance.mode == 'normal'</code>)</td></tr>
 <tr><td><a href="#select.to"><code>select.to</code></a></td><td>Select to</td><td></td></tr>
 <tr><td><a href="#select.vertically"><code>select.vertically</code></a></td><td>Select vertically</td><td></td></tr>
@@ -1238,12 +1238,12 @@ Select vertically.
 
 #### Variants
 
-| Title       | Identifier    | Keybinding                                                                                                                                   | Command                                                           |
-| ----------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| Jump down   | `down.jump`   | `j` (helix: normal)  , `down` (helix: normal)                                                                                                | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
-| Extend down | `down.extend` | `s-j` (helix: normal), `s-down` (helix: normal) , `j` (helix: select), `down` (helix: select) , `j` (helix: visual) , `down` (helix: visual) | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
-| Jump up     | `up.jump`     | `k` (helix: normal)  , `up` (helix: normal)                                                                                                  | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
-| Extend up   | `up.extend`   | `s-k` (helix: normal), `s-up` (helix: normal)  , `k` (helix: select), `up` (helix: select) , `k` (helix: visual) , `up` (helix: visual)      | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
+| Title       | Identifier    | Keybinding                                                                                                            | Command                                                           |
+| ----------- | ------------- | ----------------------------------------------------------------------------------------------------------------------| ----------------------------------------------------------------- |
+| Jump down   | `down.jump`   | `j` (helix: normal)  , `down` (helix: normal)                                                                         | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
+| Extend down | `down.extend` | `s-down` (helix: normal) , `j` (helix: select), `down` (helix: select) , `j` (helix: visual) , `down` (helix: visual) | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
+| Jump up     | `up.jump`     | `k` (helix: normal)  , `up` (helix: normal)                                                                           | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
+| Extend up   | `up.extend`   | `s-up` (helix: normal)  , `k` (helix: select), `up` (helix: select) , `k` (helix: visual) , `up` (helix: visual)      | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
 
 The following keybindings are also defined:
 
