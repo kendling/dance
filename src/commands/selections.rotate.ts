@@ -47,13 +47,13 @@ export function contents(_: Context, repetitions: number, reverse: Argument<bool
  *
  * TODO: ) seems to be broken. Fix it...
  *
- * @keys `)` (helix: normal), `)` (helix: visual)
+ * @keys `)` (helix: normal), `)` (helix: select)
  *
  * The following keybinding is also available:
  *
  * | Title                                                 | Identifier           | Keybinding                               | Command                                                |
  * | ----------------------------------------------------- | -------------------- | ---------------------------------------- | ------------------------------------------------------ |
- * | Rotate selections counter-clockwise (selections only) | `selections.reverse` | `(` (helix: normal), `(` (helix: visual) | `[".selections.rotate.selections", { reverse: true }]` |
+ * | Rotate selections counter-clockwise (selections only) | `selections.reverse` | `(` (helix: normal), `(` (helix: select) | `[".selections.rotate.selections", { reverse: true }]` |
  */
 export function selections(_: Context, repetitions: number, reverse: Argument<boolean> = false) {
   if (reverse) {

@@ -7,6 +7,6 @@ import * as vscode from "vscode";
  *
  * | Title                   | Keybinding                                       | Command                                 |
  * | ----------------------- | ------------------------------------------------ | --------------------------------------- |
- * | Show space menu         | `space` (helix: normal), `space` (helix: visual) | `[".openMenu", { menu: "space", ... }]` |
+ * | Show space menu         | `space` (helix: normal), `space` (helix: select) | `[".openMenu", { menu: "space", ... }]` |
  */
 declare module "./space";

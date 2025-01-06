@@ -7,6 +7,6 @@ import * as vscode from "vscode";
  *
  * | Title                   | Identifier                     | Keybinding                                   | Command                                  |
  * | ----------------------- | ------------------------------ | -------------------------------------------- | ---------------------------------------- |
- * | Show window menu        | `windowMenu`                   | `c-w` (helix: normal), `c-w` (helix: visual) | `[".openMenu", { menu: "window", ... }]` |
+ * | Show window menu        | `windowMenu`                   | `c-w` (helix: normal), `c-w` (helix: select) | `[".openMenu", { menu: "window", ... }]` |
  */
 declare module "./window";

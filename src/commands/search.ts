@@ -14,7 +14,7 @@ declare module "./search";
 /**
  * Search.
  *
- * @keys `/` (helix: normal) , `NumPad_Divide` (helix: normal) , `/` (helix: visual) , `NumPad_Divide` (helix: visual)
+ * @keys `/` (helix: normal) , `NumPad_Divide` (helix: normal) , `/` (helix: select) , `NumPad_Divide` (helix: select)
  *
  * | Title                    | Identifier        | Keybinding            | Command                                                |
  * | ------------------------ | ----------------- | --------------------- | ------------------------------------------------------ |
@@ -87,7 +87,7 @@ export async function search(
  *
  * | Title                            | Identifier        | Keybinding                                                                                                        | Command                                             |
  * | -------------------------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
- * | Search current selection (smart) | `selection.smart` | `*` (helix: normal) , `NumPad_Multiply` (helix: normal) , `*` (helix: visual) , `NumPad_Multiply` (helix: visual) | `[".search.selection", { smart: true, +register }]` |
+ * | Search current selection (smart) | `selection.smart` | `*` (helix: normal) , `NumPad_Multiply` (helix: normal) , `*` (helix: select) , `NumPad_Multiply` (helix: select) | `[".search.selection", { smart: true, +register }]` |
  */
 export function selection(
   document: vscode.TextDocument,
@@ -155,9 +155,9 @@ export function selection(
  *
  * | Title                 | Identifier     | Keybinding                                     | Command                                               |
  * | --------------------- | -------------- | ---------------------------------------------- | ----------------------------------------------------- |
- * | Add next match        | `next.add`     | `a-n` (helix: normal), `n` (helix: visual)     | `[".search.next", {                add: true, ... }]` |
+ * | Add next match        | `next.add`     | `a-n` (helix: normal), `n` (helix: select)     | `[".search.next", {                add: true, ... }]` |
  * | Select previous match | `previous`     | `s-n` (helix: normal)                          | `[".search.next", { direction: -1           , ... }]` |
- * | Add previous match    | `previous.add` | `s-a-n` (helix: normal), `s-n` (helix: visual) | `[".search.next", { direction: -1, add: true, ... }]` |
+ * | Add previous match    | `previous.add` | `s-a-n` (helix: normal), `s-n` (helix: select) | `[".search.next", { direction: -1, add: true, ... }]` |
  */
 export async function next(
   _: Context,

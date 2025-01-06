@@ -15,7 +15,7 @@ import { select } from "./selections";
  * | Title                   | Keybinding          | Command                            |
  * | ----------------------- | ------------------- | ---------------------------------- |
  * | Show match menu         | `m` (helix: normal) | `[".openMenu", { menu: "match" }]` |
- * | Show match menu         | `m` (helix: visual) | `[".openMenu", { menu: "match" }]` |
+ * | Show match menu         | `m` (helix: select) | `[".openMenu", { menu: "match" }]` |
  */
 declare module "./match";
 

@@ -527,7 +527,6 @@ export function parseKeys(keys: string) {
       switch (tag) {
       case "normal":
       case "insert":
-      case "visual":
       case "input":
       case "select":
         whenClauses.push(`dance.mode ${negate ? "!=" : "=="} '${tag}'`);

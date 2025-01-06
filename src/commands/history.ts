@@ -15,7 +15,7 @@ declare module "./history";
 /**
  * Undo.
  *
- * @keys `u` (helix: normal), `u` (helix: select), `u` (helix: visual)
+ * @keys `u` (helix: normal), `u` (helix: select)
  */
 export function undo() {
   return vscode.commands.executeCommand("undo");
@@ -24,7 +24,7 @@ export function undo() {
 /**
  * Redo.
  *
- * @keys `s-u` (helix: normal), `s-u` (helix: select), `s-u` (helix: visual)
+ * @keys `s-u` (helix: normal), `s-u` (helix: select)
  */
 export function redo() {
   return vscode.commands.executeCommand("redo");
@@ -98,7 +98,7 @@ export async function repeat(
 /**
  * Repeat last edit without a command.
  *
- * @keys `.` (helix: normal) , `NumPad_Decimal` (helix: normal) , `.` (helix: visual) , `NumPad_Decimal` (helix: visual)
+ * @keys `.` (helix: normal) , `NumPad_Decimal` (helix: normal) , `.` (helix: select) , `NumPad_Decimal` (helix: select)
  * @noreplay
  */
 export async function repeat_edit(_: Context, repetitions: number) {
@@ -140,7 +140,7 @@ export async function repeat_edit(_: Context, repetitions: number) {
 /**
  * Replay recording.
  *
- * @keys `q` (helix: normal), `q` (helix: visual)
+ * @keys `q` (helix: normal), `q` (helix: select)
  * @noreplay
  */
 export async function recording_play(
@@ -167,7 +167,7 @@ const recordingPerRegister = new WeakMap<Register, ActiveRecording>();
 /**
  * Start recording.
  *
- * @keys `s-q` (helix: normal, !recording) , `s-q` (helix: visual, !recording)
+ * @keys `s-q` (helix: normal, !recording) , `s-q` (helix: select, !recording)
  * @noreplay
  */
 export function recording_start(
@@ -188,7 +188,7 @@ export function recording_start(
 /**
  * Stop recording.
  *
- * @keys `escape` (helix: normal, recording) , `s-q` (helix: normal, recording) , `escape` (helix: visual, recording) , `s-q` (helix: visual, recording)
+ * @keys `escape` (helix: normal, recording) , `s-q` (helix: normal, recording) , `escape` (helix: select, recording) , `s-q` (helix: select, recording)
  * @noreplay
  */
 export function recording_stop(

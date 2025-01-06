@@ -77,7 +77,7 @@ const selectionDecorationType = {
 // Package information
 // ============================================================================
 
-const version = "0.5.15002",
+const version = "0.5.15003",
       preRelease = 1;
 
 export const pkg = (modules: Builder.ParsedModule[]) => ({
@@ -320,8 +320,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 }],
               ],
             },
-            select: {},
-            visual: {
+            select: {
               lineNumbers: "relative",
               cursorStyle: "underline",
               selectionBehavior: "character",
@@ -344,7 +343,6 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   },
                   until: [
                     ["mode-did-change", { include: "normal" }],
-                    ["mode-did-change", { include: "visual" }],
                     ["selections-did-change"],
                   ],
                 }],
@@ -373,7 +371,6 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   },
                   until: [
                     ["mode-did-change", { include: "normal" }],
-                    ["mode-did-change", { include: "visual" }],
                     ["selections-did-change"],
                   ],
                 }],
@@ -997,9 +994,6 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
         if (keybinding.when.includes("dance.mode == 'select'")) {
           keysToAssignForVisual.delete(keybinding.key);
         }
-        if (keybinding.when.includes("dance.mode == 'visual'")) {
-          keysToAssignForVisual.delete(keybinding.key);
-        }
       }
 
       for (const keyToAssign of keysToAssignForNormal) {
@@ -1007,13 +1001,6 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
           command: "dance.ignore",
           key: keyToAssign,
           when: "editorTextFocus && dance.mode == 'normal'",
-        });
-      }
-      for (const keyToAssign of keysToAssignForVisual) {
-        keybindings.push({
-          command: "dance.ignore",
-          key: keyToAssign,
-          when: "editorTextFocus && dance.mode == 'visual'",
         });
       }
 

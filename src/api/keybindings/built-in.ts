@@ -10,7 +10,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+7",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Align selections",
     command: "dance.edit.align",
   },
@@ -22,7 +22,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+`",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Swap case",
     command: "dance.edit.case.swap",
   },
@@ -34,7 +34,7 @@ const builtinKeybindings = [
   },
   {
     key: "`",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Transform to lower case",
     command: "dance.edit.case.toLower",
   },
@@ -46,7 +46,7 @@ const builtinKeybindings = [
   },
   {
     key: "Alt+`",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Transform to upper case",
     command: "dance.edit.case.toUpper",
   },
@@ -58,7 +58,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+Alt+7",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Copy indentation",
     command: "dance.edit.copyIndentation",
   },
@@ -70,7 +70,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+Alt+,",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Deindent selected lines",
     command: "dance.edit.deindent",
   },
@@ -82,7 +82,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+,",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Deindent selected lines (including incomplete indent)",
     command: "dance.edit.deindent.withIncomplete",
   },
@@ -94,7 +94,7 @@ const builtinKeybindings = [
   },
   {
     key: "Alt+D",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Delete",
     command: "dance.edit.delete",
   },
@@ -106,7 +106,7 @@ const builtinKeybindings = [
   },
   {
     key: "Alt+C",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Delete and switch to Insert",
     command: "dance.edit.delete-insert",
   },
@@ -118,7 +118,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+.",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Indent selected lines",
     command: "dance.edit.indent",
   },
@@ -130,7 +130,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+Alt+.",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Indent selected lines (including empty lines)",
     command: "dance.edit.indent.withEmpty",
   },
@@ -148,7 +148,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+J",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Join lines",
     command: "dance.edit.join",
   },
@@ -166,7 +166,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+O",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Insert new line above and switch to insert",
     command: "dance.edit.newLine.above.insert",
   },
@@ -178,7 +178,7 @@ const builtinKeybindings = [
   },
   {
     key: "O",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Insert new line below and switch to insert",
     command: "dance.edit.newLine.below.insert",
   },
@@ -190,7 +190,7 @@ const builtinKeybindings = [
   },
   {
     key: "P",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Paste after",
     command: "dance.edit.paste.after",
   },
@@ -202,7 +202,7 @@ const builtinKeybindings = [
   },
   {
     key: "Alt+P",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Paste after and select",
     command: "dance.edit.paste.after.select",
   },
@@ -214,7 +214,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+P",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Paste before",
     command: "dance.edit.paste.before",
   },
@@ -226,7 +226,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+Alt+P",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Paste before and select",
     command: "dance.edit.paste.before.select",
   },
@@ -238,7 +238,7 @@ const builtinKeybindings = [
   },
   {
     key: "R",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Replace characters",
     command: "dance.edit.replaceCharacters",
   },
@@ -268,7 +268,7 @@ const builtinKeybindings = [
   },
   {
     key: "D",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Copy and delete",
     command: "dance.edit.yank-delete",
   },
@@ -280,7 +280,7 @@ const builtinKeybindings = [
   },
   {
     key: "C",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Copy, delete and switch to Insert",
     command: "dance.edit.yank-delete-insert",
   },
@@ -292,7 +292,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+R",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Copy and replace",
     command: "dance.edit.yank-replace",
   },
@@ -304,7 +304,7 @@ const builtinKeybindings = [
   },
   {
     key: "Q",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Replay recording",
     command: "dance.history.recording.play",
   },
@@ -316,7 +316,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+Q",
-    when: "editorTextFocus && dance.mode == 'visual' && !dance.isRecording",
+    when: "editorTextFocus && dance.mode == 'select' && !dance.isRecording",
     title: "Start recording",
     command: "dance.history.recording.start",
   },
@@ -334,13 +334,13 @@ const builtinKeybindings = [
   },
   {
     key: "Escape",
-    when: "editorTextFocus && dance.mode == 'visual' && dance.isRecording",
+    when: "editorTextFocus && dance.mode == 'select' && dance.isRecording",
     title: "Stop recording",
     command: "dance.history.recording.stop",
   },
   {
     key: "Shift+Q",
-    when: "editorTextFocus && dance.mode == 'visual' && dance.isRecording",
+    when: "editorTextFocus && dance.mode == 'select' && dance.isRecording",
     title: "Stop recording",
     command: "dance.history.recording.stop",
   },
@@ -352,7 +352,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+U",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Redo",
     command: "dance.history.redo",
   },
@@ -376,13 +376,13 @@ const builtinKeybindings = [
   },
   {
     key: ".",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Repeat last edit without a command",
     command: "dance.history.repeat.edit",
   },
   {
     key: "NumPad_Decimal",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Repeat last edit without a command",
     command: "dance.history.repeat.edit",
   },
@@ -400,7 +400,7 @@ const builtinKeybindings = [
   },
   {
     key: "U",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Undo",
     command: "dance.history.undo",
   },
@@ -421,7 +421,7 @@ const builtinKeybindings = [
   },
   {
     key: "M",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Show match menu",
     command: "dance.openMenu",
     args: {
@@ -464,7 +464,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+'",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Select register for next command",
     command: "dance.selectRegister",
   },
@@ -488,7 +488,7 @@ const builtinKeybindings = [
   },
   {
     key: "0",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 0 to the counter",
     command: "dance.updateCount",
     args: {
@@ -497,7 +497,7 @@ const builtinKeybindings = [
   },
   {
     key: "NumPad0",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 0 to the counter",
     command: "dance.updateCount",
     args: {
@@ -524,7 +524,7 @@ const builtinKeybindings = [
   },
   {
     key: "1",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 1 to the counter",
     command: "dance.updateCount",
     args: {
@@ -533,7 +533,7 @@ const builtinKeybindings = [
   },
   {
     key: "NumPad1",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 1 to the counter",
     command: "dance.updateCount",
     args: {
@@ -560,7 +560,7 @@ const builtinKeybindings = [
   },
   {
     key: "2",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 2 to the counter",
     command: "dance.updateCount",
     args: {
@@ -569,7 +569,7 @@ const builtinKeybindings = [
   },
   {
     key: "NumPad2",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 2 to the counter",
     command: "dance.updateCount",
     args: {
@@ -596,7 +596,7 @@ const builtinKeybindings = [
   },
   {
     key: "3",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 3 to the counter",
     command: "dance.updateCount",
     args: {
@@ -605,7 +605,7 @@ const builtinKeybindings = [
   },
   {
     key: "NumPad3",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 3 to the counter",
     command: "dance.updateCount",
     args: {
@@ -632,7 +632,7 @@ const builtinKeybindings = [
   },
   {
     key: "4",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 4 to the counter",
     command: "dance.updateCount",
     args: {
@@ -641,7 +641,7 @@ const builtinKeybindings = [
   },
   {
     key: "NumPad4",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 4 to the counter",
     command: "dance.updateCount",
     args: {
@@ -668,7 +668,7 @@ const builtinKeybindings = [
   },
   {
     key: "5",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 5 to the counter",
     command: "dance.updateCount",
     args: {
@@ -677,7 +677,7 @@ const builtinKeybindings = [
   },
   {
     key: "NumPad5",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 5 to the counter",
     command: "dance.updateCount",
     args: {
@@ -704,7 +704,7 @@ const builtinKeybindings = [
   },
   {
     key: "6",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 6 to the counter",
     command: "dance.updateCount",
     args: {
@@ -713,7 +713,7 @@ const builtinKeybindings = [
   },
   {
     key: "NumPad6",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 6 to the counter",
     command: "dance.updateCount",
     args: {
@@ -740,7 +740,7 @@ const builtinKeybindings = [
   },
   {
     key: "7",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 7 to the counter",
     command: "dance.updateCount",
     args: {
@@ -749,7 +749,7 @@ const builtinKeybindings = [
   },
   {
     key: "NumPad7",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 7 to the counter",
     command: "dance.updateCount",
     args: {
@@ -776,7 +776,7 @@ const builtinKeybindings = [
   },
   {
     key: "8",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 8 to the counter",
     command: "dance.updateCount",
     args: {
@@ -785,7 +785,7 @@ const builtinKeybindings = [
   },
   {
     key: "NumPad8",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 8 to the counter",
     command: "dance.updateCount",
     args: {
@@ -812,7 +812,7 @@ const builtinKeybindings = [
   },
   {
     key: "9",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 9 to the counter",
     command: "dance.updateCount",
     args: {
@@ -821,7 +821,7 @@ const builtinKeybindings = [
   },
   {
     key: "NumPad9",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add the digit 9 to the counter",
     command: "dance.updateCount",
     args: {
@@ -838,7 +838,7 @@ const builtinKeybindings = [
   },
   {
     key: "Ctrl+C",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     command: "editor.action.commentLine",
     args: {
       "$exclude": [],
@@ -854,7 +854,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+;",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     command: "workbench.action.showCommands",
     args: {
       "$exclude": [],
@@ -868,7 +868,7 @@ const builtinKeybindings = [
   },
   {
     key: "A",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Insert after",
     command: "dance.modes.insert.after",
   },
@@ -880,7 +880,7 @@ const builtinKeybindings = [
   },
   {
     key: "I",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Insert before",
     command: "dance.modes.insert.before",
   },
@@ -892,7 +892,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+A",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Insert at line end",
     command: "dance.modes.insert.lineEnd",
   },
@@ -904,7 +904,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+I",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Insert at line start",
     command: "dance.modes.insert.lineStart",
   },
@@ -916,13 +916,13 @@ const builtinKeybindings = [
   },
   {
     key: "Escape",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Set mode to Normal",
     command: "dance.modes.set.normal",
   },
   {
     key: "V",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Set mode to Normal",
     command: "dance.modes.set.normal",
   },
@@ -941,8 +941,8 @@ const builtinKeybindings = [
   {
     key: "V",
     when: "editorTextFocus && dance.mode == 'normal'",
-    title: "Set mode to Visual",
-    command: "dance.modes.set.visual",
+    title: "Set mode to select",
+    command: "dance.modes.set.select",
   },
   {
     key: "/",
@@ -958,13 +958,13 @@ const builtinKeybindings = [
   },
   {
     key: "/",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Search",
     command: "dance.search",
   },
   {
     key: "NumPad_Divide",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Search",
     command: "dance.search",
   },
@@ -1000,7 +1000,7 @@ const builtinKeybindings = [
   },
   {
     key: "N",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add next match",
     command: "dance.search.next.add",
   },
@@ -1018,7 +1018,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+N",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Add previous match",
     command: "dance.search.previous.add",
   },
@@ -1042,13 +1042,13 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+8",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Search current selection (smart)",
     command: "dance.search.selection.smart",
   },
   {
     key: "NumPad_Multiply",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Search current selection (smart)",
     command: "dance.search.selection.smart",
   },
@@ -1150,25 +1150,25 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+M",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend to next enclosing character",
     command: "dance.seek.enclosing.extend",
   },
   {
     key: "Alt+M",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend to previous enclosing character",
     command: "dance.seek.enclosing.extend.backward",
   },
   {
     key: "T",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend to character (excluded)",
     command: "dance.seek.extend",
   },
   {
     key: "Shift+T",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend to character (excluded, backward)",
     command: "dance.seek.extend.backward",
   },
@@ -1186,13 +1186,13 @@ const builtinKeybindings = [
   },
   {
     key: "F",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend to character (included)",
     command: "dance.seek.included.extend",
   },
   {
     key: "Shift+F",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend to character (included, backward)",
     command: "dance.seek.included.extend.backward",
   },
@@ -1210,13 +1210,13 @@ const builtinKeybindings = [
   },
   {
     key: "B",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend to previous word start",
     command: "dance.seek.word.extend.backward",
   },
   {
     key: "W",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend to next word start",
     command: "dance.seek.word.extend",
   },
@@ -1234,13 +1234,13 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+B",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend to previous WORD start",
     command: "dance.seek.word.ws.extend.backward",
   },
   {
     key: "Shift+W",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend to next WORD start",
     command: "dance.seek.word.ws.extend",
   },
@@ -1252,7 +1252,7 @@ const builtinKeybindings = [
   },
   {
     key: "E",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend to next word end",
     command: "dance.seek.wordEnd.extend",
   },
@@ -1264,7 +1264,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+E",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend to next WORD end",
     command: "dance.seek.wordEnd.ws.extend",
   },
@@ -1276,7 +1276,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+5",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Select whole buffer",
     command: "dance.select.buffer",
   },
@@ -1288,13 +1288,13 @@ const builtinKeybindings = [
   },
   {
     key: "J",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend down",
     command: "dance.select.down.extend",
   },
   {
     key: "Down",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend down",
     command: "dance.select.down.extend",
   },
@@ -1318,13 +1318,13 @@ const builtinKeybindings = [
   },
   {
     key: "H",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend left",
     command: "dance.select.left.extend",
   },
   {
     key: "Left",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend left",
     command: "dance.select.left.extend",
   },
@@ -1348,7 +1348,7 @@ const builtinKeybindings = [
   },
   {
     key: "X",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend to line below",
     command: "dance.select.line.below.extend",
   },
@@ -1408,13 +1408,13 @@ const builtinKeybindings = [
   },
   {
     key: "L",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend right",
     command: "dance.select.right.extend",
   },
   {
     key: "Right",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend right",
     command: "dance.select.right.extend",
   },
@@ -1438,7 +1438,7 @@ const builtinKeybindings = [
   },
   {
     key: "G",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend to",
     command: "dance.select.to.extend",
   },
@@ -1456,13 +1456,13 @@ const builtinKeybindings = [
   },
   {
     key: "K",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend up",
     command: "dance.select.up.extend",
   },
   {
     key: "Up",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Extend up",
     command: "dance.select.up.extend",
   },
@@ -1560,7 +1560,7 @@ const builtinKeybindings = [
   },
   {
     key: "Ctrl+F",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     command: "dance.select.vertically",
     args: {
       direction: 1,
@@ -1570,7 +1570,7 @@ const builtinKeybindings = [
   },
   {
     key: "Ctrl+D",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     command: "dance.select.vertically",
     args: {
       direction: 1,
@@ -1580,7 +1580,7 @@ const builtinKeybindings = [
   },
   {
     key: "Ctrl+B",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     command: "dance.select.vertically",
     args: {
       direction: -1,
@@ -1590,7 +1590,7 @@ const builtinKeybindings = [
   },
   {
     key: "Ctrl+U",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     command: "dance.select.vertically",
     args: {
       direction: -1,
@@ -1612,7 +1612,7 @@ const builtinKeybindings = [
   },
   {
     key: "Alt+,",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Clear main selections",
     command: "dance.selections.clear.main",
   },
@@ -1624,7 +1624,7 @@ const builtinKeybindings = [
   },
   {
     key: ",",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Clear secondary selections",
     command: "dance.selections.clear.secondary",
   },
@@ -1636,7 +1636,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+C",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Copy selections below",
     command: "dance.selections.copy",
   },
@@ -1660,7 +1660,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+X",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Expand to lines",
     command: "dance.selections.expandToLines",
   },
@@ -1678,7 +1678,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+4",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Filter selections",
     command: "dance.selections.filter",
   },
@@ -1690,7 +1690,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+K",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Keep matching selections",
     command: "dance.selections.filter.regexp",
   },
@@ -1702,7 +1702,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+Alt+K",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Clear matching selections",
     command: "dance.selections.filter.regexp.inverse",
   },
@@ -1744,7 +1744,7 @@ const builtinKeybindings = [
   },
   {
     key: ";",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Reduce selections to their cursor",
     command: "dance.selections.reduce",
   },
@@ -1789,7 +1789,7 @@ const builtinKeybindings = [
   },
   {
     key: "Y",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Copy selections text",
     command: "dance.selections.saveText",
   },
@@ -1801,7 +1801,7 @@ const builtinKeybindings = [
   },
   {
     key: "S",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Select within selections",
     command: "dance.selections.select",
   },
@@ -1813,7 +1813,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+S",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Split selections",
     command: "dance.selections.split",
   },
@@ -1825,7 +1825,7 @@ const builtinKeybindings = [
   },
   {
     key: "Alt+S",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Split selections at line boundaries",
     command: "dance.selections.splitLines",
   },
@@ -1837,7 +1837,7 @@ const builtinKeybindings = [
   },
   {
     key: "Enter",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Toggle selection indices",
     command: "dance.selections.toggleIndices",
   },
@@ -1855,7 +1855,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+-",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Trim whitespace",
     command: "dance.selections.trimWhitespace",
   },
@@ -1879,7 +1879,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+9",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Rotate selections clockwise (selections only)",
     command: "dance.selections.rotate.selections",
   },
@@ -1891,7 +1891,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+0",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Rotate selections counter-clockwise (selections only)",
     command: "dance.selections.rotate.selections.reverse",
   },
@@ -1907,7 +1907,7 @@ const builtinKeybindings = [
   },
   {
     key: "Space",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Show space menu",
     command: "dance.openMenu",
     args: {
@@ -1927,7 +1927,7 @@ const builtinKeybindings = [
   },
   {
     key: "Z",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Show view menu",
     command: "dance.openMenu",
     args: {
@@ -1948,7 +1948,7 @@ const builtinKeybindings = [
   },
   {
     key: "Shift+Z",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Show view menu (locked)",
     command: "dance.openMenu",
     args: {
@@ -1965,7 +1965,7 @@ const builtinKeybindings = [
   },
   {
     key: "Ctrl+W",
-    when: "editorTextFocus && dance.mode == 'visual'",
+    when: "editorTextFocus && dance.mode == 'select'",
     title: "Show window menu",
     command: "dance.window.windowMenu",
   },

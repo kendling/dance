@@ -10,8 +10,8 @@ import { Context, Selections } from "../api";
  *
  * | Title                   | Keybinding                                   | Command                                              |
  * | ----------------------- | -------------------------------------------- | ---------------------------------------------------- |
- * | Show view menu          | `z` (helix: normal), `z` (helix: visual)     | `[".openMenu", { menu: "view", ...               }]` |
- * | Show view menu (locked) | `s-z` (helix: normal), `s-z` (helix: visual) | `[".openMenu", { menu: "view", locked: true, ... }]` |
+ * | Show view menu          | `z` (helix: normal), `z` (helix: select)     | `[".openMenu", { menu: "view", ...               }]` |
+ * | Show view menu (locked) | `s-z` (helix: normal), `s-z` (helix: select) | `[".openMenu", { menu: "view", locked: true, ... }]` |
  */
 declare module "./view";
 

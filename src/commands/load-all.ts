@@ -847,12 +847,6 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "dance.modes.set.visual",
-    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".modes.set", { mode: "visual" }]],
-  );
-  describeAdditionalCommand(
-    commands,
     "dance.modes.insert.lineStart",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lineStart", { shift: "jump", skipBlank: true }], [".modes.set", { mode: "insert", $include: ["mode"] }], [".selections.reduce", { where: "start", record: false, empty: true, $exclude: ["mode"] }]],

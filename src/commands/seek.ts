@@ -22,13 +22,13 @@ declare module "./seek";
  *
  * | Title                                    | Identifier                 | Keybinding                                   | Command                                                             |
  * | ---------------------------------------- | -------------------------- | -------------------------------------------- | ------------------------------------------------------------------- |
- * | Extend to character (excluded)           | `extend`                   | `t` (helix: visual), `t` (helix: select)     | `[".seek", {                shift: "extend"               , ... }]` |
+ * | Extend to character (excluded)           | `extend`                   | `t` (helix: select), `t` (helix: select)     | `[".seek", {                shift: "extend"               , ... }]` |
  * | Select to character (excluded, backward) | `backward`                 | `s-t` (helix: normal)                        | `[".seek", {                                 direction: -1, ... }]` |
- * | Extend to character (excluded, backward) | `extend.backward`          | `s-t` (helix: visual), `s-t` (helix: select) | `[".seek", {                shift: "extend", direction: -1, ... }]` |
+ * | Extend to character (excluded, backward) | `extend.backward`          | `s-t` (helix: select), `s-t` (helix: select) | `[".seek", {                shift: "extend", direction: -1, ... }]` |
  * | Select to character (included)           | `included`                 | `f` (helix: normal)                          | `[".seek", { include: true                                , ... }]` |
- * | Extend to character (included)           | `included.extend`          | `f` (helix: visual), `f` (helix: select)     | `[".seek", { include: true, shift: "extend"               , ... }]` |
+ * | Extend to character (included)           | `included.extend`          | `f` (helix: select), `f` (helix: select)     | `[".seek", { include: true, shift: "extend"               , ... }]` |
  * | Select to character (included, backward) | `included.backward`        | `s-f` (helix: normal)                        | `[".seek", { include: true,                  direction: -1, ... }]` |
- * | Extend to character (included, backward) | `included.extend.backward` | `s-f` (helix: visual), `s-f` (helix: select) | `[".seek", { include: true, shift: "extend", direction: -1, ... }]` |
+ * | Extend to character (included, backward) | `included.extend.backward` | `s-f` (helix: select), `s-f` (helix: select) | `[".seek", { include: true, shift: "extend", direction: -1, ... }]` |
  */
 export async function seek(
   _: Context,
@@ -87,9 +87,9 @@ const defaultEnclosingPatterns = [
  *
  * | Title                                  | Identifier                  | Keybinding            | Command                                                        |
  * | -------------------------------------- | --------------------------- | --------------------- | -------------------------------------------------------------- |
- * | Extend to next enclosing character     | `enclosing.extend`          | `s-m` (helix: visual) | `[".seek.enclosing", { shift: "extend"               , ... }]` |
+ * | Extend to next enclosing character     | `enclosing.extend`          | `s-m` (helix: select) | `[".seek.enclosing", { shift: "extend"               , ... }]` |
  * | Select to previous enclosing character | `enclosing.backward`        | `a-m` (helix: normal) | `[".seek.enclosing", {                  direction: -1, ... }]` |
- * | Extend to previous enclosing character | `enclosing.extend.backward` | `a-m` (helix: visual) | `[".seek.enclosing", { shift: "extend", direction: -1, ... }]` |
+ * | Extend to previous enclosing character | `enclosing.extend.backward` | `a-m` (helix: select) | `[".seek.enclosing", { shift: "extend", direction: -1, ... }]` |
  */
 export function enclosing(
   _: Context,
@@ -182,17 +182,17 @@ export function enclosing(
  *
  * | Title                                        | Identifier                | Keybinding                                   | Command                                                                              |
  * | -------------------------------------------- | ------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------ |
- * | Extend to next word start                    | `word.extend`             | `w` (helix: visual), `w` (helix: select)     | `[".seek.word", {                            shift: "extend"               , ... }]` |
+ * | Extend to next word start                    | `word.extend`             | `w` (helix: select), `w` (helix: select)     | `[".seek.word", {                            shift: "extend"               , ... }]` |
  * | Select to previous word start                | `word.backward`           | `b` (helix: normal)                          | `[".seek.word", {                                             direction: -1, ... }]` |
- * | Extend to previous word start                | `word.extend.backward`    | `b` (helix: visual), `b` (helix: select)     | `[".seek.word", {                            shift: "extend", direction: -1, ... }]` |
+ * | Extend to previous word start                | `word.extend.backward`    | `b` (helix: select), `b` (helix: select)     | `[".seek.word", {                            shift: "extend", direction: -1, ... }]` |
  * | Select to next WORD start                    | `word.ws`                 | `s-w` (helix: normal)                        | `[".seek.word", {                  ws: true                                , ... }]` |
- * | Extend to next WORD start                    | `word.ws.extend`          | `s-w` (helix: visual), `s-w` (helix: select) | `[".seek.word", {                  ws: true, shift: "extend"               , ... }]` |
+ * | Extend to next WORD start                    | `word.ws.extend`          | `s-w` (helix: select), `s-w` (helix: select) | `[".seek.word", {                  ws: true, shift: "extend"               , ... }]` |
  * | Select to previous WORD start                | `word.ws.backward`        | `s-b` (helix: normal)                        | `[".seek.word", {                  ws: true,                  direction: -1, ... }]` |
- * | Extend to previous WORD start                | `word.ws.extend.backward` | `s-b` (helix: visual), `s-b` (helix: select) | `[".seek.word", {                  ws: true, shift: "extend", direction: -1, ... }]` |
+ * | Extend to previous WORD start                | `word.ws.extend.backward` | `s-b` (helix: select), `s-b` (helix: select) | `[".seek.word", {                  ws: true, shift: "extend", direction: -1, ... }]` |
  * | Select to next word end                      | `wordEnd`                 | `e` (helix: normal)                          | `[".seek.word", { stopAtEnd: true                                          , ... }]` |
- * | Extend to next word end                      | `wordEnd.extend`          | `e` (helix: visual), `e` (helix: select)     | `[".seek.word", { stopAtEnd: true,           shift: "extend"               , ... }]` |
+ * | Extend to next word end                      | `wordEnd.extend`          | `e` (helix: select), `e` (helix: select)     | `[".seek.word", { stopAtEnd: true,           shift: "extend"               , ... }]` |
  * | Select to next WORD end                      | `wordEnd.ws`              | `s-e` (helix: normal)                        | `[".seek.word", { stopAtEnd: true, ws: true                                , ... }]` |
- * | Extend to next WORD end                      | `wordEnd.ws.extend`       | `s-e` (helix: visual), `s-e` (helix: select) | `[".seek.word", { stopAtEnd: true, ws: true, shift: "extend"               , ... }]` |
+ * | Extend to next WORD end                      | `wordEnd.ws.extend`       | `s-e` (helix: select), `s-e` (helix: select) | `[".seek.word", { stopAtEnd: true, ws: true, shift: "extend"               , ... }]` |
  */
 export function word(
   _: Context,

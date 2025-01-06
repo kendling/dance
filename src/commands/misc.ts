@@ -13,8 +13,8 @@ import { ArgumentError, CancellationError, InputError } from "../utils/errors";
  *
  * | Keybinding                                   | Command                                      |
  * | -------------------------------------------- | -------------------------------------------- |
- * | `s-;` (helix: normal), `s-;` (helix: visual) | `["workbench.action.showCommands", { ... }]` |
- * | `c-c` (helix: normal), `c-c` (helix: visual) | `["editor.action.commentLine", { ... }]` |
+ * | `s-;` (helix: normal), `s-;` (helix: select) | `["workbench.action.showCommands", { ... }]` |
+ * | `c-c` (helix: normal), `c-c` (helix: select) | `["editor.action.commentLine", { ... }]`     |
  */
 declare module "./misc";
 
@@ -191,7 +191,7 @@ export async function run(
  * press is awaited again and the returned register will be specific to the
  * current document.
  *
- * @keys `"` (helix: normal), `"` (helix: visual)
+ * @keys `"` (helix: normal), `"` (helix: select)
  * @noreplay
  */
 export async function selectRegister(
@@ -259,16 +259,16 @@ export async function updateRegister(
  *
  * | Title                          | Keybinding                                                                                     | Command                              |
  * | ------------------------------ | ---------------------------------------------------------------------------------------------- | ------------------------------------ |
- * | Add the digit 0 to the counter | `0` (helix: normal), `NumPad0` (helix: normal), `0` (helix: visual), `NumPad0` (helix: visual) | `[".updateCount", { addDigits: 0 }]` |
- * | Add the digit 1 to the counter | `1` (helix: normal), `NumPad1` (helix: normal), `1` (helix: visual), `NumPad1` (helix: visual) | `[".updateCount", { addDigits: 1 }]` |
- * | Add the digit 2 to the counter | `2` (helix: normal), `NumPad2` (helix: normal), `2` (helix: visual), `NumPad2` (helix: visual) | `[".updateCount", { addDigits: 2 }]` |
- * | Add the digit 3 to the counter | `3` (helix: normal), `NumPad3` (helix: normal), `3` (helix: visual), `NumPad3` (helix: visual) | `[".updateCount", { addDigits: 3 }]` |
- * | Add the digit 4 to the counter | `4` (helix: normal), `NumPad4` (helix: normal), `4` (helix: visual), `NumPad4` (helix: visual) | `[".updateCount", { addDigits: 4 }]` |
- * | Add the digit 5 to the counter | `5` (helix: normal), `NumPad5` (helix: normal), `5` (helix: visual), `NumPad5` (helix: visual) | `[".updateCount", { addDigits: 5 }]` |
- * | Add the digit 6 to the counter | `6` (helix: normal), `NumPad6` (helix: normal), `6` (helix: visual), `NumPad6` (helix: visual) | `[".updateCount", { addDigits: 6 }]` |
- * | Add the digit 7 to the counter | `7` (helix: normal), `NumPad7` (helix: normal), `7` (helix: visual), `NumPad7` (helix: visual) | `[".updateCount", { addDigits: 7 }]` |
- * | Add the digit 8 to the counter | `8` (helix: normal), `NumPad8` (helix: normal), `8` (helix: visual), `NumPad8` (helix: visual) | `[".updateCount", { addDigits: 8 }]` |
- * | Add the digit 9 to the counter | `9` (helix: normal), `NumPad9` (helix: normal), `9` (helix: visual), `NumPad9` (helix: visual) | `[".updateCount", { addDigits: 9 }]` |
+ * | Add the digit 0 to the counter | `0` (helix: normal), `NumPad0` (helix: normal), `0` (helix: select), `NumPad0` (helix: select) | `[".updateCount", { addDigits: 0 }]` |
+ * | Add the digit 1 to the counter | `1` (helix: normal), `NumPad1` (helix: normal), `1` (helix: select), `NumPad1` (helix: select) | `[".updateCount", { addDigits: 1 }]` |
+ * | Add the digit 2 to the counter | `2` (helix: normal), `NumPad2` (helix: normal), `2` (helix: select), `NumPad2` (helix: select) | `[".updateCount", { addDigits: 2 }]` |
+ * | Add the digit 3 to the counter | `3` (helix: normal), `NumPad3` (helix: normal), `3` (helix: select), `NumPad3` (helix: select) | `[".updateCount", { addDigits: 3 }]` |
+ * | Add the digit 4 to the counter | `4` (helix: normal), `NumPad4` (helix: normal), `4` (helix: select), `NumPad4` (helix: select) | `[".updateCount", { addDigits: 4 }]` |
+ * | Add the digit 5 to the counter | `5` (helix: normal), `NumPad5` (helix: normal), `5` (helix: select), `NumPad5` (helix: select) | `[".updateCount", { addDigits: 5 }]` |
+ * | Add the digit 6 to the counter | `6` (helix: normal), `NumPad6` (helix: normal), `6` (helix: select), `NumPad6` (helix: select) | `[".updateCount", { addDigits: 6 }]` |
+ * | Add the digit 7 to the counter | `7` (helix: normal), `NumPad7` (helix: normal), `7` (helix: select), `NumPad7` (helix: select) | `[".updateCount", { addDigits: 7 }]` |
+ * | Add the digit 8 to the counter | `8` (helix: normal), `NumPad8` (helix: normal), `8` (helix: select), `NumPad8` (helix: select) | `[".updateCount", { addDigits: 8 }]` |
+ * | Add the digit 9 to the counter | `9` (helix: normal), `NumPad9` (helix: normal), `9` (helix: select), `NumPad9` (helix: select) | `[".updateCount", { addDigits: 9 }]` |
  *
  * @noreplay
  */
